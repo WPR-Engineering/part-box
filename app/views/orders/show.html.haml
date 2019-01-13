@@ -1,0 +1,13 @@
+#notice= notice
+
+= @order.order_id
+= @order.user
+
+%br
+
+- @order.consumables.each do |consumable|
+  =consumable.tag
+
+%br
+= link_to 'Edit', edit_order_path(@order)
+= link_to 'Back', orders_path
