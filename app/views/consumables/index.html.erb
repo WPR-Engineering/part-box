@@ -5,12 +5,12 @@
 <table>
   <thead>
     <tr>
-      <th>Tag</th>
+
       <th>Name</th>
       <th>Description</th>
       <th>Quantity</th>
       <th>Reorderamount</th>
-      <th>Location</th>
+
       <th>Shelf</th>
       <th>Bin</th>
       <th>Obsolete</th>
@@ -21,12 +21,12 @@
   <tbody>
     <% @consumables.each do |consumable| %>
       <tr>
-        <td><%= consumable.tag %></td>
+
         <td><%= consumable.name %></td>
         <td><%= consumable.description %></td>
         <td><%= consumable.quantity %></td>
         <td><%= consumable.reorderAmount %></td>
-        <td><%= consumable.location %></td>
+
         <td><%= consumable.shelf %></td>
         <td><%= consumable.bin %></td>
         <td><%= consumable.obsolete %></td>

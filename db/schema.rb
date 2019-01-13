@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_232531) do
+ActiveRecord::Schema.define(version: 2019_01_13_234852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,10 @@ ActiveRecord::Schema.define(version: 2019_01_13_232531) do
   end
 
   create_table "consumables", force: :cascade do |t|
-    t.string "tag"
     t.string "name"
     t.text "description"
     t.integer "quantity"
     t.integer "reorderAmount"
-    t.string "location"
     t.string "shelf"
     t.string "bin"
     t.boolean "obsolete"
