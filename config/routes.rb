@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :asset_tags
+  resources :locations
   resources :orders
   devise_for :users
   resources :consumables

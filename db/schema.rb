@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_182306) do
+ActiveRecord::Schema.define(version: 2019_01_13_232531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "asset_tags", force: :cascade do |t|
+    t.string "tag"
+    t.bigint "consumable_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consumable_id"], name: "index_asset_tags_on_consumable_id"
+    t.index ["location_id"], name: "index_asset_tags_on_location_id"
+  end
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id"
@@ -49,6 +59,8 @@ ActiveRecord::Schema.define(version: 2019_01_13_182306) do
     t.boolean "obsolete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "part_number"
+    t.string "mfg_part_number"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -59,6 +71,12 @@ ActiveRecord::Schema.define(version: 2019_01_13_182306) do
     t.datetime "updated_at", null: false
     t.index ["consumable_id"], name: "index_line_items_on_consumable_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -80,6 +98,8 @@ ActiveRecord::Schema.define(version: 2019_01_13_182306) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "asset_tags", "consumables"
+  add_foreign_key "asset_tags", "locations"
   add_foreign_key "line_items", "consumables"
   add_foreign_key "line_items", "orders"
 end

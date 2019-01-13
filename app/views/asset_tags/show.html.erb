@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @asset_tag.tag %>
+</p>
+
+<p>
+  <strong>Consumable:</strong>
+  <%= @asset_tag.consumable.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @asset_tag.location.name %>
+</p>
+
+<%= link_to 'Edit', edit_asset_tag_path(@asset_tag) %> |
+<%= link_to 'Back', asset_tags_path %>
