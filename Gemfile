@@ -76,3 +76,10 @@ gem 'cancancan'
 
 #history/change tracking
 gem 'audited', '~> 4.7'
+
+#nested forms
+gem 'cocoon'
+gem 'jquery-rails'
+
+#better forms
+gem 'simple_form'
