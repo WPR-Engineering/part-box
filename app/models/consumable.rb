@@ -1,0 +1,2 @@
+class Consumable < ApplicationRecord
+end

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tag: MyString
+  name: MyString
+  description: MyText
+  quantity: 1
+  reorderAmount: 1
+  location: MyString
+  shelf: MyString
+  bin: MyString
+  obsolete: false
+
+two:
+  tag: MyString
+  name: MyString
+  description: MyText
+  quantity: 1
+  reorderAmount: 1
+  location: MyString
+  shelf: MyString
+  bin: MyString
+  obsolete: false

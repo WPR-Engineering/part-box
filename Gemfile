@@ -6,7 +6,9 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
+#use pgsql as the database
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -60,3 +62,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# use haml rather than erb
+gem 'haml'
+
+#authentication
+gem 'devise'
+gem 'net-ldap'
+gem 'devise_ldap_authenticatable'
+
+#fine grain uer authentication and roles
+gem 'cancancan'
+
+#history/change tracking
+gem 'audited', '~> 4.7'

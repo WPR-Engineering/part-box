@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @consumable.tag %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @consumable.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @consumable.description %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @consumable.quantity %>
+</p>
+
+<p>
+  <strong>Reorderamount:</strong>
+  <%= @consumable.reorderAmount %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @consumable.location %>
+</p>
+
+<p>
+  <strong>Shelf:</strong>
+  <%= @consumable.shelf %>
+</p>
+
+<p>
+  <strong>Bin:</strong>
+  <%= @consumable.bin %>
+</p>
+
+<p>
+  <strong>Obsolete:</strong>
+  <%= @consumable.obsolete %>
+</p>
+
+<%= link_to 'Edit', edit_consumable_path(@consumable) %> |
+<%= link_to 'Back', consumables_path %>

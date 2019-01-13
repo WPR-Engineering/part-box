@@ -29,3 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#ignore database.yml because it now contains a password
+/config/database.yml
