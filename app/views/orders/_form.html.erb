@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :user %>
-    <%= form.text_field :user %>
+    <%= form.text_field :user, value: current_user.email %>
   </div>
 
   <div class="actions">

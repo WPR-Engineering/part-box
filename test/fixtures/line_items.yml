@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consumable: one
+  order: one
+  quantity: 1
+
+two:
+  consumable: two
+  order: two
+  quantity: 1
