@@ -35,5 +35,11 @@
   <%= @consumable.obsolete %>
 </p>
 
+<p>
+  <strong>Location:</strong>
+  <%= @consumable.part.internal_part %>
+</p>
+
+
 <%= link_to 'Edit', edit_consumable_path(@consumable) %> |
 <%= link_to 'Back', consumables_path %>

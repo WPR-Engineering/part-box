@@ -1,0 +1,13 @@
+= simple_form_for(@consumable) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+    = f.input :name
+    = f.association :part
+    = f.input :quantity
+    = f.input :reorderAmount
+    = f.input :shelf
+    = f.input :bin
+    = f.input :obsolete
+  .form-actions
+    = f.button :submit

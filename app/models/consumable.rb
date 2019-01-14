@@ -4,5 +4,7 @@ class Consumable < ApplicationRecord
 
   has_one :asset_tag
   has_one :location, through: :asset_tag
-  ccepts_nested_attributes_for :location
+  accepts_nested_attributes_for :location
+
+  belongs_to :part
 end
