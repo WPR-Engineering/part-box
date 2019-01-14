@@ -25,3 +25,5 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - display relevent info on all the views
 - migrate everyhing to haml
 - migrate all forms to simple form
+- move to a product/part number linked to a consumable rather than only a consumable
+- add all of the "fixed" asset tracking functions

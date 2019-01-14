@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Internal part:</strong>
+  <%= @part.internal_part %>
+</p>
+
+<p>
+  <strong>Mfg part:</strong>
+  <%= @part.mfg_part %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @part.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @part.description %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <%= @part.manufacturer %>
+</p>
+
+<%= link_to 'Edit', edit_part_path(@part) %> |
+<%= link_to 'Back', parts_path %>

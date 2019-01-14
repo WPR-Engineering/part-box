@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  internal_part: MyString
+  mfg_part: MyString
+  name: MyText
+  description: MyText
+  manufacturer: MyString
+
+two:
+  internal_part: MyString
+  mfg_part: MyString
+  name: MyText
+  description: MyText
+  manufacturer: MyString
