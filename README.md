@@ -1,24 +1,27 @@
-# README
+# Part Box
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Part Box is an inventory and asset tracking system with consumables in mind. It essentially works like a standard asset tracking system, but it has funtions specific to
+users who need to track consumables and move different things to different locations.
 
-Things you may want to cover:
+The basic idea is to use tags a little different than a standard asset tag. Tags are uniqe across the system, however if a part exists in multiple locations
+it has multiple tags. This is to make finding the correct item to add to your BOM (bill of matierals) easier. Speaking of the BOM, this essentially works like a store
+users create a new "order" in this order you can add line items that contain an asset tag number, from this number we can find the part and the location. Once the order is finalized the quantities are reduced in the consumables database. Using aset tags in this way allows us to track part quantities across different locations.
 
-* Ruby version
+We also can track non-consumable assets, things like servers and hard drives. This is done much in the same way, however there is only a quantity of one item per tag.
 
-* System dependencies
 
-* Configuration
+# Getting started
+1. create a location
+2. create a consumable
+3. creat an asset tag to link the consumable and the location
+4. create an order
+5. add line items to the order, these are asset tag numbers.
+6. finalize the order, and the quantity should reduce in the consumables table. (this doesnt work yet)
 
-* Database creation
+# TODO
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Reduce quantity on order finlization
+- Use asset tags rather than consumables in the line itmes
+- display relevent info on all the views
+- migrate everyhing to haml
+- migrate all forms to simple form
