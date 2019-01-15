@@ -10,6 +10,7 @@ class ConsumablesController < ApplicationController
   # GET /consumables/1
   # GET /consumables/1.json
   def show
+    @location = Consumable.all
   end
 
   # GET /consumables/new
@@ -69,6 +70,6 @@ class ConsumablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumable_params
-      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id)
+      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id, asset_tag_attributes: [:location_id, :tag], location_attributes: [:name])
     end
 end

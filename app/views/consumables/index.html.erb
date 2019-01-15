@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @consumables.each do |consumable| %>
+    <% @consumables.all.each do |consumable| %>
       <tr>
 
         <td><%= consumable.name %></td>
@@ -31,8 +31,9 @@
         <td><%= consumable.shelf %></td>
         <td><%= consumable.bin %></td>
         <td><%= consumable.obsolete %></td>
-
-        <td><%= consumable.part %></td>
+          <% @parts.each do |part| %>
+        <td><%= part.internal_part %></td>
+          <% end %>
 
         <td><%= link_to 'Show', consumable %></td>
         <td><%= link_to 'Edit', edit_consumable_path(consumable) %></td>

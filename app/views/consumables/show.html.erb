@@ -36,10 +36,14 @@
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong>Part Number:</strong>
   <%= @consumable.part.internal_part %>
 </p>
 
+<p>
+  <strong>Location:</strong>
+  <%= @consumable.asset_tag.location.name %>
+</p>
 
 <%= link_to 'Edit', edit_consumable_path(@consumable) %> |
 <%= link_to 'Back', consumables_path %>
