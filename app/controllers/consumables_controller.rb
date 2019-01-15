@@ -10,7 +10,6 @@ class ConsumablesController < ApplicationController
   # GET /consumables/1
   # GET /consumables/1.json
   def show
-    @part = Consumable.part.all
   end
 
   # GET /consumables/new
