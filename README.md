@@ -27,3 +27,5 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - migrate all forms to simple form
 - move to a product/part number linked to a consumable rather than only a consumable
 - add all of the "fixed" asset tracking functions
+- Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
+- create a move scaffold and stuff
