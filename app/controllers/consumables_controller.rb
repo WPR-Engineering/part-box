@@ -16,6 +16,7 @@ class ConsumablesController < ApplicationController
   # GET /consumables/new
   def new
     @consumable = Consumable.new
+
   end
 
   # GET /consumables/1/edit
@@ -29,7 +30,7 @@ class ConsumablesController < ApplicationController
 
     respond_to do |format|
       if @consumable.save
-        format.html { redirect_to @consumable, notice: 'Consumable was successfully created.' }
+        format.html { redirect_to asset_tags_path, notice: 'Consumable was successfully created. Please creat asset tag for the consumable you just created' }
         format.json { render :show, status: :created, location: @consumable }
       else
         format.html { render :new }

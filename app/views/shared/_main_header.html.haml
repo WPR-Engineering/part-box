@@ -1,0 +1,35 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %a.navbar-brand{:href => "#"} Navbar
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        %a
+          = link_to 'Home', root_path, :class => 'nav-link'
+          %span.sr-only (current)
+      %li.nav-item
+        %a
+          = link_to 'Consumables', consumables_path, :class => 'nav-link'
+          %span.sr-only (current)
+      %li.nav-item
+        %a
+          = link_to 'Orders', orders_path, :class => 'nav-link'
+          %span.sr-only (current)
+      %li.nav-item.dropdown
+        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          Utilities
+        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+          %a
+          = link_to 'Parts', parts_path, :class => 'dropdown-item'
+          %a
+          = link_to 'Asset Tags', asset_tags_path, :class => 'dropdown-item'
+          %a
+          = link_to 'Locations', locations_path, :class => 'dropdown-item'
+          .dropdown-divider
+          %a.dropdown-item{:href => "#"} Something else here
+      %li.nav-item
+        %a.nav-link.disabled{:href => "#"} Disabled
+    %form.form-inline.my-2.my-lg-0
+      %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search

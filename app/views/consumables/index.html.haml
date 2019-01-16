@@ -1,0 +1,30 @@
+%p#notice= notice
+%h1 Consumables
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Quantity
+      %th Reorderamount
+      %th Shelf
+      %th Bin
+      %th Obsolete
+      %th Internal Part #
+      %th{:colspan => "3"}
+  %tbody
+    - @consumables.all.each do |consumable|
+      %tr
+        %td= consumable.name
+        %td= consumable.description
+        %td= consumable.quantity
+        %td= consumable.reorderAmount
+        %td= consumable.shelf
+        %td= consumable.bin
+        %td= consumable.obsolete
+        %td= consumable.part.internal_part
+        %td= link_to 'Show', consumable
+        %td= link_to 'Edit', edit_consumable_path(consumable)
+        %td= link_to 'Destroy', consumable, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Consumable', new_consumable_path
