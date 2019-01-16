@@ -29,3 +29,5 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - add all of the "fixed" asset tracking functions
 - Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
 - create a move scaffold and stuff
+- Add working search
+- fix line items not removing from database on updates

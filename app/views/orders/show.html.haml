@@ -6,7 +6,7 @@
 %br
 
 - @order.consumables.each do |consumable|
-  =consumable.tag
+  =consumable.asset_tag.tag
 
 %br
 = link_to 'Edit', edit_order_path(@order)

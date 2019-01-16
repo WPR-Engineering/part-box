@@ -1,0 +1,36 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @consumable.name
+%p
+  %strong Description:
+  = @consumable.description
+%p
+  %strong Quantity:
+  = @consumable.quantity
+%p
+  %strong Reorderamount:
+  = @consumable.reorderAmount
+%p
+  %strong Shelf:
+  = @consumable.shelf
+%p
+  %strong Bin:
+  = @consumable.bin
+%p
+  %strong Obsolete:
+  = @consumable.obsolete
+%p
+  %strong Part Number:
+  = @consumable.part.internal_part
+- if @consumable.asset_tag.present?
+  %p
+    %strong Location:
+    = @consumable.asset_tag.location.name
+- else
+  %p
+    %strong Location:
+    No Asset Tag Defined, please add asset tag here #{link_to 'Asset Tags', asset_tags_path}
+= link_to 'Edit', edit_consumable_path(@consumable)
+|
+= link_to 'Back', consumables_path

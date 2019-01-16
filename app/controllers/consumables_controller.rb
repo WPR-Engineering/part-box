@@ -16,7 +16,7 @@ class ConsumablesController < ApplicationController
   # GET /consumables/new
   def new
     @consumable = Consumable.new
-
+    @part = Part.all
   end
 
   # GET /consumables/1/edit
@@ -71,6 +71,6 @@ class ConsumablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumable_params
-      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id, asset_tag_attributes: [:location_id, :tag], location_attributes: [:name])
+      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id, asset_tag_attributes: [:location_id, :tag], location_attributes: [:name], part_attributes: [:internal_part])
     end
 end
