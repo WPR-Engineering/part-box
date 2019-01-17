@@ -9,6 +9,11 @@ users create a new "order" in this order you can add line items that contain an 
 
 We also can track non-consumable assets, things like servers and hard drives. This is done much in the same way, however there is only a quantity of one item per tag.
 
+# Requirements
+
+- Redis
+- pgsql
+
 
 # Getting started
 1. create a location

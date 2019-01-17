@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   resources :parts
   resources :asset_tags
   resources :locations
@@ -9,5 +10,6 @@ Rails.application.routes.draw do
 
 root to: 'dashboard#index'
 
+mount Sidekiq::Web, at: '/sidekiq'
 
 end
