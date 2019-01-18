@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_144833) do
+ActiveRecord::Schema.define(version: 2019_01_18_161453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2019_01_16_144833) do
     t.bigint "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "fixed_asset_id"
     t.index ["consumable_id"], name: "index_asset_tags_on_consumable_id"
+    t.index ["fixed_asset_id"], name: "index_asset_tags_on_fixed_asset_id"
     t.index ["location_id"], name: "index_asset_tags_on_location_id"
   end
 
@@ -61,6 +63,16 @@ ActiveRecord::Schema.define(version: 2019_01_16_144833) do
     t.string "mfg_part_number"
     t.bigint "part_id"
     t.index ["part_id"], name: "index_consumables_on_part_id"
+  end
+
+  create_table "fixed_assets", force: :cascade do |t|
+    t.string "InstalledLocation"
+    t.string "RackUnit"
+    t.bigint "part_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.index ["part_id"], name: "index_fixed_assets_on_part_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -110,8 +122,10 @@ ActiveRecord::Schema.define(version: 2019_01_16_144833) do
   end
 
   add_foreign_key "asset_tags", "consumables"
+  add_foreign_key "asset_tags", "fixed_assets"
   add_foreign_key "asset_tags", "locations"
   add_foreign_key "consumables", "parts"
+  add_foreign_key "fixed_assets", "parts"
   add_foreign_key "line_items", "consumables"
   add_foreign_key "line_items", "orders"
 end

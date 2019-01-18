@@ -15,6 +15,7 @@ class AssetTagsController < ApplicationController
   # GET /asset_tags/new
   def new
     @asset_tag = AssetTag.new
+    AssetLabelWorker.perform_async(@asset_tag.id)
   end
 
   # GET /asset_tags/1/edit
@@ -42,6 +43,7 @@ class AssetTagsController < ApplicationController
   def update
     respond_to do |format|
       if @asset_tag.update(asset_tag_params)
+        AssetLabelWorker.perform_async(@asset_tag.id)
         format.html { redirect_to @asset_tag, notice: 'Asset tag was successfully updated.' }
         format.json { render :show, status: :ok, location: @asset_tag }
       else
@@ -61,6 +63,12 @@ class AssetTagsController < ApplicationController
     end
   end
 
+  def print_tag
+    AssetLabelWorker.perform_async(params[:id])
+    redirect_to :back
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_asset_tag
@@ -69,6 +77,6 @@ class AssetTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def asset_tag_params
-      params.require(:asset_tag).permit(:tag, :consumable_id, :location_id)
+      params.require(:asset_tag).permit(:tag, :consumable_id, :location_id, :fixed_asset_id)
     end
 end

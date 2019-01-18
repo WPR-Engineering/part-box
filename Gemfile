@@ -91,3 +91,11 @@ gem 'bootstrap', '~> 4.2.1'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+
+#label printing
+#pdf writer
+gem 'prawn-rails'
+#qr codes
+gem 'rqrcode'
+gem 'prawn'
+gem 'prawn-qrcode'

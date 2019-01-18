@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  InstalledLocation: MyString
+  RackUnit: MyString
+  part: one
+
+two:
+  InstalledLocation: MyString
+  RackUnit: MyString
+  part: two

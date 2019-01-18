@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Fixed Assets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Installedlocation</th>
+      <th>Rackunit</th>
+      <th>Part</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fixed_assets.each do |fixed_asset| %>
+      <tr>
+        <td><%= fixed_asset.InstalledLocation %></td>
+        <td><%= fixed_asset.RackUnit %></td>
+        <td><%= fixed_asset.part %></td>
+        <td><%= link_to 'Show', fixed_asset %></td>
+        <td><%= link_to 'Edit', edit_fixed_asset_path(fixed_asset) %></td>
+        <td><%= link_to 'Destroy', fixed_asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fixed Asset', new_fixed_asset_path %>

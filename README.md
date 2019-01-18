@@ -25,14 +25,14 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 
 # TODO
 
-- Reduce quantity on order finlization
-- Use asset tags rather than consumables in the line itmes
-- display relevent info on all the views
-- migrate everyhing to haml
-- migrate all forms to simple form
-- move to a product/part number linked to a consumable rather than only a consumable
-- add all of the "fixed" asset tracking functions
-- Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
-- create a move scaffold and stuff
-- Add working search
-- fix line items not removing from database on updates
+- [x] Reduce quantity on order finlization
+- [ ] Use asset tags rather than consumables in the line itmes
+- [ ] display relevent info on all the views
+- [ ] migrate everyhing to haml
+- [ ] migrate all forms to simple form
+- [ ] move to a product/part number linked to a consumable rather than only a consumable
+- [ ] add all of the "fixed" asset tracking functions
+- [ ] Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
+- [ ] create a move scaffold and stuff
+- [ ] Add working search
+- [ ] fix line items not removing from database on updates

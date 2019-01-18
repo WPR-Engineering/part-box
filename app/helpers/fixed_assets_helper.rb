@@ -1,0 +1,2 @@
+module FixedAssetsHelper
+end
