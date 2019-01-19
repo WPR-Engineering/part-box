@@ -28,7 +28,7 @@ class FixedAssetsController < ApplicationController
 
     respond_to do |format|
       if @fixed_asset.save
-        AssetLabelWorker.perform_async(@asset_tag.id)
+        TagMakerlWorker.perform_async("fixed", @fixed_asset.id)
         format.html { redirect_to @fixed_asset, notice: 'Fixed asset was successfully created.' }
         format.json { render :show, status: :created, location: @fixed_asset }
       else
@@ -41,8 +41,10 @@ class FixedAssetsController < ApplicationController
   # PATCH/PUT /fixed_assets/1
   # PATCH/PUT /fixed_assets/1.json
   def update
+
     respond_to do |format|
       if @fixed_asset.update(fixed_asset_params)
+        TagMakerWorker.perform_async
         format.html { redirect_to @fixed_asset, notice: 'Fixed asset was successfully updated.' }
         format.json { render :show, status: :ok, location: @fixed_asset }
       else
