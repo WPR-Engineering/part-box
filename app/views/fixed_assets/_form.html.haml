@@ -1,0 +1,8 @@
+= simple_form_for(@fixed_asset) do |f|
+  .form-inputs
+    = f.input :InstalledLocation
+    = f.input :description
+    = f.input :RackUnit
+    = f.association :part
+  .form-actions
+    = f.button :submit

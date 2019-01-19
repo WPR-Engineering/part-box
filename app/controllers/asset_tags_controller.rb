@@ -25,7 +25,6 @@ class AssetTagsController < ApplicationController
   # POST /asset_tags
   # POST /asset_tags.json
   def create
-    @asset_tag = AssetTag.new(asset_tag_params)
 
     respond_to do |format|
       if @asset_tag.save
@@ -43,7 +42,6 @@ class AssetTagsController < ApplicationController
   def update
     respond_to do |format|
       if @asset_tag.update(asset_tag_params)
-        AssetLabelWorker.perform_async(@asset_tag.id)
         format.html { redirect_to @asset_tag, notice: 'Asset tag was successfully updated.' }
         format.json { render :show, status: :ok, location: @asset_tag }
       else
@@ -65,7 +63,7 @@ class AssetTagsController < ApplicationController
 
   def print_tag
     AssetLabelWorker.perform_async(params[:id])
-    redirect_to :back
+    redirect_back fallback_location: '/', notice: "Asset Tag Printed"
   end
 
 

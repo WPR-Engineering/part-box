@@ -28,6 +28,8 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] Reduce quantity on order finlization
 - [ ] Use asset tags rather than consumables in the line itmes
 - [ ] display relevent info on all the views
+  - [ ] allow adding a line item to an order from the consumables view/tags link
+  - [ ] creating consumables also needs to display asset tags
 - [ ] migrate everyhing to haml
 - [ ] migrate all forms to simple form
 - [ ] move to a product/part number linked to a consumable rather than only a consumable

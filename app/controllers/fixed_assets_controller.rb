@@ -28,6 +28,7 @@ class FixedAssetsController < ApplicationController
 
     respond_to do |format|
       if @fixed_asset.save
+        AssetLabelWorker.perform_async(@asset_tag.id)
         format.html { redirect_to @fixed_asset, notice: 'Fixed asset was successfully created.' }
         format.json { render :show, status: :created, location: @fixed_asset }
       else
@@ -60,10 +61,6 @@ class FixedAssetsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def print_tag
-    if @fixed_asset.update(fixed_asset_params)
-    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
