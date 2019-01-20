@@ -1,5 +1,7 @@
 # Part Box
 
+[![Build Status](https://travis-ci.org/WPR-Engineering/part-box.svg?branch=master)](https://travis-ci.org/WPR-Engineering/part-box)
+
 Part Box is an inventory and asset tracking system with consumables in mind. It essentially works like a standard asset tracking system, but it has funtions specific to
 users who need to track consumables and move different things to different locations.
 

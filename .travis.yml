@@ -2,6 +2,8 @@ language: ruby
 before_script:
   - bundle exec sidekiq
   - sleep 1
+  - gem update --system
+  - gem install bundler:2.0.1
 services:
   - redis-server
 rvm:
