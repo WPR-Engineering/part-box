@@ -1,0 +1,8 @@
+language: ruby
+before_script:
+  - bundle exec sidekiq
+  - sleep 1
+services:
+  - redis-server
+rvm:
+  - 2.6.0
