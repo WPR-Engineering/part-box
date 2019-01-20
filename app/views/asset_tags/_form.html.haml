@@ -1,0 +1,10 @@
+= simple_form_for(@asset_tag) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+    = f.input :tag
+    = f.association :consumable, :include_blank => "(select if none)"
+    = f.association :fixed_asset, :include_blank => "(select if none)"
+    = f.association :location
+  .form-actions
+    = f.button :submit

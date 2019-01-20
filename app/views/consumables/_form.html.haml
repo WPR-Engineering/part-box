@@ -3,7 +3,7 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
     = f.input :name
-    = f.association :part
+    = f.association :part, :label_method => :internal_part
     = f.input :quantity
     = f.input :reorderAmount
     = f.input :shelf

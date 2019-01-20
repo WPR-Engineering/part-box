@@ -1,0 +1,38 @@
+%p#notice= notice
+%h1 Fixed Assets
+%table.table.table-hover
+  %thead
+    %tr
+      %th{:scope => "col"} Internal Part Number
+      %th{:scope => "col"} Serial Number
+      %th{:scope => "col"} MAC Address
+      %th{:scope => "col"} Installed location
+      %th{:scope => "col"} Rack unit
+      %th{:scope => "col"} Asset Tag
+      %th{:colspan => "3"}
+  %tbody
+    - @fixed_assets.each do |fixed_asset|
+      - if fixed_asset.disposed?
+        %tr.table-dark
+          %td= fixed_asset.part.internal_part
+          %td= fixed_asset.serial_number
+          %td TODO Add MAC
+          %td= fixed_asset.RackUnit
+          %td
+            = link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
+          %td= link_to 'Show', fixed_asset
+          %td= link_to 'Edit', edit_fixed_asset_path(fixed_asset)
+          %td= link_to 'Destroy', fixed_asset, method: :delete, data: { confirm: 'Are you sure?' }
+      - else
+        %tr
+          %td= fixed_asset.part.internal_part
+          %td= fixed_asset.serial_number
+          %td TODO Add MAC
+          %td= fixed_asset.RackUnit
+          %td
+            = link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
+          %td= link_to 'Show', fixed_asset
+          %td= link_to 'Edit', edit_fixed_asset_path(fixed_asset)
+          %td= link_to 'Destroy', fixed_asset, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Fixed Asset', new_fixed_asset_path

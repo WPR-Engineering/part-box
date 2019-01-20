@@ -16,25 +16,25 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 
 
 # Getting started
-1. create a location
-2. create a consumable
-3. creat an asset tag to link the consumable and the location
-4. create an order
-5. add line items to the order, these are asset tag numbers.
-6. finalize the order, and the quantity should reduce in the consumables table. (this doesnt work yet)
+bundle instal
 
-# TODO
+# TODO (v0.0.1)
 
 - [x] Reduce quantity on order finlization
 - [ ] Use asset tags rather than consumables in the line itmes
 - [ ] display relevent info on all the views
   - [ ] allow adding a line item to an order from the consumables view/tags link
-  - [ ] creating consumables also needs to display asset tags
+  - [x] creating consumables also needs to display asset tags (asset tags now automatically created)
 - [ ] migrate everyhing to haml
 - [ ] migrate all forms to simple form
-- [ ] move to a product/part number linked to a consumable rather than only a consumable
+- [x] move to a product/part number linked to a consumable rather than only a consumable
 - [ ] add all of the "fixed" asset tracking functions
-- [ ] Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
+- [x] Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
 - [ ] create a move scaffold and stuff
 - [ ] Add working search
 - [ ] fix line items not removing from database on updates
+- [ ] style everything consistantly
+- [ ] make config for label printing more usable
+- [ ] associate users with orders
+  - [ ] handle closed orders
+- [ ] add "picking functionality"

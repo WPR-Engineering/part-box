@@ -3,6 +3,7 @@
     = f.input :InstalledLocation
     = f.input :description
     = f.input :RackUnit
-    = f.association :part
+    = f.association :part, :label_method => :internal_part
+    = f.input :disposed
   .form-actions
     = f.button :submit
