@@ -15,7 +15,7 @@ class AssetTagsController < ApplicationController
   # GET /asset_tags/new
   def new
     @asset_tag = AssetTag.new
-    AssetLabelWorker.perform_async(@asset_tag.id)
+    #AssetLabelWorker.perform_async(@asset_tag.id)
   end
 
   # GET /asset_tags/1/edit
@@ -27,6 +27,9 @@ class AssetTagsController < ApplicationController
   def create
 
     respond_to do |format|
+      @asset_tag = AssetTag.new(asset_tag_params)
+      puts @asset_tag.inspect
+
       if @asset_tag.save
         format.html { redirect_to @asset_tag, notice: 'Asset tag was successfully created.' }
         format.json { render :show, status: :created, location: @asset_tag }

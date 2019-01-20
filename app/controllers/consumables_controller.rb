@@ -30,6 +30,8 @@ class ConsumablesController < ApplicationController
 
     respond_to do |format|
       if @consumable.save
+        TagMakerWorker.perform_async("consumable", @consumable.id)
+        sleep 3
         format.html { redirect_to asset_tags_path, notice: 'Consumable was successfully created. Please creat asset tag for the consumable you just created' }
         format.json { render :show, status: :created, location: @consumable }
       else

@@ -28,8 +28,10 @@ class FixedAssetsController < ApplicationController
 
     respond_to do |format|
       if @fixed_asset.save
-        TagMakerlWorker.perform_async("fixed", @fixed_asset.id)
-        format.html { redirect_to @fixed_asset, notice: 'Fixed asset was successfully created.' }
+        TagMakerWorker.perform_async("fixed", @fixed_asset.id)
+        #this is a sad excuse for a loading spinner. we need to do this differently in production
+        sleep 3
+        format.html { redirect_to asset_tags_path, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }
         format.json { render :show, status: :created, location: @fixed_asset }
       else
         format.html { render :new }
@@ -44,7 +46,6 @@ class FixedAssetsController < ApplicationController
 
     respond_to do |format|
       if @fixed_asset.update(fixed_asset_params)
-        TagMakerWorker.perform_async
         format.html { redirect_to @fixed_asset, notice: 'Fixed asset was successfully updated.' }
         format.json { render :show, status: :ok, location: @fixed_asset }
       else
