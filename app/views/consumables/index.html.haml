@@ -39,7 +39,6 @@
           %td= consumable.part.internal_part
           %td= link_to 'Show', consumable
           %td= link_to 'Edit', edit_consumable_path(consumable)
-          %td= link_to 'Destroy', consumable, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br/
 = link_to 'New Consumable', new_consumable_path

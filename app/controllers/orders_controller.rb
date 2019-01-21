@@ -1,11 +1,15 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
-
+  before_action :authenticate_user!
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if current_user.admin?
+      @orders = Order.all
+    else
+      @orders = Order.where(user: current_user)
+    end
   end
 
   # GET /orders/1
@@ -15,8 +19,10 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @random_number = "#{Date.today.yday()}#{SecureRandom.random_number(100000)}"
     @order = Order.new
     @consumable = Consumable.all
+
   end
 
   # GET /orders/1/edit
@@ -26,8 +32,11 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    puts @order.inspect
 
+    @order = Order.new(order_params)
+    @order.user = current_user.email
+    @order.number = @random_number
     respond_to do |format|
       if @order.save
         RemoveStockWorker.perform_async(@order.id)
@@ -64,6 +73,7 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

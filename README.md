@@ -40,3 +40,4 @@ bundle instal
 - [ ] associate users with orders
   - [ ] handle closed orders
 - [ ] add "picking functionality"
+- [ ] impliment change history on consumables via audited

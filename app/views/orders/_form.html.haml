@@ -1,4 +1,4 @@
-= simple_form_for @order do |f|
+= simple_form_for(@order, html: { class: 'form-vertical' }) do |f|
   -if @order.errors.any?
     #error_explanation
       %h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
@@ -6,8 +6,6 @@
         - @order.errors.full_messages.each do |msg|
           %li= msg
   = f.error_notification
-  = f.input :order_id
-  = f.input :user, value: current_user.email
   = f.input :status
   = f.input :finalized
 

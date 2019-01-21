@@ -1,5 +1,5 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "#"} Navbar
+  %a.navbar-brand{:href => "#"} PartBox
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -31,7 +31,8 @@
           %a
           = link_to 'Locations', locations_path, :class => 'dropdown-item'
           .dropdown-divider
-          %a.dropdown-item{:href => "#"} Something else here
+          = link_to 'Obsolete Consumables', locations_path, :class => 'dropdown-item'
+          = link_to 'Desposed Assets', locations_path, :class => 'dropdown-item'
       %li.nav-item
         %a.nav-link.disabled{:href => "#"} Disabled
     %form.form-inline.my-2.my-lg-0

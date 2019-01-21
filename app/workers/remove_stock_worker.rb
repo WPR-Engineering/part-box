@@ -24,9 +24,10 @@ class RemoveStockWorker
         new_quantity = @updated_q
         consume.quantity = new_quantity
         consume.save
+      end
       else
         logger.info "Nothing to do, order not done yet."
-      end
+      
     end
   end
 end

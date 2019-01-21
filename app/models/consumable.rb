@@ -7,4 +7,7 @@ class Consumable < ApplicationRecord
   accepts_nested_attributes_for :location
 
   belongs_to :part
+
+  include PgSearch
+  multisearchable :against => [:name]
 end
