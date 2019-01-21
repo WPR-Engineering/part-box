@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         RemoveStockWorker.perform_async(@order.id)
+        Order.reindex
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

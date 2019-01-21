@@ -22,6 +22,7 @@ class TagMakerWorker
         asset_tag_new.fixed_asset_id = new_asset_id
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
         asset_tag_new.save
+        AssetTag.reindex
 
       else
 
@@ -36,6 +37,7 @@ class TagMakerWorker
         asset_tag_new.fixed_asset_id = new_asset_id
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
         asset_tag_new.save
+        AssetTag.reindex
       end
 
     else
@@ -55,6 +57,7 @@ class TagMakerWorker
         asset_tag_new.consumable_id = new_asset_id
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
         asset_tag_new.save
+        AssetTag.reindex
 
       else
 
@@ -68,6 +71,7 @@ class TagMakerWorker
         asset_tag_new.consumable_id = new_asset_id
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
         asset_tag_new.save
+        AssetTag.reindex
       end
 
     end

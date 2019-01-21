@@ -6,12 +6,14 @@ class AssetTagsController < ApplicationController
   def index
     @asset_tags = AssetTag.all
     AssetTag.reindex
+
   end
 
   # GET /asset_tags/1
   # GET /asset_tags/1.json
   def show
     @line_item = LineItem.new
+    AssetTag.reindex
   end
 
   # GET /asset_tags/new
@@ -35,6 +37,7 @@ class AssetTagsController < ApplicationController
       if @asset_tag.save
         format.html { redirect_to @asset_tag, notice: 'Asset tag was successfully created.' }
         format.json { render :show, status: :created, location: @asset_tag }
+        AssetTag.reindex
       else
         format.html { render :new }
         format.json { render json: @asset_tag.errors, status: :unprocessable_entity }

@@ -1,0 +1,46 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @consumable.name
+%p
+  %strong Description:
+  = @consumable.description
+%p
+  %strong Quantity:
+  = @consumable.quantity
+%p
+  %strong Reorderamount:
+  = @consumable.reorderAmount
+%p
+  %strong Shelf:
+  = @consumable.shelf
+%p
+  %strong Bin:
+  = @consumable.bin
+%p
+  %strong Obsolete:
+  = @consumable.obsolete
+%p
+  %strong Part Number:
+  = @consumable.part.internal_part
+- if @consumable.asset_tag.present?
+  %p
+
+- else
+  %p
+    %strong Location:
+    No Asset Tag Defined, please add asset tag here #{link_to 'Asset Tags', asset_tags_path}
+= link_to 'Edit', edit_consumable_path(@consumable)
+|
+= link_to 'Back', consumables_path
+
+- current_cons = @consumable.id
+= simple_form_for(@line_item) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+  = f.input :order_id
+  = f.input :quantity
+  = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
+  .form-actions
+    = f.button :submit

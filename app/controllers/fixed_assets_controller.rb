@@ -5,6 +5,7 @@ class FixedAssetsController < ApplicationController
   # GET /fixed_assets.json
   def index
     @fixed_assets = FixedAsset.all
+    FixedAsset.reindex
   end
 
   # GET /fixed_assets/1
@@ -29,6 +30,7 @@ class FixedAssetsController < ApplicationController
     respond_to do |format|
       if @fixed_asset.save
         TagMakerWorker.perform_async("fixed", @fixed_asset.id)
+        FixedAsset.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
         sleep 3
         format.html { redirect_to asset_tags_path, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }

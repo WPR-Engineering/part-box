@@ -4,5 +4,6 @@ class FixedAsset < ApplicationRecord
   has_one :location, through: :asset_tag
   accepts_nested_attributes_for :location
   validates :part_id, presence: true
+  
   searchkick
 end

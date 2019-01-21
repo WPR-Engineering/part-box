@@ -3,5 +3,5 @@ class AssetTag < ApplicationRecord
   belongs_to :location
   belongs_to :fixed_asset, dependent: :destroy
 
-  searchkick word_start: [:tag]
+  searchkick index_name: "taggles"
 end

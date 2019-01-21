@@ -12,7 +12,6 @@ class ConsumablesController < ApplicationController
   def show
     @location = Consumable.all
     @line_item = LineItem.new
-    puts @consumable
   end
 
   # GET /consumables/new
@@ -33,6 +32,7 @@ class ConsumablesController < ApplicationController
     respond_to do |format|
       if @consumable.save
         TagMakerWorker.perform_async("consumable", @consumable.id)
+        Consumable.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
         sleep 3
         format.html { redirect_to asset_tags_path, notice: 'Consumable was successfully created. Please creat asset tag for the consumable you just created' }

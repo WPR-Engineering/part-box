@@ -34,7 +34,7 @@ bundle instal
 - [x] Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
 - [ ] create a move scaffold and stuff
 - [ ] Add working search
-- [ ] fix line items not removing from database on updates
+- [x] fix line items not removing from database on updates
 - [ ] style everything consistantly
 - [ ] make config for label printing more usable
 - [ ] associate users with orders

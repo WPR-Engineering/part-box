@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
   def query
-    @records = AssetTag.search(params[:search], index_name: [AssetTag.searchkick_index.name]).results
+    @records = Searchkick.search params[:search], index_name: [AssetTag]
 
-    @records.delete_if { |record| cannot? :show, record }
+    #@records.delete_if { |record| cannot? :show, record }
 
     if @records.length == 1
       redirect_to @records.first
