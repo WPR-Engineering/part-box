@@ -18,5 +18,7 @@ RSpec.describe "OrderButton", type: :feature do
       expect(page).to have_text 'TAG-00'
       expect(page).to_not have_text "Sign up"
     end
+    it "visits that tag path"
+    
   end
 end

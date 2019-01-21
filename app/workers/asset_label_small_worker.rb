@@ -1,10 +1,10 @@
-class AssetLabelWorker
+class AssetLabelSmallWorker
   include Sidekiq::Worker
   require 'prawn'
 
 
   def perform(asset_tag_id)
-    logger.info "More Things are happening."
+    logger.info "More Things are happening. Small Label"
     a_tag = AssetTag.find(asset_tag_id)
     tag_code = a_tag.tag
     logger.info "Working with the tag #{tag_code}"
@@ -14,16 +14,14 @@ class AssetLabelWorker
     qrcode = RQRCode::QRCode.new(qr_content, :level=>:h, :size => 4)
 
     logger.info "Generating PDF of Label"
-    Prawn::Document.generate("large.pdf") do
-      text_box qr_content, :height => 10, :width => 100, :overflow => :shrink_to_fit
-      move_down 5
-      render_qr_code(qrcode, :dot=>2.5, stroke: false)
-      move_down 5
-      text tag_code
-    end
+    pdf = Prawn::Document.new(:page_size => [72,72], :margin => [2,0,0,0])
+      pdf.render_qr_code(qrcode, :dot=>1.3, stroke: false, :align => :center)
+
+      pdf.text tag_code, :size => 7, :align => :center
+      pdf.render_file "small.pdf"
 
     logger.info "LETS PRINT!"
-    system("lpr -P DYMO_LabelWriter_450_Turbo large.pdf") or raise "lpr failed"
+    system("lpr -P DYMO_LabelWriter_450_Turbo small.pdf") or raise "lpr failed"
 
   end
 end

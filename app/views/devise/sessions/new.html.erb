@@ -1,5 +1,8 @@
-<h2>Log in</h2>
-
+<div class="card mx-auto text-center" style="width: 45rem;">
+  <div class="card-header">
+    Log In
+    </div>
+    <div class="card mx-auto border-0" style="width: 30rem;">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,
@@ -9,12 +12,14 @@
     <%= f.input :password,
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions btn btn-outline-primary">
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
+
+</div>

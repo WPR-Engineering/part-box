@@ -74,6 +74,10 @@ class AssetTagsController < ApplicationController
     redirect_back fallback_location: '/', notice: "Asset Tag Printed"
   end
 
+  def print_tag_small
+    AssetLabelSmallWorker.perform_async(params[:id])
+    redirect_back fallback_location: '/', notice: "Asset Tag Printed"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

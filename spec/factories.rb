@@ -10,7 +10,7 @@ end
 FactoryBot.define do
   factory :asset_tag do
     tag {"TAG-0001"}
-    location_id {"980190963"}
+
   end
 end
 
