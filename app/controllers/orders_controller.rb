@@ -32,11 +32,12 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    puts @order.inspect
+
 
     @order = Order.new(order_params)
     @order.user = current_user.email
-    @order.order_id = @random_number
+    puts @random_number
+    puts @order.inspect
     respond_to do |format|
       if @order.save
         RemoveStockWorker.perform_async(@order.id)
@@ -86,6 +87,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:id, :order_id, :user, :finalized, :_destory, line_item_attributes: [:id, :consumable_id, :order_id, :quantity, :_destroy], consumable_attributes: [:id])
+      params.require(:order).permit(:id, :status, :order_id, :user, :finalized, :_destory, line_item_attributes: [:id, :consumable_id, :order_id, :quantity, :_destroy], consumable_attributes: [:id])
     end
 end

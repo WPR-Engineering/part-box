@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def query
-    @records = Searchkick.search params[:search], index_name: [AssetTag]
+    @records = Searchkick.search params[:search], index_name: [AssetTag, FixedAsset, Consumable]
 
     #@records.delete_if { |record| cannot? :show, record }
 

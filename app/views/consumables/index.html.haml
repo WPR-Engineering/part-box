@@ -26,7 +26,7 @@
           %td= consumable.part.internal_part
           %td= link_to 'Show', consumable
           %td= link_to 'Edit', edit_consumable_path(consumable)
-          %td= link_to 'Destroy', consumable, method: :delete, data: { confirm: 'Are you sure?' }
+
       - else
         %tr
           %td= consumable.name

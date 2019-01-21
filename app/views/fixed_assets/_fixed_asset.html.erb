@@ -2,18 +2,18 @@
 
 <p>
   <strong>Installedlocation:</strong>
-  <%= @fixed_asset.InstalledLocation %>
+  <%= fixed_asset.InstalledLocation %>
 </p>
 
 <p>
   <strong>Rackunit:</strong>
-  <%= @fixed_asset.RackUnit %>
+  <%= fixed_asset.RackUnit %>
 </p>
 
 <p>
   <strong>Part:</strong>
-  <%= @fixed_asset.part.internal_part %>
+  <%= fixed_asset.part.internal_part %>
 </p>
 
-<%= link_to 'Edit', edit_fixed_asset_path(@fixed_asset) %> |
+<%= link_to 'Edit', edit_fixed_asset_path(fixed_asset) %> |
 <%= link_to 'Back', fixed_assets_path %>
