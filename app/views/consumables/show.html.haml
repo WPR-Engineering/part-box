@@ -33,3 +33,14 @@
 = link_to 'Edit', edit_consumable_path(@consumable)
 |
 = link_to 'Back', consumables_path
+
+- current_cons = @consumable.id
+= simple_form_for(@line_item) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+  = f.input :order_id
+  = f.input :quantity
+  = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
+  .form-actions
+    = f.button :submit

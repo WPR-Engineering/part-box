@@ -32,6 +32,7 @@ class TagMakerWorker
         #create a new asset tag, and link the newst asset
         asset_tag_new = AssetTag.new
         asset_tag_new.tag = next_tag
+        asset_tag_new.location_id = "1"
         asset_tag_new.fixed_asset_id = new_asset_id
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
         asset_tag_new.save

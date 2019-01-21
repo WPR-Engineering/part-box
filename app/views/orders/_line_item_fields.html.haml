@@ -2,5 +2,6 @@
   = f.error_notification
   = f.input :quantity
   = f.association :consumable
+  = f.check_box :_destroy
   = link_to_remove_association "Remove Item", f, :data => { :confirm => "Are you sure?"}
 %br

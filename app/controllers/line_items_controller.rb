@@ -16,6 +16,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   def new
     @line_item = LineItem.new
+
   end
 
   # GET /line_items/1/edit
@@ -25,9 +26,15 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+
+    puts "#########"
+    puts @consumable
+
+    @line_item = LineItem.new(line_item_params)
+
+
     puts @line_item.inspect
     puts "******************************************************"
-    @line_item = LineItem.new(line_item_params)
 
     respond_to do |format|
       if @line_item.save
@@ -72,6 +79,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.fetch(:line_item, {}).permit(:order_id)
+      params.fetch(:line_item, {}).permit(:id, :order_id, :quantity, :consumable_id, :_destroy)
     end
 end
