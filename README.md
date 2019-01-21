@@ -30,7 +30,7 @@ bundle instal
 - [ ] migrate everyhing to haml
 - [ ] migrate all forms to simple form
 - [x] move to a product/part number linked to a consumable rather than only a consumable
-- [ ] add all of the "fixed" asset tracking functions
+- [x] add all of the "fixed" asset tracking functions
 - [x] Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
 - [ ] create a move scaffold and stuff
 - [ ] Add working search

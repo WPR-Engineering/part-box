@@ -8,10 +8,14 @@ Rails.application.routes.draw do
   resources :orders
   devise_for :users
   resources :consumables
+  resources :line_items
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 root to: 'dashboard#index'
 
 mount Sidekiq::Web, at: '/sidekiq'
+
+get 'search/index'
+post 'search/query'
 
 end

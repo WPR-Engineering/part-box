@@ -5,11 +5,13 @@ class AssetTagsController < ApplicationController
   # GET /asset_tags.json
   def index
     @asset_tags = AssetTag.all
+    AssetTag.reindex
   end
 
   # GET /asset_tags/1
   # GET /asset_tags/1.json
   def show
+    @line_item = LineItem.new
   end
 
   # GET /asset_tags/new
@@ -78,6 +80,6 @@ class AssetTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def asset_tag_params
-      params.require(:asset_tag).permit(:tag, :consumable_id, :location_id, :fixed_asset_id)
+      params.require(:asset_tag).permit(:tag, :consumable_id, :location_id, :fixed_asset_id, line_item_attributes: [:order_id])
     end
 end

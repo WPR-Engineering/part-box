@@ -8,6 +8,4 @@ class Consumable < ApplicationRecord
 
   belongs_to :part
 
-  include PgSearch
-  multisearchable :against => [:name]
 end

@@ -38,3 +38,9 @@
     %form.form-inline.my-2.my-lg-0
       %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
       %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+    %button.btn.btn-outline-primary
+
+
+= form_tag(search_query_path, method: "post") do
+  %span#search_field
+    = text_field_tag(:search, nil, placeholder: "Search")

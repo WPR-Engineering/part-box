@@ -100,5 +100,5 @@ gem 'rqrcode'
 gem 'prawn'
 gem 'prawn-qrcode'
 
-#pgsearch for quickly building search functions
-gem 'pg_search'
+#use searchkick for best search!
+gem 'searchkick'
