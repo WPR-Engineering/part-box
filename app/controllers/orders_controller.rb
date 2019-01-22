@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     if current_user.admin?
       @orders = Order.all
     else
-      @orders = Order.where(user: current_user)
+      @orders = Order.where(user: current_user.email)
     end
   end
 
