@@ -40,10 +40,12 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] add all of the "fixed" asset tracking functions
 - [x] Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
 - [ ] create a move scaffold and stuff
-- [ ] Add working search
+- [x] Add working search
+  - [ ] Fix search models to show good data and look pretty rather than just work.
 - [x] fix line items not removing from database on updates
 - [ ] style everything consistantly
 - [ ] make config for label printing more usable
+- [ ] add support for zebra labels
 - [ ] associate users with orders
   - [ ] handle closed orders
 - [ ] add "picking functionality"
