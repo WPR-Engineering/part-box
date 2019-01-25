@@ -18,8 +18,8 @@
           %td= fixed_asset.serial_number
           %td TODO Add MAC
           %td= fixed_asset.RackUnit
-          %td
-            = link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
+          %td= fixed_asset.InstalledLocation
+          %td= link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
           %td= link_to 'Show', fixed_asset
           %td= link_to 'Edit', edit_fixed_asset_path(fixed_asset)
           %td= link_to 'Destroy', fixed_asset, method: :delete, data: { confirm: 'Are you sure?' }
@@ -29,8 +29,8 @@
           %td= fixed_asset.serial_number
           %td TODO Add MAC
           %td= fixed_asset.RackUnit
-          %td
-            = link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
+          %td= fixed_asset.InstalledLocation
+          %td= link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
           %td= link_to 'Show', fixed_asset
           %td= link_to 'Edit', edit_fixed_asset_path(fixed_asset)
           %td= link_to 'Destroy', fixed_asset, method: :delete, data: { confirm: 'Are you sure?' }

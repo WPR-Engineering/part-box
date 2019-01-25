@@ -9,7 +9,7 @@
       %th Reorderamount
       %th Shelf
       %th Bin
-      %th Obsolete
+      %th Asset Tag
       %th Internal Part #
       %th{:colspan => "3"}
   %tbody
@@ -22,8 +22,8 @@
           %td= consumable.reorderAmount
           %td= consumable.shelf
           %td= consumable.bin
-          %td= consumable.obsolete
           %td= consumable.part.internal_part
+
           %td= link_to 'Show', consumable
           %td= link_to 'Edit', edit_consumable_path(consumable)
 
@@ -35,7 +35,7 @@
           %td= consumable.reorderAmount
           %td= consumable.shelf
           %td= consumable.bin
-          %td= consumable.obsolete
+          %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
           %td= consumable.part.internal_part
           %td= link_to 'Show', consumable
           %td= link_to 'Edit', edit_consumable_path(consumable)

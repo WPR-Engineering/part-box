@@ -21,7 +21,7 @@ class AssetLabelSmallWorker
       pdf.render_file "small.pdf"
 
     logger.info "LETS PRINT!"
-    system("lpr -P DYMO_LabelWriter_450_Turbo small.pdf") or raise "lpr failed"
+    system("lpr -P Zebra small.pdf") or raise "lpr failed"
 
   end
 end
