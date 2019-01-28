@@ -22,9 +22,9 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 2. username/password/database name
 3. bundle instal
 4. start redis if not already running
-5.start exlasticsearch
-6.db:migrate
-7.bundl exec sidekiq
+5. start exlasticsearch
+6. db:migrate
+7. bundl exec sidekiq
 8. rails server
 
 # TODO (v0.0.1)
