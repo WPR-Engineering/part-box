@@ -34,7 +34,7 @@ class AssetLabelWorker
       pdf.render_file "large.pdf"
 
     logger.info "LETS PRINT!"
-    system("lpr -P DYMO_LabelWriter_450_Turbo large.pdf") or raise "lpr failed"
+    system("lpr -P DYMO_LabelWriter_450_Turbo___raspberrypi large.pdf") or raise "lpr failed"
 
   end
 end
