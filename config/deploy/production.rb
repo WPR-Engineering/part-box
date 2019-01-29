@@ -11,7 +11,7 @@ set :stage, :production
 set :rails_env, :production
 set :branch, "master"
 
-server "10.211.55.3", user: "parallels", roles: %w{app db web}
+server "172.16.10.17", user: "partbox", roles: %w{app db web}
 
 # role-based syntax
 # ==================

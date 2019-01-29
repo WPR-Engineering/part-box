@@ -42,7 +42,6 @@ group :development do
   gem "capistrano-rvm"
   gem "capistrano-passenger"
   gem "capistrano-yarn"
-
 end
 
 # Reduces boot times through caching; required in config/boot.rb

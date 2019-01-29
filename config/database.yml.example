@@ -3,13 +3,21 @@ development:
   database: part-dev
   pool: 25
   timeout: 5000
-  username: erbartos
-  password: 
+  username:
+  password:
 
 test:
   adapter: postgresql
   database: part-test
   pool: 25
   timeout: 5000
-  username: erbartos
+  username:
+  password:
+
+production:
+  adapter: postgresql
+  database: part-prod
+  pool: 25
+  timeout: 5000
+  username:
   password:
