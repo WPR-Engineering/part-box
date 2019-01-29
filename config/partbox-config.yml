@@ -1,0 +1,9 @@
+LABEL_PRINTING:
+  ENABLED: false
+  DEFAULT_SMALL_ZPL: ./config/default-small.zpl
+  DEFAULT_LARGE_ZPL: ./config/default-large.zpl
+  RABBIT_MQ:
+    HOST:
+    PORT:
+    USER:
+    PASS:

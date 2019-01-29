@@ -16,6 +16,8 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - Redis
 - pgsql
 - elasticsearch
+- RabbitMQ server up and running
+- printing requires Partbox-Printer on our github
 
 # Getting started
 1. copy database.yml.examle to database.yml, change your

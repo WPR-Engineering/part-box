@@ -116,3 +116,6 @@ gem 'prawn-qrcode'
 
 #use searchkick for best search!
 gem 'searchkick'
+
+#bunny
+gem "bunny", ">= 2.13.0"
