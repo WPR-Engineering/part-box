@@ -1,45 +1,31 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
-server "www.example.com", :app, :web, :db, :primary => true
+#server "www.example.com", :app, :web, :db, :primary => true
 
-set :application, "PartBox"
-set :repo_url, "git@github.com/WPR-Engineering/part-box"
+set :application, "part-box"
+set :repo_url, "git@github.com:WPR-Engineering/part-box.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/#{ application }"
+set :deploy_to, "/var/www/part-box"
 
-set :scm, :git
+
 set :branch, "master"
-set :user, "deployer"
-set :scm_passphrase, ENV[deploy_password]
+#set :user, "deployer"
+#set :scm_passphrase, ENV[deploy_password]
 set :use_sudo, false
-set :rails_env, "production"
-set :deploy_via, :copy
 set :keep_releases, 5
-default_run_options[:pty] = true
+set :passenger_restart_with_touch, true
+
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key', 'config/credentials.yml.enc')
 
 
+set :rvm_ruby_version, '2.6.0'
+set :rvm_type, :system
 
-
-desc "Symlink shared config files"
-task :symlink_config_files do
-    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
-end
-
-
-desc "Restart Passenger app"
-task :restart do
-    run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
-end
-
-
-after "deploy", "deploy:symlink_config_files"
-after "deploy", "deploy:restart"
-after "deploy", "deploy:cleanup"
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
