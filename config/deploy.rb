@@ -21,7 +21,7 @@ set :keep_releases, 5
 set :passenger_restart_with_touch, true
 
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/initializers/elasticsearch.rb', 'config/initializers/sidekiq.rb', 'config/partbox-config.yml' )
-
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rvm_ruby_version, '2.6.0'
 set :rvm_type, :system
@@ -31,6 +31,7 @@ SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
 SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
 set :init_system, :upstart
 set :upstart_service_name, 'sidekiq'
+set :pty,  false
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
