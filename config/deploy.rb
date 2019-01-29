@@ -29,6 +29,8 @@ set :rvm_type, :system
 
 SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
 SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
+set :init_system, :upstart
+set :upstart_service_name, 'sidekiq'
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
