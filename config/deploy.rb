@@ -20,7 +20,7 @@ set :use_sudo, false
 set :keep_releases, 5
 set :passenger_restart_with_touch, true
 
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/initlizers/elasticsearch.rb', 'config/initlizers/sidekiq.rb', 'config/partbox-config.yml' )
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/initializers/elasticsearch.rb', 'config/initializers/sidekiq.rb', 'config/partbox-config.yml' )
 
 
 set :rvm_ruby_version, '2.6.0'
