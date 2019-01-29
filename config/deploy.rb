@@ -26,6 +26,9 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 set :rvm_ruby_version, '2.6.0'
 set :rvm_type, :system
 
+
+SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
+SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
