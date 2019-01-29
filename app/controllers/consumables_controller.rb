@@ -5,7 +5,7 @@ class ConsumablesController < ApplicationController
   # GET /consumables.json
   def index
     @consumables = Consumable.where.not(obsolete: "TRUE")
-    Consumable.reindex
+    
   end
 
   # GET /consumables/1
