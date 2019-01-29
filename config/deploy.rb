@@ -20,7 +20,7 @@ set :use_sudo, false
 set :keep_releases, 5
 set :passenger_restart_with_touch, true
 
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/master.key', 'config/credentials.yml.enc')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 
 set :rvm_ruby_version, '2.6.0'
