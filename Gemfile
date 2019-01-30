@@ -73,6 +73,8 @@ group :test do
   gem 'guard-rspec'
 end
 
+gem 'codecov', :require => false, :group => :test
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -118,3 +120,6 @@ gem 'searchkick'
 
 #bunny
 gem "bunny", ">= 2.13.0"
+
+#netbox api
+gem 'netbox-client-ruby'

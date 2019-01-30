@@ -9,7 +9,12 @@
   <strong>Rackunit:</strong>
   <%= @fixed_asset.RackUnit %>
 </p>
-
+<strong>Netbox:</strong>
+<% if @nb_device.nil? %>
+ This item is not in netbox
+<% else %>
+   <%= @nb_device.name %>
+  <% end %>
 <p>
   <strong>Part:</strong>
   <%= @fixed_asset.part.internal_part %>

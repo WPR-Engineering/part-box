@@ -34,7 +34,7 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] Reduce quantity on order finlization
 - [ ] Use asset tags rather than consumables in the line itmes
 - [ ] display relevent info on all the views
-  - [ ] allow adding a line item to an order from the consumables view/tags link
+  - [x] allow adding a line item to an order from the consumables view/tags link
   - [x] creating consumables also needs to display asset tags (asset tags now automatically created)
 - [ ] migrate everyhing to haml
 - [ ] migrate all forms to simple form
@@ -47,8 +47,9 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] fix line items not removing from database on updates
 - [ ] style everything consistantly
 - [ ] make config for label printing more usable
-- [ ] add support for zebra labels
-- [ ] associate users with orders
+- [x] add support for zebra labels
+- [x] associate users with orders
   - [ ] handle closed orders
 - [ ] add "picking functionality"
 - [ ] impliment change history on consumables via audited
+- [ ] Netbox API to get device names

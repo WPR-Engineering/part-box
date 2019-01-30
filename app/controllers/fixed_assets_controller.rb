@@ -11,6 +11,13 @@ class FixedAssetsController < ApplicationController
   # GET /fixed_assets/1
   # GET /fixed_assets/1.json
   def show
+
+    if @fixed_asset.serial_number?
+      fa_serial = @fixed_asset.serial_number
+      @nb_device = NetboxClientRuby.dcim.devices.find_by(serial: fa_serial)
+      logger.debug "data from netbox: #{@nb_device}"
+    else
+    end
   end
 
   # GET /fixed_assets/new
