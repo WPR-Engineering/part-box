@@ -40,7 +40,9 @@ class FixedAssetsController < ApplicationController
         FixedAsset.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
         sleep 3
-        format.html { redirect_to asset_tags_path, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }
+        new_asset_id = AssetTag.last.id
+        puts new_asset_id
+        format.html { redirect_to asset_tag_url, :id new_asset_id, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }
         format.json { render :show, status: :created, location: @fixed_asset }
       else
         format.html { render :new }
