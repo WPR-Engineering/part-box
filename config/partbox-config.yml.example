@@ -7,7 +7,7 @@ LABEL_PRINTING:
     PORT:
     USER:
     PASS:
-    NETBOX:
-      ENABLED: false
-      BASE_URL: http://netbox.example.com/api
-      API_KEY:
+NETBOX:
+  ENABLED: false
+  BASE_URL: http://netbox.example.com/api
+  API_KEY:
