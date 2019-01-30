@@ -42,7 +42,7 @@ class FixedAssetsController < ApplicationController
         sleep 3
         new_asset_id = AssetTag.last.id
         puts new_asset_id
-        format.html { redirect_to asset_tags, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }
+        format.html { redirect_to asset_tags_url, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }
         format.json { render :show, status: :created, location: @fixed_asset }
       else
         format.html { render :new }
