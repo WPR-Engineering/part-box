@@ -24,5 +24,4 @@ get 'search/index'
 post 'search/query'
 
 get ':tag', to: 'asset_tags#taglookup'
-get ':tag/print_tag' => 'asset_tags#print_tag', as: 'print_tag'
 end
