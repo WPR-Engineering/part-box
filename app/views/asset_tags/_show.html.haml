@@ -1,0 +1,20 @@
+%p.alert
+%p
+  %strong Tag:
+  = @asset_tag.tag
+%p
+  - if @asset_tag.consumable.present?
+    %p
+      %strong Consumable:
+      = @asset_tag.consumable.name
+  - else
+    %p
+      %strong Fixed Asset Description:
+      = @asset_tag.fixed_asset.description
+
+
+
+
+%p
+  %strong Location:
+  = @asset_tag.location.name

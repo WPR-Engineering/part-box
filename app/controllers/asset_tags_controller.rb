@@ -79,6 +79,13 @@ class AssetTagsController < ApplicationController
     redirect_back fallback_location: '/', notice: "Asset Tag Printed"
   end
 
+
+  def taglookup
+    @asset_tag = AssetTag.find_by(tag: params[:tag])
+    puts @asset_tag
+    logger.debug "you are looking up the asset with the tag #{@asset_tag}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_asset_tag
