@@ -34,3 +34,5 @@
 /config/database.yml
 
 config/initializers/partbox-config\.yml
+
+config/partbox-config\.yml

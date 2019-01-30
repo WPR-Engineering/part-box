@@ -1,6 +1,7 @@
 language: ruby
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - cp config/partbox-config.yml.travis /config/partbox-config.yml
   - psql -c 'create database travis_ci_test;' -U postgres
   - bundle exec sidekiq -d -L /tmp/sidekiq.log
   - sleep 10
