@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    Order.reindex
     if current_user.admin?
       @orders = Order.all
     else

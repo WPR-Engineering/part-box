@@ -5,7 +5,7 @@ class FixedAssetsController < ApplicationController
   # GET /fixed_assets.json
   def index
     @fixed_assets = FixedAsset.all
-    
+    FixedAsset.reindex
   end
 
   # GET /fixed_assets/1

@@ -1,7 +1,7 @@
 ^XA
 
-^FT78,280^BQN,2,6
-^FH\^FDLA,http://partbox.wpreng.net/#TAG_CODE^FS
-^FT237,100^A0I,41,39^FH\^#TAG_CODE^FS
+^FT68,210^BQN,2,4
+^FH\^FDLA,https://partbox.wpreng.net/#TAG_CODE^FS
+^FT210,35^A0I,41,39^FH\^FD#TAG_CODE^FS
 
 ^XZ

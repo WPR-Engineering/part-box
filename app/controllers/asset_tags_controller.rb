@@ -5,7 +5,7 @@ class AssetTagsController < ApplicationController
   # GET /asset_tags.json
   def index
     @asset_tags = AssetTag.all
-    
+    AssetTag.reindex
 
   end
 
