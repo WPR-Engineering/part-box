@@ -1,22 +1,25 @@
 language: ruby
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - cp config/partbox-config.yml.travis config/partbox-config.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - bundle exec sidekiq -d -L /tmp/sidekiq.log
-  - sleep 10
+- cp config/database.yml.travis config/database.yml
+- cp config/partbox-config.yml.travis config/partbox-config.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- bundle exec sidekiq -d -L /tmp/sidekiq.log
+- sleep 10
 before_install:
-  - gem update --system
-  - gem install bundler:2.0.1
+- gem update --system
+- gem install bundler:2.0.1
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 services:
-  - redis-server
-  - postgresql
-  - elasticsearch
-
+- redis-server
+- postgresql
+- elasticsearch
 script:
-  - bundle exec rake db:setup
-  - bundle exec rspec
+- bundle exec rake db:setup
+- bundle exec rspec
 rvm:
-  - 2.6.0
+- 2.6.0
+env:
+  global:
+  - secure: FxVqNelag4x1/KSFS3Hnw5Xa0TEBqudgdxD6HGUoYc6oXsQImybYwh/gQ9JMIwELWGPS8xPWf2d5IKtxYT7yR/OjJqfkHb3mci51Nxxtedew6nzx5QvgUA1SUmjBjsV917NcosYV6G7vFSfGP7XWAAyiVlRURlEy/UWGFDRqM/2inxEagqesLElhMuFYVfYxSMe/JqlcJ6w15HyKUGZh1EEaPkzV3RPFxXrKo1qGDe4D6lwfmaT5ciMvUBjo1EzSrkWJFEJIUQfTLRsoaMeBut9ujTOS3OvqeiO2CQYjDXu1+1P7MH6o04/+YaiKrPoIdvggYcNSMmyNce9wJurgyUBWIYsYG2XxkWokQojJl2BJzUd2+7inVYlkydWpPInDDwzsCyG0yw7SNf0umuj00aU0gWnS3ed6SWK3f+gRIvZMiWV47IVprW0/iqCLSAoDmNYJLFT6t9gTjQQslJy88iWn6WcB4W8Q6LePd+O+GDlcAnMJ+4ymj/YNagDhP1tGqfOr0mkuJix8XEm2D6A/5Mlf7lhYvvYccisRTk6Ej/+D8gqYrFWT870ir+BHbNsgwDDNZrZsZXi0WFwVzuKqP68H7xBsmVHLJp3KCnqTNE/2SG0zhY+WAsYXFOVoRr97FzOCa8Tev6YlARisteqK/CnGYjeMutMtIfRvnsThLcM=
+  - secure: YEQVQ3cGERhVG1yu0pjMSxa3ouZd9u0Eqiv8zdbP5ywRc021AXeZg9jWb7+YDjqlYSNF7n1jyvBSAjstIXBtuRO6h85L6ywsqzF84xrd/6gysTY72hJyZ7EbhLkQ6/t0YWagokuj7Y+rZokLPsvg9i13f9uL35JUza6WnejUmLVMuKpy0SkAnIzatUuosixv0cYrh3QYo5W4GHz3iCh2frJ0jQqNLhES5Wc18r/i67Hh8bRmuMOLeoYh0u6mS9JPgxBQcG/xF9J4DIaxSC0HTKt+WdPDlme38Sci+P58IhreMQyxAN6KtMqV9mLJ0oFnzYsj/PQWPwhT0AtXZLl53xrxq6yzz5UYZ/xjppjFyAzlpycwfhu8l5TvwmThCdrMP0UUiTwsRoUPS70EN+qm2W83uXkUpM7cbb7/sAIRS3GaXmHVnsS9g+uFlDo3qDrPxCcHbUvKyhSgg3k76FBls+9pZd4DY7hZmuLi0J0P1V0uoOqouVEYL85fQJ6g6vp7VkVmUdDu5OZYmri1ndocpmvxk6f9carg7p5hmvKBioA3goVBH0kkDuEJlo9wLmBv/YZUqSaMSAN3Wf/5Eo/PfD4x8QmQ+Bjqqhbp8t1hgv8tzdSZdAPyTcVVS6BF9T9mDYEcZgiqiCRsMcuOL74jZCNuphCg7tV+qht0Q79eAxc=

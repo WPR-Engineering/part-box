@@ -1,10 +1,11 @@
 = simple_form_for(@fixed_asset) do |f|
   .form-inputs
-    = f.input :InstalledLocation
+    = f.input :InstalledLocation, label: 'Installed Location (Generalized)', placeholder: 'Room number, studio name, or building...'
     = f.input :description
-    = f.input :RackUnit
+    = f.input :RackUnit, label: 'Rack Unit', placeholder: 'not required if using netbox'
     = f.association :part, :label_method => :internal_part
     = f.input :serial_number
-    = f.input :disposed
+    = f.input :primary_mac, label: 'Primary MAC address'
+
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: "btn-primary"

@@ -11,7 +11,8 @@ set :stage, :production
 set :rails_env, :production
 set :branch, "master"
 
-server "172.16.10.17", user: "partbox", roles: %w{app db web}
+
+server ENV["DEPLOY_SERVER"], user: ENV["DEPLOY_USER"], password: ENV["DEPLOY_PASSWORD"], roles: %w{app db web}
 
 # role-based syntax
 # ==================
