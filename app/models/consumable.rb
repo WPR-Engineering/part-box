@@ -9,4 +9,6 @@ class Consumable < ApplicationRecord
   belongs_to :part
 
   searchkick
+  audited
+  has_associated_audits
 end

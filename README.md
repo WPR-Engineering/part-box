@@ -52,4 +52,4 @@ We also can track non-consumable assets, things like servers and hard drives. Th
   - [ ] handle closed orders
 - [ ] add "picking functionality"
 - [ ] impliment change history on consumables via audited
-- [ ] Netbox API to get device names
+- [x] Netbox API to get device names

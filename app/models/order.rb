@@ -8,6 +8,8 @@ class Order < ApplicationRecord
   after_save :remove_stock, if: :finalized?
 
   searchkick
+  audited
+  has_associated_audits
 
   def remove_stock
     #TODO Make this decrement the quantity of the consumable in each line item

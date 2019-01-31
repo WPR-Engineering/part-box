@@ -6,4 +6,7 @@ class FixedAsset < ApplicationRecord
   validates :part_id, presence: true
 
   searchkick
+
+  audited
+  has_associated_audits
 end
