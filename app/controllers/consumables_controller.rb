@@ -69,6 +69,11 @@ class ConsumablesController < ApplicationController
     end
   end
 
+
+  def obsolete
+    #TODO Add lookup for obsolete parts
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_consumable

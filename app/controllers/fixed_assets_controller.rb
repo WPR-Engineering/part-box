@@ -84,6 +84,6 @@ class FixedAssetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fixed_asset_params
-      params.require(:fixed_asset).permit(:InstalledLocation, :RackUnit, :part_id, :description, :serial_number, :disposed, asset_tag_attributes: [:location_id, :tag])
+      params.require(:fixed_asset).permit(:InstalledLocation, :RackUnit, :part_id, :description, :serial_number, :disposed, :primary_mac, asset_tag_attributes: [:location_id, :tag])
     end
 end

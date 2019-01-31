@@ -31,7 +31,7 @@
           %a
           = link_to 'Locations', locations_path, :class => 'dropdown-item'
           .dropdown-divider
-          = link_to 'Obsolete Consumables', locations_path, :class => 'dropdown-item'
+          = link_to 'Obsolete Consumables', obsolete_consumables_path, :class => 'dropdown-item'
           = link_to 'Desposed Assets', locations_path, :class => 'dropdown-item'
       %li.nav-item
         %a.nav-link.disabled{:href => "#"} Disabled
@@ -40,5 +40,5 @@
       %span#search_field
         = text_field_tag(:search, nil, placeholder: "Search", class: "form-control mr-sm-2")
       %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
-    
+
     = link_to 'Logout', destroy_user_session_path, method: :delete, :class => "btn btn-outline-success"

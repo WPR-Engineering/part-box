@@ -72,6 +72,7 @@ class TagMakerWorker
         asset_tag_new = AssetTag.new
         asset_tag_new.tag = next_tag
         asset_tag_new.consumable_id = new_asset_id
+        asset_tag_new.location_id = "1"
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
         asset_tag_new.save
         AssetTag.reindex

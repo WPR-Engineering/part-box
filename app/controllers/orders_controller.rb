@@ -56,6 +56,12 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
+
+      @order.inspect
+      if @order.finalized == "TRUE"
+        logger.debug "order finalized, lets set the status.^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+        @order.status = "Finalized"
+      end
       if @order.update(order_params)
         RemoveStockWorker.perform_async(@order.id)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }

@@ -22,6 +22,7 @@
           %td= consumable.reorderAmount
           %td= consumable.shelf
           %td= consumable.bin
+          %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
           %td= consumable.part.internal_part
 
           %td= link_to 'Show', consumable

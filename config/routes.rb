@@ -24,4 +24,6 @@ get 'search/index'
 post 'search/query'
 
 get ':tag', to: 'asset_tags#taglookup'
+
+get '/obsolete-consumables', to: 'consumables#obsolete'
 end
