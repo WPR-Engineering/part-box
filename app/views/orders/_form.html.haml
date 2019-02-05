@@ -8,7 +8,7 @@
   = f.error_notification
   = f.input :status
   = f.input :finalized
-  = f.input :order_id, input_html: {value: "#{@random_number}"}, as: :hidden
+  = f.hidden_field :order_id, :value => "#{@random_number}"
 
   %h3 Line Items
   #tasks

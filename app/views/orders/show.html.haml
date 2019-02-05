@@ -8,6 +8,8 @@
 - @order.consumables.each do |consumable|
   =consumable.asset_tag.tag
 
+- @order.line_item.each do |line_item|
+  =line_item.quantity
 %br
 = link_to 'Edit', edit_order_path(@order)
 = link_to 'Back', orders_path
