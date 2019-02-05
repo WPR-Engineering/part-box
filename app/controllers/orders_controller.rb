@@ -34,10 +34,8 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
 
-
     @order = Order.new(order_params)
     @order.user = current_user.email
-    puts @random_number
     puts @order.inspect
     respond_to do |format|
       if @order.save
@@ -58,10 +56,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
 
       @order.inspect
-      if @order.finalized == "TRUE"
-        logger.debug "order finalized, lets set the status.^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-        @order.status = "Finalized"
-      end
+
       if @order.update(order_params)
         RemoveStockWorker.perform_async(@order.id)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }

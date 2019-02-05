@@ -29,7 +29,7 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 7. bundl exec sidekiq
 8. rails server
 
-# TODO (v0.0.1)
+# TODO For V 1.0.0-Beta
 
 - [x] Reduce quantity on order finlization
 - [ ] Use asset tags rather than consumables in the line itmes
@@ -46,6 +46,9 @@ We also can track non-consumable assets, things like servers and hard drives. Th
   - [ ] Fix search models to show good data and look pretty rather than just work.
 - [x] fix line items not removing from database on updates
 - [ ] style everything consistantly
+  - [ ] make sure everything is responsive
+    - [ ] hide elements that wont be used on small screens
+    - [ ] make navbar more funcational on small screens
 - [ ] make config for label printing more usable
 - [x] add support for zebra labels
 - [x] associate users with orders
@@ -53,3 +56,5 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [ ] add "picking functionality"
 - [ ] impliment change history on consumables via audited
 - [x] Netbox API to get device names
+  - [ ] Display netbox data proplery
+  - [ ] store netbox info in partbox?
