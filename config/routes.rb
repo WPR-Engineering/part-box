@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   #printing routes
   get '/asset_tags/:id/print_tag' => 'asset_tags#print_tag', as: 'print_tag'
   get '/asset_tags/:id/print_tag_small' => 'asset_tags#print_tag_small', as: 'print_tag_small'
+  get '/asset_tags/:id/print_tag_large' => 'asset_tags#print_tag_large', as: 'print_tag_large'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -71,14 +71,18 @@ class AssetTagsController < ApplicationController
 
   def print_tag
     AssetLabelWorker.perform_async(params[:id])
-    redirect_back fallback_location: '/', notice: "Asset Tag Printed"
+    redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
 
   def print_tag_small
     AssetLabelSmallWorker.perform_async(params[:id])
-    redirect_back fallback_location: '/', notice: "Asset Tag Printed"
+    redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
 
+  def print_tag_large
+    AssetLabelLargeWorker.perform_async(params[:id])
+    redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
+  end
 
   def taglookup
     @asset_tag = AssetTag.find_by(tag: params[:tag])

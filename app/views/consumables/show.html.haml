@@ -43,7 +43,7 @@
     = f.error_notification
     = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
     .form-inputs
-    = f.input :order_id
+    = f.association :order, :label_method => :order_id
     = f.input :quantity
     = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
     .form-actions

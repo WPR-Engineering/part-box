@@ -15,6 +15,7 @@ class TagMakerWorker
 
         logger.info "The DB is empty, lets make our first record"
         asset_tag_new = AssetTag.new
+        asset_tag_new.id = "1"
         asset_tag_new.tag = "FA-00001"
         asset_tag_new.location_id = "1"
         asset_tag_new.fixed_asset_id = new_asset_id
