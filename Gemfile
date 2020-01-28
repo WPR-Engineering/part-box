@@ -100,7 +100,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 
 #use bootstrap cuz im lazy on this project
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 
 #sidekiq for job processing
 gem 'sidekiq'
