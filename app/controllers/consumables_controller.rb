@@ -13,6 +13,8 @@ class ConsumablesController < ApplicationController
   def show
     @location = Consumable.all
     @line_item = LineItem.new
+    @order_select = Order.where.not(finalized: true)
+    logger.info @order_select
   end
 
   # GET /consumables/new

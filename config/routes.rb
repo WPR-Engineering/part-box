@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :fixed_assets
+
+#sidekiq web interface
   require 'sidekiq/web'
+
   resources :parts
   resources :asset_tags
   resources :locations
@@ -24,7 +27,12 @@ mount Sidekiq::Web, at: '/sidekiq'
 get 'search/index'
 post 'search/query'
 
+#for qr code lookup allows you to type example.com/TAG_NUMBER
 get ':tag', to: 'asset_tags#taglookup'
 
-get '/obsolete-consumables', to: 'consumables#obsolete'
+#obsolete consumables path
+get 'obsolete/consumables', to: 'consumables#obsolete'
+
+#disposed assets path
+get 'disposed/assets', to: 'fixed_assets#disposed'
 end
