@@ -1,0 +1,20 @@
+= simple_form_for(@order, html: { class: 'form-vertical' }) do |f|
+  -if @order.errors.any?
+    #error_explanation
+      %h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      %ul
+        - @order.errors.full_messages.each do |msg|
+          %li= msg
+  = f.error_notification
+  = f.input :status
+  = f.input :finalized
+  = f.input :order_id, disabled: true
+
+  %h3 Line Items
+  #tasks
+    = f.simple_fields_for :line_item do |line_item|
+      = render 'line_item_fields', f: line_item
+    .links
+      = link_to_add_association 'Add Consumable', f, :line_item
+  %br
+  = f.submit nil
