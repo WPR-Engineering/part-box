@@ -14,6 +14,7 @@ class AssetTagsController < ApplicationController
   def show
     @line_item = LineItem.new
     AssetTag.reindex
+    @order_select = Order.where.not(finalized: true)
   end
 
   # GET /asset_tags/new

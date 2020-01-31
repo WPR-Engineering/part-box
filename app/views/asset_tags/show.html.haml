@@ -25,10 +25,17 @@
 = link_to 'Print Large Tag', print_tag_large_path, :class => "btn btn-primary"
 = link_to 'Print Small Tag', print_tag_small_path, :class => "btn btn-primary"
 
-= simple_form_for(@line_item) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-  .form-inputs
-  = f.input :order_id
-  .form-actions
-    = f.button :submit
+- if @asset_tag.consumable.present?
+  - current_cons = @asset_tag.consumable.id
+  = simple_form_for(@line_item) do |f|
+    = f.error_notification
+    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+    .form-inputs
+    = f.association :order, collection: @order_select, :label_method => :order_id, prompt: 'Select an order to add this consumable to'
+    = f.input :quantity
+    = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
+    .form-actions
+      = f.button :submit
+- else
+  %p
+  Maybe something interesting will go here some day...for now, you cant add this to a BOM/Order, its a fixed asset.

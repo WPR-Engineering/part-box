@@ -58,3 +58,4 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] Netbox API to get device names
   - [ ] Display netbox data proplery
   - [ ] store netbox info in partbox?
+- [x] Fix "order" field showing up on asset_tags#show for fixed assets.
