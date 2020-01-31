@@ -29,7 +29,7 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 7. bundl exec sidekiq
 8. rails server
 
-# TODO For V 1.0.0-Beta
+# TODO For V 1.0.0-Beta and on
 
 - [x] Reduce quantity on order finlization
 - [ ] Use asset tags rather than consumables in the line itmes
@@ -59,3 +59,8 @@ We also can track non-consumable assets, things like servers and hard drives. Th
   - [ ] Display netbox data proplery
   - [ ] store netbox info in partbox?
 - [x] Fix "order" field showing up on asset_tags#show for fixed assets.
+- [ ] Add a page to list all of the asset tags for a specific part type
+- [ ] Make fixed asset desposal work
+  - [ ] hide destroy button on asset show pages
+  - [ ] add reason to dispose option (add disposal_reason to fixed_assets)
+  - [ ] make disposed assets view
