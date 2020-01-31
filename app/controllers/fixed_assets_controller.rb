@@ -39,7 +39,7 @@ class FixedAssetsController < ApplicationController
         TagMakerWorker.perform_async("fixed", @fixed_asset.id)
         FixedAsset.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
-        sleep 3
+        sleep 5
         new_asset_id = AssetTag.last.id
         puts new_asset_id
         format.html { redirect_to asset_tags_url, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }

@@ -2,6 +2,6 @@
 .nested-fields
   = f.error_notification
   = f.input :quantity
-  = f.association :consumable
+  = f.association :consumable, collection: @consume_select
   = link_to_remove_association "Remove Item", f, :data => { :confirm => "Are you sure?"}
 %br

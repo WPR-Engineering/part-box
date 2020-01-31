@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    @consume_select = Consumable.where(obsolete: false)
   end
 
   # POST /orders
