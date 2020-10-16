@@ -29,6 +29,14 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 7. bundl exec sidekiq
 8. rails server
 
+# Notes about printing
+- You must be running Partbox-Printer. It works best if it runs on a dedicated label printer print server
+- This is not particularly modular, its designed for zebra printers only specifically a GK420d
+- labels are a fixed size
+  - Small: 1.25x1”
+  - Large: 2.25x4”
+  - *coming soon!* Medium: 2.25x1.25”
+
 # TODO For V 1.0.0-Beta and on
 
 - [x] Reduce quantity on order finlization
@@ -41,7 +49,7 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] move to a product/part number linked to a consumable rather than only a consumable
 - [x] add all of the "fixed" asset tracking functions
 - [x] Handel unfinished consumable entry errors properly (missing asset tag shows nomethoderror)
-- [ ] create a move scaffold and stuff
+- [ ] create a move scaffold and stuff (to move assets between locations and bins)
 - [x] Add working search
   - [ ] Fix search models to show good data and look pretty rather than just work.
 - [x] fix line items not removing from database on updates
@@ -53,14 +61,15 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] add support for zebra labels
 - [x] associate users with orders
   - [ ] handle closed orders
-- [ ] add "picking functionality"
-- [ ] impliment change history on consumables via audited
+- [ ] add "picking functionality" *in progress*
+- [ ] impliment change history on consumables via audited *up next*
 - [x] Netbox API to get device names
   - [ ] Display netbox data proplery
   - [ ] store netbox info in partbox?
 - [x] Fix "order" field showing up on asset_tags#show for fixed assets.
 - [ ] Add a page to list all of the asset tags for a specific part type
-- [ ] Make fixed asset desposal work
+- [ ] Make fixed asset disposal work *in progress*
   - [ ] hide destroy button on asset show pages
   - [ ] add reason to dispose option (add disposal_reason to fixed_assets)
   - [ ] make disposed assets view
+- [ ] handle multiple printers *in progress*
