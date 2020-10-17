@@ -4,7 +4,7 @@ class AssetLabelLargeWorker
 
 
   def perform(asset_tag_id)
-    logger.info "More Things are happening. Large Label"
+    logger.info "More Things are happening. Medium Label"
     a_tag = AssetTag.find(asset_tag_id)
     tag_code = a_tag.tag
     consume_id = a_tag.consumable_id
@@ -23,9 +23,9 @@ class AssetLabelLargeWorker
       '#PART_NUMBER' => mfg_parts,
       '#PART_DESCRPTION' => consume_name
     }
-    tag_data = File.read(File.expand_path(CONFIG[:LABEL_PRINTING][:DEFAULT_LARGE_ZPL])).gsub(/#TAG_CODE|#PART_NUMBER|#PART_DESCRPTION/, replace)
+    tag_data = File.read(File.expand_path(CONFIG[:LABEL_PRINTING][:DEFAULT_MED_ZPL])).gsub(/#TAG_CODE|#PART_NUMBER|#PART_DESCRPTION/, replace)
       if CONFIG[:LABEL_PRINTING][:ENABLED]
-        PRINT_EXCHANGE.publish tag_data, :routing_key => "print_queue", :headers => {:printer => "#{CONFIG[:LABEL_PRINTING][:SMALL_PRINTER]}"}
+        PRINT_EXCHANGE.publish tag_data, :routing_key => "print_queue", :headers => {:printer => "#{CONFIG[:LABEL_PRINTING][:MED_PRINTER]}"}
         logger.info tag_data
       end
   end

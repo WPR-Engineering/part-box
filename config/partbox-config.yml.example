@@ -2,6 +2,10 @@ LABEL_PRINTING:
   ENABLED: false
   DEFAULT_SMALL_ZPL: ./config/default-small.zpl
   DEFAULT_LARGE_ZPL: ./config/default-large.zpl
+  DEFAULT_MED_ZPL: ./config/default-med.zpl
+  LARGE_PRINTER: large_printer_queue_name
+  MED_PRINTER: med_printer_queue_name
+  SMALL_PRINTER: small_printer_queue_name
   RABBIT_MQ:
     HOST:
     PORT:
