@@ -24,6 +24,7 @@
 
 = link_to 'Print Large Tag', print_tag_large_path, :class => "btn btn-primary"
 = link_to 'Print Small Tag', print_tag_small_path, :class => "btn btn-primary"
+= link_to 'Print Bin Tag', print_tag_med_path, :class => "btn btn-primary"
 
 - if @asset_tag.consumable.present?
   - current_cons = @asset_tag.consumable.id

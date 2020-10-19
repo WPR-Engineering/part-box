@@ -85,6 +85,11 @@ class AssetTagsController < ApplicationController
     redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
 
+  def print_tag_med
+      AssetLabelMediumWorker.perform_async(params[:id])
+      redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
+    end
+
   def taglookup
     @asset_tag = AssetTag.find_by(tag: params[:tag])
     puts @asset_tag
