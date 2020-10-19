@@ -1,15 +1,37 @@
 #notice= notice
-
-= @order.order_id
-= @order.user
-
 %br
+%div{:class => "container"}
 
-- @order.consumables.each do |consumable|
-  =consumable.asset_tag.tag
+  %div{:class => "row"}
+    %div{:class => "card text-center mx-auto", :style => "width: 45em;"}
+      %div{:class => "card-header"}
+        Order / BOM #
+        = @order.order_id
+      %div{:class => "card text-center mx-auto border-0", :style => "width: 43em;"}
+        user:
+        = @order.user
 
-- @order.line_item.each do |line_item|
-  =line_item.quantity
-%br
-= link_to 'Edit', edit_order_path(@order)
-= link_to 'Back', orders_path
+        %div{:class => "card py-3 border-0"}
+          %table.table.table-hover.table-sm
+            %thead
+              %tr
+                %th Consumable Tag
+                %th Consumable Name
+                %th Consumable Descrption
+                %th Quantity
+            %tbody
+              %tr
+                - @order.consumables.each do |consumable|
+                  %td= consumable.asset_tag.tag
+                  %td= consumable.name
+                  %td= consumable.description
+                - @order.line_item.each do |line_item|
+                  %td= line_item.quantity
+            
+            
+        %div{:class => "row py-3 border-0"}
+          %div{:class => "col-sm"}
+            = link_to 'Edit', edit_order_path(@order), :class => "btn btn-primary"
+          %div{:class => "col-sm"}
+            = link_to 'Back', orders_path, :class => "btn btn-primary"
+          
