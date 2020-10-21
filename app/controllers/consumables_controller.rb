@@ -38,7 +38,7 @@ class ConsumablesController < ApplicationController
         Consumable.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
         sleep 3
-        format.html { redirect_to asset_tags_path, notice: 'Consumable was successfully created. Please creat asset tag for the consumable you just created' }
+        format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
         format.json { render :show, status: :created, location: @consumable }
       else
         format.html { render :new }

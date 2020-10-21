@@ -11,4 +11,8 @@ class Consumable < ApplicationRecord
   searchkick
   audited
   has_associated_audits
+  
+  validates :name, presence: true
+  validates :part, presence: true
+  validates :quantity, presence: true
 end
