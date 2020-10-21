@@ -14,3 +14,8 @@
  *= require_self
  */
  @import "bootstrap";
+ 
+ html.turbolinks-progress-bar::before {
+     background-color: red !important;
+     height: 10px !important;
+ }

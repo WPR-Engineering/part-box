@@ -106,6 +106,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'sidekiq-status'
 
 #label printing
 #pdf writer

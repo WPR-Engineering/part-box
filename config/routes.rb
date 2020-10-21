@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get '/asset_tags/:id/print_tag_med' => 'asset_tags#print_tag_med', as: 'print_tag_med'
 
 
+  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 root to: 'dashboard#index'
@@ -33,6 +35,9 @@ get ':tag', to: 'asset_tags#taglookup'
 
 #obsolete consumables path
 get 'obsolete/consumables', to: 'consumables#obsolete'
+
+#pssible print tag from consumables
+get 'consumables/:id/print_med' => 'consumables#print_tag_med', as: 'consumable_print_med'
 
 #disposed assets path
 get 'disposed/assets', to: 'fixed_assets#disposed'

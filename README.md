@@ -47,7 +47,7 @@ We also can track non-consumable assets, things like servers and hard drives. Th
   - [x] allow adding a line item to an order from the consumables view/tags link
   - [x] creating consumables also needs to display asset tags (asset tags now automatically created)
   - [ ] display more detail on "orders" page (part names at the very least)
-- [ ] migrate everyhing to haml
+- [ ] migrate everything to haml
 - [ ] migrate all forms to simple form
 - [x] move to a product/part number linked to a consumable rather than only a consumable
 - [x] add all of the "fixed" asset tracking functions
@@ -79,3 +79,7 @@ We also can track non-consumable assets, things like servers and hard drives. Th
   - [ ] add reason to dispose option (add disposal_reason to fixed_assets)
   - [ ] make disposed assets view
 - [x] handle multiple printers (see printer options in /config/partbox-config.yml)
+- [ ] Make orders searchable 
+
+#Future Roadmap / Ideas
+- Create API so native apps can be built

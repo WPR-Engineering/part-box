@@ -21,10 +21,16 @@
   %strong Obsolete:
   = @consumable.obsolete
 %p
+  %strong asset tag
+  = link_to "#{@consumable.asset_tag.tag}", asset_tag_path(@consumable.asset_tag.id)
+  
+  = link_to 'Print Large Tag', consumable_print_med_path, :class => "btn btn-primary"
+%p
   %strong Part Number:
   = @consumable.part.internal_part
 - if @consumable.asset_tag.present?
   %p
+  
 
 - else
   %p
