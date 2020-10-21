@@ -9,15 +9,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/53e402c9e8.js" crossorigin="anonymous"></script>
   </head>
-    <%= render "shared/main_header" %>
+
   <body>
+    <%= render "shared/main_header" %>
     <div class="container-fluid">
 
       <%= yield %>
 
     </div>
     
-    <footer id="footer"><%= render "shared/main_footer" %></footer>
+    <footer class="footer">
+      <div class="container">
+      <%= render "shared/main_footer" %>
+      </div>
+    </footer>
 
   </body>
 </html>
