@@ -75,11 +75,16 @@ class ConsumablesController < ApplicationController
   def print_tag_med
     @asset_tag = AssetTag.all
     tag = @asset_tag.find_by(consumable_id: params[:id])
-    
-    print "*****&*&*&*&*&*&*&**&"
-    print tag.id
    
     AssetLabelMediumWorker.perform_async(tag.id)
+    redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
+  end
+  
+  def print_tag_large
+    @asset_tag = AssetTag.all
+    tag = @asset_tag.find_by(consumable_id: params[:id])
+   
+    AssetLabelLargeWorker.perform_async(tag.id)
     redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
 

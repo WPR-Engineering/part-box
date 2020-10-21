@@ -24,7 +24,9 @@
   %strong asset tag
   = link_to "#{@consumable.asset_tag.tag}", asset_tag_path(@consumable.asset_tag.id)
   
-  = link_to 'Print Large Tag', consumable_print_med_path, :class => "btn btn-primary"
+  = link_to 'Print Medium Bin Tag', consumable_print_med_path, :class => "btn btn-primary"
+
+  = link_to 'Print Large Bin Tag', consumable_print_large_path, :class => "btn btn-primary"
 %p
   %strong Part Number:
   = @consumable.part.internal_part
