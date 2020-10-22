@@ -69,7 +69,7 @@ class TagMakerWorker
       else
       #select the last tag that was created for a consumable
       select_last_tag = AssetTag.where(fixed_asset_id: [nil, ""]).order(created_at: :asc).last
-      logger.info "the prevous asset tag ID = #{select_last_tag.tag}"
+      logger.info "the prevous asset tag ID = #{select_last_tag}"
 
 
 
