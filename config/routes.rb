@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get 'consumables/:id/print_large' => 'consumables#print_tag_large', as: 'consumable_print_large'
 
 
+  get 'fixed_asset/:id/disposal' => 'fixed_assets#disposal', as: 'disposed_fixed_asset'
 root to: 'dashboard#index'
 
 mount Sidekiq::Web, at: '/sidekiq'

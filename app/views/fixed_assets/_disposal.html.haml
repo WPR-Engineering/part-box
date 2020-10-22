@@ -1,0 +1,7 @@
+= simple_form_for(@fixed_asset) do |f|
+  .form-inputs
+    = f.input :disposed
+    = f.input :disposal_note
+
+  .form-actions
+    = f.button :button, "Create Asset".html_safe, data: {disable_with: "<i class='fa fa-cog fa-spin'></i> Creating Asset..."}, :class => "btn btn-primary"
