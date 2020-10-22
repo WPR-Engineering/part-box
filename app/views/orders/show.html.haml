@@ -20,13 +20,12 @@
                 %th Consumable Descrption
                 %th Quantity
             %tbody
-              %tr
-                - @order.consumables.each do |consumable|
-                  %td= consumable.asset_tag.tag
-                  %td= consumable.name
-                  %td= consumable.description
-                - @order.line_item.each do |line_item|
-                  %td= line_item.quantity
+              - @order.consumables.each do |info|
+                %tr
+                  %td= info.asset_tag.tag
+                  %td= info.name
+                  %td= info.description
+                  %td= @order.line_items.quantity
             
             
         %div{:class => "row py-3 border-0"}

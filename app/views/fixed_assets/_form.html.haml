@@ -8,4 +8,4 @@
     = f.input :primary_mac, label: 'Primary MAC address'
 
   .form-actions
-    = f.button :submit, class: "btn-primary"
+    = f.button :button, "Create Asset".html_safe, data: {disable_with: "<i class='fa fa-cog fa-spin'></i> Creating Asset..."}, :class => "btn btn-primary"

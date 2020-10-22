@@ -4,6 +4,7 @@
   %thead
     %tr
       %th{:scope => "col"} Internal Part Number
+      %th{:scope => "col"} Description
       %th{:scope => "col"} Serial Number
       %th{:scope => "col"} MAC Address
       %th{:scope => "col"} Installed location
@@ -15,10 +16,11 @@
       - if fixed_asset.disposed?
         %tr.table-dark
           %td= fixed_asset.part.internal_part
+          %td= fixed_asset.description
           %td= fixed_asset.serial_number
           %td= fixed_asset.primary_mac
-          %td= fixed_asset.RackUnit
           %td= fixed_asset.InstalledLocation
+          %td= fixed_asset.RackUnit
           %td= link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
           %td= link_to 'Show', fixed_asset
           %td= link_to 'Edit', edit_fixed_asset_path(fixed_asset)
@@ -26,13 +28,14 @@
       - else
         %tr
           %td= fixed_asset.part.internal_part
+          %td= fixed_asset.description
           %td= fixed_asset.serial_number
           %td= fixed_asset.primary_mac
-          %td= fixed_asset.RackUnit
           %td= fixed_asset.InstalledLocation
+          %td= fixed_asset.RackUnit
           %td= link_to "#{fixed_asset.asset_tag.tag}", asset_tag_path(fixed_asset.asset_tag.id)
-          %td= link_to 'Show', fixed_asset
-          %td= link_to 'Edit', edit_fixed_asset_path(fixed_asset)
-          %td= link_to 'Destroy', fixed_asset, method: :delete, data: { confirm: 'Are you sure?' }
+          %td= link_to ' ', fixed_asset, :class => "btn btn-success fa fa-eye"
+          %td= link_to ' ', edit_fixed_asset_path(fixed_asset), :class => "btn btn-warning fa fa-edit"
+          %td= link_to ' ', fixed_asset, method: :delete, data: { confirm: 'Are you sure? This CANNOT BE UNDONE' }, :class => "btn btn-danger fa fa-dumpster"
 %br/
 = link_to 'New Fixed Asset', new_fixed_asset_path

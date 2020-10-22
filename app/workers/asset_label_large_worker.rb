@@ -27,7 +27,7 @@ class AssetLabelLargeWorker
     }
     tag_data = File.read(File.expand_path(CONFIG[:LABEL_PRINTING][:DEFAULT_LARGE_ZPL])).gsub(/#TAG_URL|#TAG_CODE|#PART_NUMBER|#PART_DESCRPTION/, replace)
       if CONFIG[:LABEL_PRINTING][:ENABLED]
-        PRINT_EXCHANGE.publish tag_data, :routing_key => "print_queue", :headers => {:printer => "#{CONFIG[:LABEL_PRINTING][:SMALL_PRINTER]}"}
+        PRINT_EXCHANGE.publish tag_data, :routing_key => "print_queue", :headers => {:printer => "#{CONFIG[:LABEL_PRINTING][:LARGE_PRINTER]}"}
         logger.info tag_data
       end
   end

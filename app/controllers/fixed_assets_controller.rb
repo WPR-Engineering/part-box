@@ -29,6 +29,9 @@ class FixedAssetsController < ApplicationController
   def edit
   end
 
+  def disposal
+    @fixed_asset = FixedAsset.find(params[:id])
+  end
   # POST /fixed_assets
   # POST /fixed_assets.json
   def create
@@ -84,6 +87,6 @@ class FixedAssetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fixed_asset_params
-      params.require(:fixed_asset).permit(:InstalledLocation, :RackUnit, :part_id, :description, :serial_number, :disposed, :primary_mac, asset_tag_attributes: [:location_id, :tag])
+      params.require(:fixed_asset).permit(:InstalledLocation, :RackUnit, :part_id, :description, :serial_number, :disposed, :disposal_note, :primary_mac, asset_tag_attributes: [:location_id, :tag])
     end
 end

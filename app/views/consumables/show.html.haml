@@ -1,60 +1,75 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @consumable.name
-%p
-  %strong Description:
-  = @consumable.description
-%p
-  %strong Quantity:
-  = @consumable.quantity
-%p
-  %strong Reorderamount:
-  = @consumable.reorderAmount
-%p
-  %strong Shelf:
-  = @consumable.shelf
-%p
-  %strong Bin:
-  = @consumable.bin
-%p
-  %strong Obsolete:
-  = @consumable.obsolete
-%p
-  %strong asset tag
-  = link_to "#{@consumable.asset_tag.tag}", asset_tag_path(@consumable.asset_tag.id)
+%p#notice
+  - if notice.present?
+    %div.alert.alert-success
+      = notice
+    
+%div{:class => "container-fluid"}
+  %div{:class => "row"}
+    %div{:class => "col-sm"}
+      %div{:class => "card-deck"}
+        %div{:class => "card"}
+          %div{:class => "card-header text-center"}
+            %h5 #{@consumable.name}
+          %span  
+            %table.table.table-hover
+              %tr
+                %td Description
+                %td= @consumable.description
+              %tr
+                %td Internal Part Number
+                %td= @consumable.part.internal_part
+              %tr
+                %td Asset Tag Number
+                %td= link_to "#{@consumable.asset_tag.tag}", asset_tag_path(@consumable.asset_tag.id)
+              %tr
+                %td Quantity On Hand
+                %td= @consumable.quantity
+              %tr 
+                %td Reorder At Quantity
+                %td= @consumable.reorderAmount
+            
+            %p.card-body
+              = link_to 'Edit', edit_consumable_path(@consumable), :class => "btn btn-light"
+              = link_to 'Back', consumables_path, :class => "btn btn-light"
+            
+        %div.card      
+          %div.card-header.text-center
+            %h5 Location
+          %span
+            %table.table.table-hover
+              %tr
+                %td Shelf #
+                %td= @consumable.shelf
+              %tr
+                %td Bin #
+                %td= @consumable.bin
   
-  = link_to 'Print Large Tag', consumable_print_med_path, :class => "btn btn-primary"
-%p
-  %strong Part Number:
-  = @consumable.part.internal_part
-- if @consumable.asset_tag.present?
-  %p
-  
+            %p.text-center
+              = link_to 'Print Medium Bin Tag', consumable_print_med_path, :class => "btn btn-outline-dark"
+              = link_to 'Print Large Bin Tag', consumable_print_large_path, :class => "btn btn-outline-dark"
 
-- else
-  %p
-    %strong Location:
-    No Asset Tag Defined, please add asset tag here #{link_to 'Asset Tags', asset_tags_path}
-= link_to 'Edit', edit_consumable_path(@consumable)
-|
-= link_to 'Back', consumables_path
-
-- current_cons = @consumable.id
-- if @consumable.obsolete? or @order_select.blank?
-  - if @consumable.obsolete?
-    %p
-      This consumable is obsolete, you cannot add it to a new order.
-  - else
-    %p
-      There are no open orders to add a consumable to.
-- else
-  = simple_form_for(@line_item) do |f|
-    = f.error_notification
-    = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-    .form-inputs
-    = f.association :order, collection: @order_select, :label_method => :order_id, prompt: 'Select an order to add this consumable to'
-    = f.input :quantity
-    = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
-    .form-actions
-      = f.button :submit
+  %div.row.top-buffer
+    %div.col
+      %div.card
+        %div.card-header.text-center
+          %h5 Add To Order / BOM
+        %div.card-body
+        
+          - current_cons = @consumable.id
+          - if @consumable.obsolete? or @order_select.blank?
+            - if @consumable.obsolete?
+              %p
+                This consumable is obsolete, you cannot add it to a new order.
+            - else
+              %p
+                There are no open orders to add a consumable to.
+          - else
+            = simple_form_for(@line_item) do |f|
+              = f.error_notification
+              = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+              .form-inputs
+              = f.association :order, collection: @order_select, :label_method => :order_id, prompt: 'Select an order to add this consumable to'
+              = f.input :quantity
+              = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
+              .form-actions
+                = f.button :submit, :class => "btn btn-success"

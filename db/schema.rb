@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_30_155348) do
+ActiveRecord::Schema.define(version: 2020_10_22_021945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_01_30_155348) do
     t.string "serial_number"
     t.boolean "disposed"
     t.string "primary_mac"
+    t.text "disposal_note"
     t.index ["part_id"], name: "index_fixed_assets_on_part_id"
   end
 

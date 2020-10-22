@@ -38,7 +38,7 @@ class ConsumablesController < ApplicationController
         Consumable.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
         sleep 3
-        format.html { redirect_to asset_tags_path, notice: 'Consumable was successfully created. Please creat asset tag for the consumable you just created' }
+        format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
         format.json { render :show, status: :created, location: @consumable }
       else
         format.html { render :new }
@@ -75,11 +75,16 @@ class ConsumablesController < ApplicationController
   def print_tag_med
     @asset_tag = AssetTag.all
     tag = @asset_tag.find_by(consumable_id: params[:id])
-    
-    print "*****&*&*&*&*&*&*&**&"
-    print tag.id
    
     AssetLabelMediumWorker.perform_async(tag.id)
+    redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
+  end
+  
+  def print_tag_large
+    @asset_tag = AssetTag.all
+    tag = @asset_tag.find_by(consumable_id: params[:id])
+   
+    AssetLabelLargeWorker.perform_async(tag.id)
     redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
 
