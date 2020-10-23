@@ -17,6 +17,6 @@ module PartBox
     # the framework and any gems in your application.
     config.active_record.belongs_to_required_by_default = false
     
-    config.version = "1.1.0 - Alpha"
+    config.version = "1.1.1 - Alpha"
   end
 end
