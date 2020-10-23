@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :consumables
   resources :line_items
+  
 
   #printing routes
   get '/asset_tags/:id/print_tag' => 'asset_tags#print_tag', as: 'print_tag'
@@ -33,6 +34,11 @@ mount Sidekiq::Web, at: '/sidekiq'
 get 'search/index'
 post 'search/query'
 
+#quick remove page
+get '/quick_remove', to: 'quick_remove#index'
+post '/quick_remove', to: 'quick_remove#remove_lookup', as: 'quick_remove_lookup'
+post '/quick_remove/confirm', to: 'quick_remove#remove_confirm', as: 'quick_remove_confirm'
+
 #for qr code lookup allows you to type example.com/TAG_NUMBER
 get ':tag', to: 'asset_tags#taglookup'
 
@@ -44,4 +50,6 @@ get 'disposed/assets', to: 'fixed_assets#disposed'
 
 get 'consumables/:id/incoming', to: 'consumables#incoming', as: 'incoming_consumable'
 post 'consumables/:id/incoming', to: 'consumables#item_tag_maker', as: 'incoming_consumable_maker'
+
+
 end

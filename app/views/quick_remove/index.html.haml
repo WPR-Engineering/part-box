@@ -1,1 +1,12 @@
+%p#notice
+	- if notice.present?
+		%div.alert.alert-success
+			= notice
+	
+
 find me in quick_remove#index
+
+
+= form_with url: quick_remove_lookup_path, local: true, method: :post do |f|
+	= f.text_field :remove_tag, :class => "form-control"
+	= f.submit "Lookup", :class => "btn btn-outline-primary"
