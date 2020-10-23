@@ -3,9 +3,11 @@ LABEL_PRINTING:
   DEFAULT_SMALL_ZPL: ./config/default-small.zpl
   DEFAULT_LARGE_ZPL: ./config/default-large.zpl
   DEFAULT_MED_ZPL: ./config/default-med.zpl
+  DEFAULT_REMOVE_ZPL: ./config/default-remove.zpl
   LARGE_PRINTER: large_printer_queue_name
   MED_PRINTER: med_printer_queue_name
   SMALL_PRINTER: small_printer_queue_name
+  ITEM_TAG_PRINTER: zebra_small
   RABBIT_MQ:
     HOST:
     PORT:
