@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :item_tags
   resources :fixed_assets
 
 #sidekiq web interface
@@ -40,4 +41,7 @@ get 'obsolete/consumables', to: 'consumables#obsolete'
 
 #disposed assets path
 get 'disposed/assets', to: 'fixed_assets#disposed'
+
+get 'consumables/:id/incoming', to: 'consumables#incoming', as: 'incoming_consumable'
+post 'consumables/:id/incoming', to: 'consumables#item_tag_maker', as: 'incoming_consumable_maker'
 end

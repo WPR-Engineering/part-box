@@ -36,7 +36,7 @@ class TagMakerWorker
         last_tag_num = select_last_tag.tag
         next_tag = last_tag_num.succ
 
-        #create a new asset tag, and link the newst asset
+        #create a new asset tag, and link the newest asset
         asset_tag_new = AssetTag.new
         asset_tag_new.tag = next_tag
         asset_tag_new.location_id = "1"

@@ -87,6 +87,13 @@ class ConsumablesController < ApplicationController
     AssetLabelLargeWorker.perform_async(tag.id)
     redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
+  
+  def item_tag_maker
+    quantity = params[:item_quantity]
+    consumable_id = params[:id]
+    ItemTagGenWorker.perform_async(consumable_id, quantity)
+    redirect_back fallback_location: '/', notice: "creating #{quantity} tags and printing!"
+  end
 
 
   def obsolete

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_021945) do
+ActiveRecord::Schema.define(version: 2020_10_23_053053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 2020_10_22_021945) do
     t.index ["part_id"], name: "index_fixed_assets_on_part_id"
   end
 
+  create_table "item_tags", force: :cascade do |t|
+    t.string "tag_number"
+    t.integer "container_quantity"
+    t.boolean "auto_removed"
+    t.bigint "consumable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consumable_id"], name: "index_item_tags_on_consumable_id"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.bigint "consumable_id"
     t.bigint "order_id"
@@ -140,6 +150,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_021945) do
   add_foreign_key "asset_tags", "locations"
   add_foreign_key "consumables", "parts"
   add_foreign_key "fixed_assets", "parts"
+  add_foreign_key "item_tags", "consumables"
   add_foreign_key "line_items", "consumables"
   add_foreign_key "line_items", "orders"
 end

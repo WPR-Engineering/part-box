@@ -1,0 +1,2 @@
+class QuickRemoveController < ApplicationController
+end
