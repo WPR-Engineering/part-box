@@ -1,6 +1,8 @@
 class AssetTagsController < ApplicationController
   before_action :set_asset_tag, only: [:show, :edit, :update, :destroy]
-
+  
+  #cancancan
+  load_and_authorize_resource
   # GET /asset_tags
   # GET /asset_tags.json
   def index

@@ -1,6 +1,8 @@
 class ItemTagsController < ApplicationController
   before_action :set_item_tag, only: [:show, :edit, :update, :destroy]
 
+  #cancancan
+  load_and_authorize_resource
   # GET /item_tags
   # GET /item_tags.json
   def index

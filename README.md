@@ -76,10 +76,21 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [ ] Add a page to list all of the asset tags for a specific part type
 - [ ] Make fixed asset disposal work *in progress*
   - [ ] hide destroy button on asset show pages
-  - [ ] add reason to dispose option (add disposal_reason to fixed_assets)
+  - [x] add reason to dispose option (add disposal_reason to fixed_assets)
   - [ ] make disposed assets view
 - [x] handle multiple printers (see printer options in /config/partbox-config.yml)
 - [ ] Make orders searchable 
+- [ ] Add user roles and permissions
+  - [x] enable cancancan on all controllers 
+  - [ ] add user control panel and make the first user an admin
+- [x] add quick remove
+  - [x] new printable tag for items to identify a single thing in the system
+  - [x] new page to scan those tags and remove them from the stock
+  - [x] simple button to reduce quantity by 1 on the consumable show page
+- [ ] add inventory audit system (taking inventory of consumables)
+  - [ ] page to scan all individual items that remain in a consumable and mark them as inventoried
+    - [ ] remove all non inventoried parts and adjust quantity accordingly
+  - [ ] system for dealing with incorrect quantities on non item tagged things 
 
 #Future Roadmap / Ideas
 - Create API so native apps can be built
