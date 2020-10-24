@@ -18,5 +18,21 @@ module PartBox
     config.active_record.belongs_to_required_by_default = false
     
     config.version = "1.1.1 - Alpha"
+    
+    
+    
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+    
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
+        end
+      end
+      
+      # Auto-load API and its subdirectories
+      config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+      config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end

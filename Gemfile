@@ -124,3 +124,9 @@ gem "bunny", ">= 2.13.0"
 
 #netbox api
 gem 'netbox-client-ruby'
+
+#building an API for the app
+gem 'grape'
+gem 'grape-swagger'
+gem 'rack-cors'
+gem 'grape-active_model_serializers'

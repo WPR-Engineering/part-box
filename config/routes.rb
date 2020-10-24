@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :consumables
   resources :line_items
   
+  mount API::Base, at: "/"
+
+  
 
   #printing routes
   get '/asset_tags/:id/print_tag' => 'asset_tags#print_tag', as: 'print_tag'
