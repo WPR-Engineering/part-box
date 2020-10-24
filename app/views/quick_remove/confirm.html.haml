@@ -1,9 +1,18 @@
 find me in quick_remove#confirm
 
-%h1 You are about remove some shit, confirm?
+%div.container.h-100.align-middle
+%div.row.h-100
+	%div.col-sm.align-self-center.text-center
+		%div.card.mx-auto{:style => "width: 40rem;"}
+			%h1.card-header Are You Sure?
+			%div.card-body
 
-= "tag is #{@item_tag.tag_number}"
-
-= "consumable is #{@item_tag.consumable.name}"
-
-= link_to "Confirm", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post
+				%h3= "You scanned Removal Tag" 
+				%h3 
+					%span.text-info #{@item_tag.tag_number}
+				%br
+				%h3= "This removeal tag is linked to"
+				%h3
+					%span.text-info #{@item_tag.consumable.name}
+				%br
+				= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-danger btn-block"

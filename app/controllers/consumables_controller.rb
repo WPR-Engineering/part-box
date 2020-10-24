@@ -94,6 +94,15 @@ class ConsumablesController < ApplicationController
     ItemTagGenWorker.perform_async(consumable_id, quantity)
     redirect_back fallback_location: '/', notice: "creating #{quantity} tags and printing!"
   end
+  
+  def remove_one
+    consumable = Consumable.find(params[:id])
+    quantity_update = consumable.quantity - 1
+    consumable.quantity = quantity_update
+    consumable.save
+    redirect_back fallback_location: '/', notice: "Removed Quantity 1"
+
+  end
 
 
   def obsolete

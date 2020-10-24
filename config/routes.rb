@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   #print routes from consumables view
   get 'consumables/:id/print_med' => 'consumables#print_tag_med', as: 'consumable_print_med'
   get 'consumables/:id/print_large' => 'consumables#print_tag_large', as: 'consumable_print_large'
+  
+  #consumable remove one
+  post 'consumables/:id/remove_one' => 'consumables#remove_one', as: 'remove_one_consumable'
 
 
   get 'fixed_asset/:id/disposal' => 'fixed_assets#disposal', as: 'disposed_fixed_asset'

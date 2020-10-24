@@ -1,10 +1,15 @@
+#this class is a background job that is kicked off when using the quick remove kiosk
 class QuickRemoveWorker
 	  include Sidekiq::Worker
 		
+		#call QuickRemoveWorker.perform_async(params) to kick this method off
+		#params are item_tag, 
 		def perform(item_tag, remove_quantity)
 			logger.info "Quick Remove action started!"
+			
+			#logs
 			remove_tag = ItemTag.find_by(id: item_tag)
-			logger.info remove_tag
+			logger.info remove_tag.tag_number
 			remove_consumeable = Consumable.find_by(id: remove_tag.consumable.id)
 			logger.info "#{remove_consumeable.name}"
 			

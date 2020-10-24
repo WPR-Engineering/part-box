@@ -28,9 +28,11 @@
                 %td Reorder At Quantity
                 %td= @consumable.reorderAmount
             
-            %p.card-body
+            %div.card-body.d-flex.justify-content-between
               = link_to 'Edit', edit_consumable_path(@consumable), :class => "btn btn-light"
+              = link_to "Remove One", remove_one_consumable_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-danger"
               = link_to 'Back', consumables_path, :class => "btn btn-light"
+
             
         %div.card      
           %div.card-header.text-center
@@ -80,5 +82,4 @@
                 = f.button :submit, :class => "btn btn-success"
                 
                 
-
 
