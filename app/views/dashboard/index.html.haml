@@ -1,3 +1,10 @@
+%p#notice
+- if notice.present?
+	%div.alert.alert-success
+		= notice
+-if alert.present?
+	%div.alert.alert-danger
+		= alert
 find me in dashboard#index.html.haml
 
 %p

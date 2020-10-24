@@ -2,6 +2,9 @@
   - if notice.present?
     %div.alert.alert-success
       = notice
+  -if alert.present?
+    %div.alert.alert-danger
+      = alert
     
 %div{:class => "container-fluid"}
   %div{:class => "row"}

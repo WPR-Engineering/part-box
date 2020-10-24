@@ -1,0 +1,50 @@
+%p#notice
+- if notice.present?
+  %div.alert.alert-success
+    = notice
+-if alert.present?
+  %div.alert.alert-danger
+    = alert
+  
+%div{:class => "container-fluid"}
+%div{:class => "row"}
+  %div{:class => "col-sm"}
+    %div{:class => "card-deck"}
+      %div{:class => "card"}
+        %div{:class => "card-header text-center"}
+          %h5 #{@fixed_asset.part.internal_part}
+        %span  
+          %table.table.table-hover
+            %tr
+              %td Description
+              %td= @fixed_asset.description
+            %tr
+              %td Manufacture Part Number
+              %td= @fixed_asset.part.mfg_part
+            %tr
+              %td Asset Tag Number
+              %td= link_to "#{@fixed_asset.asset_tag.tag}", asset_tag_path(@fixed_asset.asset_tag.id)
+            %tr
+              %td Installed Location
+              %td= @fixed_asset.InstalledLocation
+          
+          %div.card-body.d-flex.justify-content-between
+            = link_to 'Edit', edit_fixed_asset_path(@fixed_asset), :class => "btn btn-light"
+            = link_to 'Back', fixed_assets_path, :class => "btn btn-light"
+            = link_to 'dispose', disposed_fixed_asset_path(@fixed_asset), :class => "btn btn-danger"
+
+          
+      %div.card      
+        %div.card-header.text-center
+          %h5 Netbox
+        - if @nb_device.nil?
+          %h6.text-center.text-secondary this device is not in nebox
+        - else
+          %span
+            %table.table.table-hover
+              %tr
+                %td Netbox Device Name
+                %td= @nb_device.name
+            
+            
+

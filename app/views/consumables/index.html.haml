@@ -1,4 +1,10 @@
-%p#notice= notice
+%p#notice
+- if notice.present?
+  %div.alert.alert-success
+    = notice
+-if alert.present?
+  %div.alert.alert-danger
+    = alert
 %h1 Consumables 
 = link_to "  ", new_consumable_path, :class => 'btn btn-success fa fa-plus'
 %table.table.table-hover
@@ -26,8 +32,10 @@
           %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
           %td= consumable.part.internal_part
 
-          %td= link_to 'Show', consumable
-          %td= link_to 'Edit', edit_consumable_path(consumable)
+          %td= link_to '', consumable, :class => "btn btn-success fa fa-eye"
+          %td= link_to '', edit_consumable_path(consumable), :class => "btn btn-warning fa fa-edit"
+          -if can? :destroy, Consumable
+            %td= link_to '', consumable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
 
       - else
         %tr
@@ -39,8 +47,11 @@
           %td= consumable.bin
           %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
           %td= consumable.part.internal_part
-          %td= link_to 'Show', consumable
-          %td= link_to 'Edit', edit_consumable_path(consumable)
+          %td= link_to '', consumable, :class => "btn btn-success fa fa-eye"
+          %td= link_to '', edit_consumable_path(consumable), :class => "btn btn-warning fa fa-edit"
+          -if can? :destroy, Consumable
+            %td= link_to '', consumable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
+
 
 %br/
 = link_to 'New Consumable', new_consumable_path
