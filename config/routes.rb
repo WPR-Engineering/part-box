@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/db_admin', as: 'rails_admin'
   resources :item_tags
   resources :fixed_assets
 

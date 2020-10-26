@@ -1,5 +1,5 @@
 class Consumable < ApplicationRecord
-  has_many :line_item
+  belongs_to :line_item
   has_many :orders, through: :line_item
   accepts_nested_attributes_for :line_item
   

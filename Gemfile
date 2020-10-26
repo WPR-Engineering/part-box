@@ -130,3 +130,6 @@ gem 'grape'
 gem 'grape-swagger'
 gem 'rack-cors'
 gem 'grape-active_model_serializers'
+
+#super db admin page because im lazy like that
+gem 'rails_admin', '~> 2.0'
