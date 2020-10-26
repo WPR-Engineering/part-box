@@ -7,50 +7,51 @@
     = alert
 %h1 Consumables 
 = link_to "  ", new_consumable_path, :class => 'btn btn-success fa fa-plus'
-%table.table.table-hover
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Quantity
-      %th Reorderamount
-      %th Shelf
-      %th Bin
-      %th Asset Tag
-      %th Internal Part #
-      %th{:colspan => "3"}
-  %tbody
-    - @consumables.all.each do |consumable|
-      - if consumable.quantity <= consumable.reorderAmount
-        %tr.table-danger
-          %td= consumable.name
-          %td= consumable.description
-          %td= consumable.quantity
-          %td= consumable.reorderAmount
-          %td= consumable.shelf
-          %td= consumable.bin
-          %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
-          %td= consumable.part.internal_part
-
-          %td= link_to '', consumable, :class => "btn btn-success fa fa-eye"
-          %td= link_to '', edit_consumable_path(consumable), :class => "btn btn-warning fa fa-edit"
-          -if can? :destroy, Consumable
-            %td= link_to '', consumable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
-
-      - else
-        %tr
-          %td= consumable.name
-          %td= consumable.description
-          %td= consumable.quantity
-          %td= consumable.reorderAmount
-          %td= consumable.shelf
-          %td= consumable.bin
-          %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
-          %td= consumable.part.internal_part
-          %td= link_to '', consumable, :class => "btn btn-success fa fa-eye"
-          %td= link_to '', edit_consumable_path(consumable), :class => "btn btn-warning fa fa-edit"
-          -if can? :destroy, Consumable
-            %td= link_to '', consumable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
+%div.table-responsive
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Quantity
+        %th Reorderamount
+        %th Shelf
+        %th Bin
+        %th Asset Tag
+        %th Internal Part #
+        %th{:colspan => "3"}
+    %tbody
+      - @consumables.all.each do |consumable|
+        - if consumable.quantity <= consumable.reorderAmount
+          %tr.table-danger
+            %td= consumable.name
+            %td= consumable.description
+            %td= consumable.quantity
+            %td= consumable.reorderAmount
+            %td= consumable.shelf
+            %td= consumable.bin
+            %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
+            %td= consumable.part.internal_part
+  
+            %td= link_to '', consumable, :class => "btn btn-success fa fa-eye"
+            %td= link_to '', edit_consumable_path(consumable), :class => "btn btn-warning fa fa-edit"
+            -if can? :destroy, Consumable
+              %td= link_to '', consumable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
+  
+        - else
+          %tr
+            %td= consumable.name
+            %td= consumable.description
+            %td= consumable.quantity
+            %td= consumable.reorderAmount
+            %td= consumable.shelf
+            %td= consumable.bin
+            %td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)
+            %td= consumable.part.internal_part
+            %td= link_to '', consumable, :class => "btn btn-success fa fa-eye"
+            %td= link_to '', edit_consumable_path(consumable), :class => "btn btn-warning fa fa-edit"
+            -if can? :destroy, Consumable
+              %td= link_to '', consumable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
 
 
 %br/

@@ -1,24 +1,25 @@
 %p#notice= notice
 %h1 Asset Tags
-%table.table.table-hover
-  %thead
-    %tr
-      %th Tag
-      %th Asset
-      %th Location
-      %th{:colspan => "3"}
-  %tbody
-    - @asset_tags.each do |asset_tag|
+%div.table-responsive
+  %table.table.table-hover
+    %thead
       %tr
-        %td= asset_tag.tag
-        - if asset_tag.consumable.present?
-          %td= asset_tag.consumable.name
-        - else
-          %td
-            = asset_tag.fixed_asset.description
-        %td= asset_tag.location.name
-        %td= link_to 'Show', asset_tag
-        %td= link_to 'Edit', edit_asset_tag_path(asset_tag)
-        %td= link_to 'Destroy', asset_tag, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Tag
+        %th Asset
+        %th Location
+        %th{:colspan => "3"}
+    %tbody
+      - @asset_tags.each do |asset_tag|
+        %tr
+          %td= asset_tag.tag
+          - if asset_tag.consumable.present?
+            %td= asset_tag.consumable.name
+          - else
+            %td
+              = asset_tag.fixed_asset.description
+          %td= asset_tag.location.name
+          %td= link_to 'Show', asset_tag
+          %td= link_to 'Edit', edit_asset_tag_path(asset_tag)
+          %td= link_to 'Destroy', asset_tag, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Asset Tag', new_asset_tag_path
