@@ -4,8 +4,12 @@ class Ability
   def initialize(user)
     if user.admin?
       can :manage, :all
-     else
-        can :read, :all
+       else
+          can :read, Consumable
+          can :read, AssetTag
+          can :read, FixedAsset
+          can :read, Order
+          can :read, LineItem
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
@@ -24,6 +28,7 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
     end
   end
 end

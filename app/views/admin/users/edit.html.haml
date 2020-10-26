@@ -1,0 +1,6 @@
+= simple_form_for(@user, url: edit_admin_user_path) do |f|
+	.form-inputs
+		= f.input :email
+		= f.input :admin
+	.form-actions
+		= f.button :submit, "Update User", :class => "btn btn-primary"
