@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     Order.reindex
+    LineItem.reindex
     if current_user.admin?
       @orders = Order.all
     else
@@ -20,6 +21,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    
   end
 
   # GET /orders/new
