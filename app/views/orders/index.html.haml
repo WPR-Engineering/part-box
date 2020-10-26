@@ -1,0 +1,30 @@
+%p#notice= notice
+%h1 Orders
+%div.table-responsive
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Order Number
+        %th User
+        %th Status
+        %th{colspan: "3"}
+    %tbody
+      - @orders.each do |order|
+        - if order.finalized?
+          %tr.table-dark
+            %td= order.order_id
+            %td= order.user
+            %td= order.status
+            %td= link_to 'Show', order
+            %td
+            %td
+        - else
+          %tr
+            %td= order.order_id
+            %td= order.user
+            %td= order.status
+            %td= link_to 'Show', order
+            %td= link_to 'Edit', edit_order_path(order)
+            %td= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Order', new_order_path

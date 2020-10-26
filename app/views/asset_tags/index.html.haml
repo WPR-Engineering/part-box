@@ -20,6 +20,7 @@
           %td= asset_tag.location.name
           %td= link_to 'Show', asset_tag
           %td= link_to 'Edit', edit_asset_tag_path(asset_tag)
-          %td= link_to 'Destroy', asset_tag, method: :delete, data: { confirm: 'Are you sure?' }
+          - if can? :destroy, AssetTag
+            %td= link_to 'Destroy', asset_tag, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
 = link_to 'New Asset Tag', new_asset_tag_path
