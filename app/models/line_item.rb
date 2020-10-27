@@ -8,5 +8,6 @@ class LineItem < ApplicationRecord
   audited associated_with: :consumable
   audited associated_with: :order
   
+  has_paper_trail
   searchkick
 end

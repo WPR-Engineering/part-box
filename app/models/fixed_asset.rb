@@ -8,5 +8,6 @@ class FixedAsset < ApplicationRecord
   searchkick
 
   audited
+  has_paper_trail
   has_associated_audits
 end

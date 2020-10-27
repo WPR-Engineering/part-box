@@ -9,6 +9,7 @@ class Order < ApplicationRecord
 
   searchkick
   audited
+  has_paper_trail
   has_associated_audits
 
   def remove_stock

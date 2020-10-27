@@ -91,6 +91,10 @@ gem 'cancancan'
 
 #history/change tracking
 gem 'audited', '~> 4.7'
+#possibly migrating to papaer-trail
+gem 'paper_trail'
+gem 'paper_trail-association_tracking'
+gem 'rails_admin_history_rollback'
 
 #nested forms
 gem 'cocoon'
