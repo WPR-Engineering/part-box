@@ -36,9 +36,9 @@ gem 'jbuilder', '~> 2.5'
 
 group :development do
 # Use Capistrano for deployment
-  gem 'capistrano'
+  gem 'capistrano', '~> 3.11.0'
   gem 'capistrano-rails'
-  gem 'capistrano-sidekiq'
+  gem 'capistrano-sidekiq', '1.0.2'
   gem "capistrano-rvm"
   gem "capistrano-passenger"
   gem "capistrano-yarn"
