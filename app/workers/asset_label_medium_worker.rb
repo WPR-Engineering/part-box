@@ -12,7 +12,7 @@ class AssetLabelMediumWorker
     partdb_id = consume.part_id
     consume_name = consume.name
     part_info = Part.find(partdb_id)
-    mfg_parts = part_info.mfg_part
+    mfg_parts = part_info.internal_part
     tag_url = "#{CONFIG[:SYSTEM][:BASE_URL]}/#{tag_code}"
 
     logger.info "Working with the tag #{tag_code}"
