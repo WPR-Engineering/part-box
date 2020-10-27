@@ -1,6 +1,9 @@
 class Consumable < ApplicationRecord
-  has_many :line_items
-  has_many :orders, through: :line_items
+  belongs_to :line_item
+  has_many :orders, through: :line_item
+  accepts_nested_attributes_for :line_item
+  
+  has_many :item_tags
 
   has_one :asset_tag
   has_one :location, through: :asset_tag

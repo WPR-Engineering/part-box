@@ -1,0 +1,10 @@
+find me in consumables#incoming
+%p#notice
+	- if notice.present?
+		%div.alert.alert-success
+			= notice
+
+= form_with url: incoming_consumable_maker_path, local: true, method: :post do |f|
+	= f.number_field :item_quantity
+	= f.submit "Create Item Tags"
+

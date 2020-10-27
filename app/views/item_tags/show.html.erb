@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag number:</strong>
+  <%= @item_tag.tag_number %>
+</p>
+
+<p>
+  <strong>Container quantity:</strong>
+  <%= @item_tag.container_quantity %>
+</p>
+
+<p>
+  <strong>Auto removed:</strong>
+  <%= @item_tag.auto_removed %>
+</p>
+
+<p>
+  <strong>Consumable:</strong>
+  <%= @item_tag.consumable %>
+</p>
+
+<%= link_to 'Edit', edit_item_tag_path(@item_tag) %> |
+<%= link_to 'Back', item_tags_path %>

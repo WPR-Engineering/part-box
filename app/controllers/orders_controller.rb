@@ -2,10 +2,15 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!
+  
+  #cancancan
+  load_and_authorize_resource
+  
   # GET /orders
   # GET /orders.json
   def index
     Order.reindex
+    LineItem.reindex
     if current_user.admin?
       @orders = Order.all
     else
@@ -16,6 +21,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    
   end
 
   # GET /orders/new

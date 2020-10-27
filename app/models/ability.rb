@@ -1,12 +1,28 @@
 class Ability
   include CanCan::Ability
 
+#TODO Find out if this is correct?
   def initialize(user)
+    if user.present?
     if user.admin?
       can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
+      can :access, :rails_admin 
+      can :read, :dashboard
+    else if user.manager?
+        can :manage, Consumable
+        can :manage, AssetTag
+        can :manage, Order
+        can :manage, FixedAsset
+        can :manage, LineItem
+        can :manage, ItemTag
+        can :manage, Location
+        can :manage, Part
+       else
+          can :read, Consumable
+          can :read, AssetTag
+          can :read, FixedAsset
+          can :read, Order
+          can :read, LineItem
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
@@ -25,6 +41,8 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+end
     end
   end
+end
 end

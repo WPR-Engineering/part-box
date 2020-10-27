@@ -1,6 +1,7 @@
 class FixedAssetsController < ApplicationController
   before_action :set_fixed_asset, only: [:show, :edit, :update, :destroy]
-
+  #cancancan
+  load_and_authorize_resource
   # GET /fixed_assets
   # GET /fixed_assets.json
   def index
@@ -12,7 +13,7 @@ class FixedAssetsController < ApplicationController
   # GET /fixed_assets/1.json
   def show
 
-    if @fixed_asset.serial_number?
+    if @fixed_asset.serial_number? && CONFIG[:NETBOX][:ENABLED]
       fa_serial = @fixed_asset.serial_number
       @nb_device = NetboxClientRuby.dcim.devices.find_by(serial: fa_serial)
       logger.debug "data from netbox: #{@nb_device}"
@@ -45,10 +46,10 @@ class FixedAssetsController < ApplicationController
         sleep 5
         new_asset_id = AssetTag.last.id
         puts new_asset_id
-        format.html { redirect_to asset_tags_url, notice: 'Fixed asset was successfully created. To print a tag select the asset.' }
+        format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
         format.json { render :show, status: :created, location: @fixed_asset }
       else
-        format.html { render :new }
+        format.html { render :new, alert: "there was an error" }
         format.json { render json: @fixed_asset.errors, status: :unprocessable_entity }
       end
     end

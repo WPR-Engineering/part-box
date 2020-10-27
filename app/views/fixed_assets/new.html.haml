@@ -1,0 +1,17 @@
+%p#notice
+- if notice.present?
+  %div.alert.alert-success
+    = notice
+-if alert.present?
+  %div.alert.alert-danger
+    = alert
+    
+
+%h1 New Fixed Asset
+%div.row
+  %div.card.text-center.mx-auto{style: "width: 45em;"}
+    %div.card-header
+      New Asset
+    %div.card.text-center.mx-auto.border-0{style: "width: 30em;"}
+      = render 'form', fixed_asset: @fixed_asset
+      = link_to 'Back', fixed_assets_path

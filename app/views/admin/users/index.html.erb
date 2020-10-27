@@ -1,0 +1,28 @@
+<h1> find me in Views/admin/user_admins#index.html.erb </h1>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Email Address</th>
+			<th>Sign In Count</th>
+			<th>Last Sign In Time</th>
+			<th>Last IP</th>
+
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.email %></td>
+				<td><%= user.sign_in_count %></td>
+				<td><%= user.last_sign_in_at %></td>
+				<td><%= user.last_sign_in_ip %></td>
+
+				<td><%= link_to 'Edit',  edit_admin_user_path(user) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

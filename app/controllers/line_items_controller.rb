@@ -1,11 +1,15 @@
 class LineItemsController < ApplicationController
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token, :only => :create
+  
+  #cancancan
+  load_and_authorize_resource
 
   # GET /line_items
   # GET /line_items.json
   def index
     @line_items = LineItem.all
+    LineItem.reindex
   end
 
   # GET /line_items/1
@@ -34,6 +38,7 @@ class LineItemsController < ApplicationController
 
 
     puts @line_item.inspect
+    LineItem.reindex
     puts "******************************************************"
 
     respond_to do |format|

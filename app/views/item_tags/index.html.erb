@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Item Tags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tag number</th>
+      <th>Container quantity</th>
+      <th>Auto removed</th>
+      <th>Consumable</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_tags.each do |item_tag| %>
+      <tr>
+        <td><%= item_tag.tag_number %></td>
+        <td><%= item_tag.container_quantity %></td>
+        <td><%= item_tag.auto_removed %></td>
+        <td><%= item_tag.consumable %></td>
+        <td><%= link_to 'Show', item_tag %></td>
+        <td><%= link_to 'Edit', edit_item_tag_path(item_tag) %></td>
+        <td><%= link_to 'Destroy', item_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item Tag', new_item_tag_path %>

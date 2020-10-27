@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_021945) do
+ActiveRecord::Schema.define(version: 2020_10_26_235731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 2020_10_22_021945) do
     t.index ["part_id"], name: "index_fixed_assets_on_part_id"
   end
 
+  create_table "item_tags", force: :cascade do |t|
+    t.string "tag_number"
+    t.integer "container_quantity"
+    t.boolean "auto_removed"
+    t.bigint "consumable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consumable_id"], name: "index_item_tags_on_consumable_id"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.bigint "consumable_id"
     t.bigint "order_id"
@@ -131,8 +141,36 @@ ActiveRecord::Schema.define(version: 2020_10_22_021945) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.boolean "admin"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.boolean "manager"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "version_associations", force: :cascade do |t|
+    t.integer "version_id"
+    t.string "foreign_key_name", null: false
+    t.integer "foreign_key_id"
+    t.string "foreign_type"
+    t.index ["foreign_key_name", "foreign_key_id", "foreign_type"], name: "index_version_associations_on_foreign_key"
+    t.index ["version_id"], name: "index_version_associations_on_version_id"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.text "object_changes"
+    t.integer "transaction_id"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+    t.index ["transaction_id"], name: "index_versions_on_transaction_id"
   end
 
   add_foreign_key "asset_tags", "consumables"
@@ -140,6 +178,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_021945) do
   add_foreign_key "asset_tags", "locations"
   add_foreign_key "consumables", "parts"
   add_foreign_key "fixed_assets", "parts"
+  add_foreign_key "item_tags", "consumables"
   add_foreign_key "line_items", "consumables"
   add_foreign_key "line_items", "orders"
 end

@@ -33,6 +33,11 @@
           .dropdown-divider
           = link_to 'Obsolete Consumables', obsolete_consumables_path, :class => 'dropdown-item'
           = link_to 'Desposed Assets', disposed_assets_path, :class => 'dropdown-item'
+          .dropdown-divider
+          = link_to 'Quick Remove Kiosk', quick_remove_path, :class => 'dropdown-item'
+          .dropdown-divider
+          - if can? :access, :rails_admin
+            = link_to 'Database Admin Panel', rails_admin_path, :class => 'dropdown-item'
       %li.nav-item
         %a.nav-link.disabled{:href => "#"} Disabled
     %form.form-inline.my-2.my-lg-0

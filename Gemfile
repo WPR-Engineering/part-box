@@ -91,6 +91,10 @@ gem 'cancancan'
 
 #history/change tracking
 gem 'audited', '~> 4.7'
+#possibly migrating to papaer-trail
+gem 'paper_trail'
+gem 'paper_trail-association_tracking'
+gem 'rails_admin_history_rollback'
 
 #nested forms
 gem 'cocoon'
@@ -103,7 +107,7 @@ gem 'simple_form'
 gem 'bootstrap', '~> 4.3.1'
 
 #sidekiq for job processing
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.2'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'sidekiq-status'
@@ -124,3 +128,12 @@ gem "bunny", ">= 2.13.0"
 
 #netbox api
 gem 'netbox-client-ruby'
+
+#building an API for the app
+gem 'grape'
+gem 'grape-swagger'
+gem 'rack-cors'
+gem 'grape-active_model_serializers'
+
+#super db admin page because im lazy like that
+gem 'rails_admin', '~> 2.0'

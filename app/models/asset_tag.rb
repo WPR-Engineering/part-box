@@ -7,4 +7,5 @@ class AssetTag < ApplicationRecord
 
   audited associated_with: :fixed_asset
   audited associated_with: :consumable
+  has_paper_trail
 end

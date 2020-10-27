@@ -2,6 +2,9 @@
   - if notice.present?
     %div.alert.alert-success
       = notice
+  -if alert.present?
+    %div.alert.alert-danger
+      = alert
     
 %div{:class => "container-fluid"}
   %div{:class => "row"}
@@ -28,9 +31,11 @@
                 %td Reorder At Quantity
                 %td= @consumable.reorderAmount
             
-            %p.card-body
+            %div.card-body.d-flex.justify-content-between
               = link_to 'Edit', edit_consumable_path(@consumable), :class => "btn btn-light"
+              = link_to "Remove One", remove_one_consumable_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-danger"
               = link_to 'Back', consumables_path, :class => "btn btn-light"
+
             
         %div.card      
           %div.card-header.text-center
@@ -43,10 +48,15 @@
               %tr
                 %td Bin #
                 %td= @consumable.bin
-  
-            %p.text-center
-              = link_to 'Print Medium Bin Tag', consumable_print_med_path, :class => "btn btn-outline-dark"
-              = link_to 'Print Large Bin Tag', consumable_print_large_path, :class => "btn btn-outline-dark"
+            %div.card-body
+              %p.text-center.form-group
+                = link_to 'Print Medium Bin Tag', consumable_print_med_path, :class => "btn btn-outline-dark"
+                = link_to 'Print Large Bin Tag', consumable_print_large_path, :class => "btn btn-outline-dark"
+              %h6.text-center Item Tags
+              %div.text-center
+                = form_with url: incoming_consumable_maker_path, local: true, method: :post do |f|
+                  = f.number_field :item_quantity, :class => "form-control"
+                  = f.submit "Create Item Tags", :class => "btn btn-outline-primary"
 
   %div.row.top-buffer
     %div.col
@@ -73,3 +83,6 @@
               = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
               .form-actions
                 = f.button :submit, :class => "btn btn-success"
+                
+                
+

@@ -1,6 +1,8 @@
 class AssetTagsController < ApplicationController
   before_action :set_asset_tag, only: [:show, :edit, :update, :destroy]
-
+  
+  #cancancan
+  load_and_authorize_resource
   # GET /asset_tags
   # GET /asset_tags.json
   def index
@@ -94,6 +96,13 @@ class AssetTagsController < ApplicationController
     @asset_tag = AssetTag.find_by(tag: params[:tag])
     puts @asset_tag
     logger.debug "you are looking up the asset with the tag #{@asset_tag}"
+    if @asset_tag.consumable_id.present?
+      logger.info "this is a consumable"
+      redirect_to "/consumables/#{@asset_tag.consumable_id}"
+    else @asset_tag.fixed_asset_id.present?
+      logger.info "this is a fixed asset"
+      redirect_to "/fixed_assets/#{@asset_tag.fixed_asset_id}"
+    end
   end
 
   private

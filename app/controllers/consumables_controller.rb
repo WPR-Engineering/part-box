@@ -1,6 +1,9 @@
 class ConsumablesController < ApplicationController
   before_action :set_consumable, only: [:show, :edit, :update, :destroy]
-
+  
+  #cancancan
+  load_and_authorize_resource
+  
   # GET /consumables
   # GET /consumables.json
   def index
@@ -86,6 +89,22 @@ class ConsumablesController < ApplicationController
    
     AssetLabelLargeWorker.perform_async(tag.id)
     redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
+  end
+  
+  def item_tag_maker
+    quantity = params[:item_quantity]
+    consumable_id = params[:id]
+    ItemTagGenWorker.perform_async(consumable_id, quantity)
+    redirect_back fallback_location: '/', notice: "creating #{quantity} tags and printing!"
+  end
+  
+  def remove_one
+    consumable = Consumable.find(params[:id])
+    quantity_update = consumable.quantity - 1
+    consumable.quantity = quantity_update
+    consumable.save
+    redirect_back fallback_location: '/', notice: "Removed Quantity 1"
+
   end
 
 

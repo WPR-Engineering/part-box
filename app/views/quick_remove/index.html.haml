@@ -1,0 +1,15 @@
+%p#notice
+	- if notice.present?
+		%div.alert.alert-success
+			= notice
+	
+%div.container.h-100.align-middle
+	%div.row.h-100
+		%div.col-sm.align-self-center
+			%div.card.mx-auto{:style => "width: 40rem;"}
+				%h1.card-header.text-center Quick Item Remove
+				%div.card-body
+					= form_with url: quick_remove_lookup_path, local: true, method: :post do |f|
+						= f.text_field :remove_tag, :autofocus=> "autofocus", :placeholder => "Please Scan Tag", :class => "form-control form-control-lg"
+						%br
+						= f.submit "Lookup", :class => "btn btn-outline-primary btn-lg btn-block"

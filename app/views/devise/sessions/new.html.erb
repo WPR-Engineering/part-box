@@ -1,10 +1,20 @@
-<div class="card mx-auto text-center" style="width: 45rem;">
+
+<% if alert.present? %>
+<div class= "alert alert-danger">
+<%= alert %>
+</div>
+<% end %>
+<div class="container">
+<div class="row">
+<div class="col-8 mx-auto">
+<div class="card mx-auto text-center"">
   <div class="card-header">
     Log In
     </div>
-    <div class="card mx-auto border-0" style="width: 30rem;">
+    <div class="card-body mx-5">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
+    <%= f.error_notification %>
     <%= f.input :email,
                 required: false,
                 autofocus: true,
@@ -22,4 +32,7 @@
 </div>
 <%= render "devise/shared/links" %>
 
+</div>
+</div>
+</div>
 </div>
