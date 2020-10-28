@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_235731) do
+ActiveRecord::Schema.define(version: 2020_10_28_031433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2020_10_26_235731) do
     t.string "part_number"
     t.string "mfg_part_number"
     t.bigint "part_id"
+    t.string "sub_unit"
+    t.integer "sub_unit_quantity"
     t.index ["part_id"], name: "index_consumables_on_part_id"
   end
 

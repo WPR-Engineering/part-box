@@ -30,6 +30,13 @@
               %tr 
                 %td Reorder At Quantity
                 %td= @consumable.reorderAmount
+              -if @consumable.sub_unit?
+                %tr
+                  %td Sub Unit
+                  %td= @consumable.sub_unit
+                %tr
+                  %td Sub Unit Quantity
+                  %td= @consumable.sub_unit_quantity
             
             %div.card-body.d-flex.justify-content-between
               = link_to 'Edit', edit_consumable_path(@consumable), :class => "btn btn-light"
