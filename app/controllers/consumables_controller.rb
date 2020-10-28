@@ -120,7 +120,7 @@ class ConsumablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumable_params
-      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id,
+      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :sub_unit, :sub_unit_quantity, :part_id,
         asset_tag_attributes: [:location_id, :tag],
         location_attributes: [:name], part_attributes: [:internal_part],
         line_item_attributes: [:order_id, :quantity, :consumable_id])

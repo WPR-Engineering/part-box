@@ -1,18 +1,22 @@
-find me in quick_remove#confirm
-
 %div.container.h-100.align-middle
 %div.row.h-100
 	%div.col-sm.align-self-center.text-center
 		%div.card.mx-auto{:style => "width: 40rem;"}
-			%h1.card-header Are You Sure?
+			%h3.card-header Are You Sure?
 			%div.card-body
 
-				%h3= "You scanned Removal Tag" 
-				%h3 
+				%h4= "You scanned Removal Tag" 
+				%h6
 					%span.text-info #{@item_tag.tag_number}
-				%br
-				%h3= "This removeal tag is linked to"
-				%h3
+				%h6
 					%span.text-info #{@item_tag.consumable.name}
-				%br
-				= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-danger btn-block"
+				-if @item_tag.auto_removed?
+					%h4.text-danger This tag has already been removed, are you REALLY sure?
+					= link_to "Yes, IM REALLY SURE", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-danger btn-block"
+				-else
+					-if  @item_tag.consumable.sub_unit?
+						%h5 This Item has a sub unit!
+						= link_to "Remove 1 Sub Unit from stock (quantity #{@sub_quantity})", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => @sub_quantity),method: :post, :class => "btn btn-lg btn-outline-danger btn-block"
+						%br
+					-else 
+						= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-outline-danger btn-block"
