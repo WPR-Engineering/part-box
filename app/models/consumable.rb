@@ -1,5 +1,5 @@
 class Consumable < ApplicationRecord
-  belongs_to :line_item
+  has_many :line_item
   has_many :orders, through: :line_item
   accepts_nested_attributes_for :line_item
   
@@ -11,6 +11,7 @@ class Consumable < ApplicationRecord
 
   belongs_to :part
 
+  has_paper_trail
   searchkick
   audited
   has_associated_audits
