@@ -1,0 +1,21 @@
+find me in quick_remove#tag_view.html.haml
+
+%div.container.h-100.align-middle
+%div.row.h-100
+	%div.col-sm.align-self-center.text-center
+		%div.card.mx-auto{:style => "width: 40rem;"}
+			%h3.card-header Are You Sure?
+			%div.card-body
+
+				%h4= "You scanned The Tag" 
+				%h6
+					%span.text-info #{@item_tag}
+				%h6
+					%span.text-info #{@asset_lookup.consumable.name}
+					-if  @asset_lookup.consumable.sub_unit?
+						%h5 This Item has a sub unit!
+						= link_to "Remove 1 Sub Unit from stock (quantity #{@sub_quantity})", quick_tag_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => @asset_lookup.consumable.sub_unit_quantity),method: :post, :class => "btn btn-lg btn-outline-danger btn-block"
+						%br
+						= link_to "Remove Quantity 1", quick_tag_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => 1),method: :post, :class => "btn btn-lg btn-outline-danger btn-block"
+					-else 
+						= link_to "Yes, I want to remove this from stock", quick_tag_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-outline-danger btn-block"

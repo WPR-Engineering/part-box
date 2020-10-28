@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   get '/quick_remove', to: 'quick_remove#index'
   post '/quick_remove', to: 'quick_remove#remove_lookup', as: 'quick_remove_lookup'
   post '/quick_remove/confirm', to: 'quick_remove#remove_confirm', as: 'quick_remove_confirm'
+  post '/quick_remove/tag_confirm', to: 'quick_remove#tag_remove_confirm', as: 'quick_tag_remove_confirm'
   
   #for qr code lookup allows you to type example.com/TAG_NUMBER
   get ':tag', to: 'asset_tags#taglookup'

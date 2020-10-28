@@ -18,5 +18,6 @@
 						%h5 This Item has a sub unit!
 						= link_to "Remove 1 Sub Unit from stock (quantity #{@sub_quantity})", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => @sub_quantity),method: :post, :class => "btn btn-lg btn-outline-danger btn-block"
 						%br
+						= link_to "Remove Quantity 1", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-outline-danger btn-block"
 					-else 
 						= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-outline-danger btn-block"

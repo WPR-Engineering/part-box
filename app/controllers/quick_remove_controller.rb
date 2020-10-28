@@ -6,7 +6,7 @@ class QuickRemoveController < ApplicationController
 	def remove_lookup
 		logger.info "quick remove lookup started"
 		
-		if params[:remove_tag].length > 8
+		if params[:remove_tag].length > CONFIG[:SYSTEM][:BASE_URL].length
 			logger.info "shit its longggggg"
 			
 			scan_length = params[:remove_tag].length
@@ -15,6 +15,13 @@ class QuickRemoveController < ApplicationController
 			logger.info final_length
 			final_string = params[:remove_tag].split(//).last(final_length).join
 			logger.info final_string
+			
+			@asset_lookup = AssetTag.find_by(tag: final_string)
+			@item_tag = @asset_lookup.tag
+			logger.info @asset_lookup.consumable_id
+			
+			
+			render :tag_view
 
 			
 		else
@@ -26,13 +33,20 @@ class QuickRemoveController < ApplicationController
 	end
 	
 	def remove_confirm
-		logger.info "quick remove confirmed"
+		logger.info "quick remove confirmation"
 		@item_tag = params[:remove_tag].to_i
 		@remove_quantity = params[:remove_quantity].to_i
-		logger.info "DOES THIS WORK??????????????????? #{@item_tag}"
-		QuickRemoveWorker.perform_async(@item_tag, @remove_quantity)
+		QuickRemoveWorker.perform_async(@item_tag, @remove_quantity, true)
 		redirect_back fallback_location: '/', notice: "Done!"
 	end
 	
+	def tag_remove_confirm
+		logger.info "quick tag scan remove"
+		@item_tag = params[:remove_tag]
+		@remove_quantity = params[:remove_quantity].to_i
+		QuickRemoveWorker.perform_async(@item_tag, @remove_quantity, false)
+		redirect_back fallback_location: '/', notice: "Done!"
+	end
+
 	
 end
