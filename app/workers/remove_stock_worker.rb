@@ -2,6 +2,7 @@ class RemoveStockWorker
   include Sidekiq::Worker
 
   def perform(order_num)
+    PaperTrail.request.whodunnit = 'Order Closing'
     logger.info "Things are happening."
     #order = Order.find(order_num)
     order = Order.find(order_num)

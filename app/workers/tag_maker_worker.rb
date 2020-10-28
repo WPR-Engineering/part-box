@@ -3,6 +3,7 @@ class TagMakerWorker
   include Sidekiq::Status::Worker
 
   def perform(type, new_asset_id)
+    PaperTrail.request.whodunnit = 'Tag Maker'
     total = 100
     at 80
     if type == "fixed"

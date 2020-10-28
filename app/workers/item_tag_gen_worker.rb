@@ -2,6 +2,7 @@ class ItemTagGenWorker
   include Sidekiq::Worker
   
   def perform(consumable_id, quantity)
+    PaperTrail.request.whodunnit = 'Item tag generator'
     logger.info "generating #{quantity} new item tags"
     real_quantity = quantity.to_i
     i = 0
