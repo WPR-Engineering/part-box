@@ -1,8 +1,14 @@
 class LineItem < ApplicationRecord
 
   belongs_to :consumable
-  belongs_to :order, inverse_of: :line_item
+  belongs_to :order
+  
+  
+  
   accepts_nested_attributes_for :consumable
+  
+  
+  
   validates :quantity, presence: true
 
   audited associated_with: :consumable

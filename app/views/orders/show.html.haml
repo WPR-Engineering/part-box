@@ -20,7 +20,7 @@
                 %th Consumable Descrption
                 %th Quantity
             %tbody
-              - @order.line_item.each do |info|
+              - @order.line_items.each do |info|
                 %tr
                   %td= info.consumable.asset_tag.tag
                   %td= info.consumable.name

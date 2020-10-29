@@ -12,9 +12,9 @@
 
   %h3 Line Items
   #tasks
-    = f.simple_fields_for :line_item do |line_item|
+    = f.simple_fields_for :line_items do |line_item|
       = render 'line_item_fields', f: line_item
     .links
-      = link_to_add_association 'Add Consumable', f, :line_item
+      = link_to_add_association 'Add Consumable', f, :line_items
   %br
   = f.submit nil

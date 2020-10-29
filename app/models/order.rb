@@ -1,9 +1,19 @@
 class Order < ApplicationRecord
-  has_many :line_item, inverse_of: :order
-  has_many :consumables, through: :line_item
+  has_many :line_items
+  has_many :consumables, through: :line_items
 
-  accepts_nested_attributes_for :line_item, allow_destroy: true
+
+
+
+
+
+  accepts_nested_attributes_for :line_items, allow_destroy: true
   accepts_nested_attributes_for :consumables
+  
+  
+  
+  
+  
 
   after_save :remove_stock, if: :finalized?
 
