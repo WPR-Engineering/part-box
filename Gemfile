@@ -107,7 +107,7 @@ gem 'simple_form'
 gem 'bootstrap', '~> 4.3.1'
 
 #sidekiq for job processing
-gem 'sidekiq', '~> 5.2'
+gem 'sidekiq', '~> 6.4'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'sidekiq-status'
