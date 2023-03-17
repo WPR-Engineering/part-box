@@ -9,7 +9,7 @@ class QuickRemoveController < ApplicationController
 			tag_uri = params[:remove_tag]
 			logger.info "stripping URL"
 			#TODO Pull the URL of the site from the config file rather than hard coding it
-			asset_tag_number = tag_uri.gsub("https://partbox.wpreng.net/", '')
+			asset_tag_number = tag_uri.gsub("#{CONFIG[:SYSTEM][:BASE_URL]}, '')
 			@asset_tag = AssetTag.find_by(tag: asset_tag_number)
 			logger.info @asset_tag.tag
 			render :confirm
