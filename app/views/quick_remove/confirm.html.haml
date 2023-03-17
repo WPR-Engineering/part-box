@@ -6,31 +6,26 @@ find me in quick_remove#confirm
 		%div.card.mx-auto{:style => "width: 40rem;"}
 			%h1.card-header Are You Sure?
 			%div.card-body
-<<<<<<< Updated upstream
 
-				%h3= "You scanned Removal Tag" 
-				%h3 
-=======
-			- if @item_tag.nil?
-				%h3= "You Scanned"
-				%h3
-					%span.text-info #{@asset_tag.consumable.name}
-				%h3 This will remove 1 unit from stock
-				= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @asset_tag, :remove_quantity => "1", :remove_source => "asset"), method: :post, :class => "btn btn-lg btn-danger btn-block"
+				- if @item_tag.nil?
+					%h3 You Scanned a Consumable Tag.
+				- else
+					%h3= "You scanned Removal Tag"
+					%h3
+						%span.text-info #{@item_tag.tag_number}
+						%br
+							%h3= "This removeal tag is linked to"
+						%h3
+						%span.text-info #{@item_tag.consumable.name}
+				%br
+				= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-danger btn-block"
 
-
-			- else
-				%h3= "You scanned Removal Tag"
-				%h3
->>>>>>> Stashed changes
 					%span.text-info #{@item_tag.tag_number}
 				%br
 				%h3= "This removeal tag is linked to"
 				%h3
 					%span.text-info #{@item_tag.consumable.name}
 				%br
-<<<<<<< Updated upstream
-				= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-lg btn-danger btn-block"
-=======
+
 				= link_to "Yes, I want to remove this from stock", quick_remove_confirm_path(:remove_tag => @item_tag, :remove_quantity => "1", :remove_source => "item"), method: :post, :class => "btn btn-lg btn-danger btn-block"
->>>>>>> Stashed changes
+

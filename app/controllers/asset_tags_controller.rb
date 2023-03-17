@@ -1,6 +1,6 @@
 class AssetTagsController < ApplicationController
   before_action :set_asset_tag, only: [:show, :edit, :update, :destroy]
-  
+
   #cancancan
   load_and_authorize_resource
   # GET /asset_tags
@@ -37,7 +37,7 @@ class AssetTagsController < ApplicationController
       @asset_tag = AssetTag.new(asset_tag_params)
       puts @asset_tag.inspect
 
-      if @asset_tag.save
+      if @asset_tag.save(validate: false)
         format.html { redirect_to @asset_tag, notice: 'Asset tag was successfully created.' }
         format.json { render :show, status: :created, location: @asset_tag }
         AssetTag.reindex
