@@ -43,6 +43,7 @@ group :development do
   gem "capistrano-passenger"
   gem "capistrano-yarn"
   gem 'development_ribbon'
+  gem 'rainbow'
 
 end
 
