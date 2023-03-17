@@ -17,3 +17,5 @@ NETBOX:
   ENABLED: false
   BASE_URL: http://netbox.example.com/api
   API_KEY:
+SYSTEM:
+  BASE_URL https://partbox.example.com
