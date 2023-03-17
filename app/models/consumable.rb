@@ -1,8 +1,8 @@
 class Consumable < ApplicationRecord
-  belongs_to :line_item
+  belongs_to :line_item, optional: true
   has_many :orders, through: :line_item
   accepts_nested_attributes_for :line_item
-  
+
   has_many :item_tags
 
   has_one :asset_tag
@@ -14,7 +14,7 @@ class Consumable < ApplicationRecord
   searchkick
   audited
   has_associated_audits
-  
+
   validates :name, presence: true
   validates :part, presence: true
   validates :quantity, presence: true

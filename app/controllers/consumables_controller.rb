@@ -59,6 +59,8 @@ class ConsumablesController < ApplicationController
         format.json { render :show, status: :ok, location: @consumable }
       else
         format.html { render :edit }
+        logger.error "There was an error updating the consumable"
+        logger.error json: @consumable.errors
         format.json { render json: @consumable.errors, status: :unprocessable_entity }
       end
     end
@@ -120,7 +122,7 @@ class ConsumablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumable_params
-      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id,
+      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id, :category,
         asset_tag_attributes: [:location_id, :tag],
         location_attributes: [:name], part_attributes: [:internal_part],
         line_item_attributes: [:order_id, :quantity, :consumable_id])
