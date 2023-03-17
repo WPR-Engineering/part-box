@@ -5,8 +5,6 @@ class QuickRemoveController < ApplicationController
 
 	def remove_lookup
 		logger.info "quick remove lookup started"
-
-
 		if params[:remove_tag].include?("http")
 			tag_uri = params[:remove_tag]
 			logger.info "stripping URL"
@@ -16,12 +14,9 @@ class QuickRemoveController < ApplicationController
 			logger.info @asset_tag.tag
 			render :confirm
 		else
-
 		@item_tag = ItemTag.find_by(tag_number: params[:remove_tag])
-		logger.info "this is the else"
 		logger.info @item_tag
 		render :confirm
-	end
 	end
 
 	def remove_confirm
@@ -30,15 +25,16 @@ class QuickRemoveController < ApplicationController
 		@remove_quantity = params[:remove_quantity].to_i
 		logger.info "#{@item_tag}"
 		if params[:remove_source] == "item"
-			logger.info "checking if this tag has been removed"
-			checker = ItemTag.find_by(id: @item_tag)
-			if checker.auto_removed == true
-				logger.error "Tag has already been removed"
-				redirect_back fallback_location: '/', alert: "This tag has already been removed from stock!"
-			end
-		else
+					logger.info "checking if this tag has been removed"
+					checker = ItemTag.find_by(id: @item_tag)
+					if checker.auto_removed == true
+						logger.error "Tag has already been removed"
+						redirect_back fallback_location: '/', alert: "This tag has already been removed from stock!"
+					end
+				else
 		QuickRemoveWorker.perform_async(@item_tag, @remove_quantity, params[:remove_source])
 		redirect_back fallback_location: '/', notice: "Done!"
 	end
 	end
+end
 end
