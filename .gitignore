@@ -37,4 +37,6 @@ config/initializers/partbox-config\.yml
 
 config/partbox-config\.yml
 
+Application.log
+
 .nova/
