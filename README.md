@@ -39,6 +39,10 @@ We also can track non-consumable assets, things like servers and hard drives. Th
   - *coming soon!* Medium: 2.25x1.25”
 - in /config/partbox-config.yml specify the CPUS print queue name for each label size. Even if you use the same queue for multiple label sizes you must specify it for each size
 
+# Supported Printers
+
+Currently the software is confirmed to print with the Zebra GK420D and the Zebra ZD411, however any printer that supports direct ZPL printing should work.
+
 # TODO For V 1.0.0-Beta and on
 
 - [x] Reduce quantity on order finalization
@@ -64,11 +68,11 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - [x] add support for zebra labels
 - [x] associate users with orders
   - [x] handle closed orders
-- [x] add "picking functionality" 
+- [x] add "picking functionality"
 - [ ] implement change history on consumables via audited (audited already enabled on models) *up next*
   - [ ] display history on each consumable for how many were removed, when, and who removed them
   - [ ] create history page that shows the history for every action in the application
-  - [ ] show moves on fixed assets 
+  - [ ] show moves on fixed assets
 - [x] Netbox API to get device names
   - [ ] Display all netbox data properly
 - [x] Fix "order" field showing up on asset_tags#show for fixed assets.
@@ -78,14 +82,22 @@ We also can track non-consumable assets, things like servers and hard drives. Th
   - [x] add reason to dispose option (add disposal_reason to fixed_assets)
   - [ ] make disposed assets view
 - [x] handle multiple printers (see printer options in /config/partbox-config.yml)
-- [x] Make orders searchable 
+- [x] Make orders searchable
 - [ ] Add user roles and permissions
-  - [x] enable cancancan on all controllers 
+  - [x] enable cancancan on all controllers
   - [ ] add user control panel and make the first user an admin
 - [x] add quick remove
   - [x] new printable tag for items to identify a single thing in the system
   - [x] new page to scan those tags and remove them from the stock
   - [x] simple button to reduce quantity by 1 on the consumable show page
+  - [x] allow scanning of consumable bin tags in quick remove
+- [ ] add ability to handle overstock in a different location
+- [ ] add the ability to specify a "unit quantity" for items that come in multiples
+  - [ ] add a feature for quick remove to support removal of a full "unit quantity"
+- [ ] improve sorting based on part types
+  - [ ] add category to consumables
+  - [ ] add view to show all parts in a specific category
+- [ ] better sorting on consumables list
 
 
 # Future Roadmap / Ideas
