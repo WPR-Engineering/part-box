@@ -1,9 +1,9 @@
 class ConsumablesController < ApplicationController
   before_action :set_consumable, only: [:show, :edit, :update, :destroy]
-  
+
   #cancancan
   load_and_authorize_resource
-  
+
   # GET /consumables
   # GET /consumables.json
   def index
@@ -36,7 +36,7 @@ class ConsumablesController < ApplicationController
     @consumable = Consumable.new(consumable_params)
 
     respond_to do |format|
-      if @consumable.save
+      if @consumable.save(validate: false)
         TagMakerWorker.perform_async("consumable", @consumable.id)
         Consumable.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
@@ -73,31 +73,31 @@ class ConsumablesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  
+
+
   def print_tag_med
     @asset_tag = AssetTag.all
     tag = @asset_tag.find_by(consumable_id: params[:id])
-   
+
     AssetLabelMediumWorker.perform_async(tag.id)
     redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
-  
+
   def print_tag_large
     @asset_tag = AssetTag.all
     tag = @asset_tag.find_by(consumable_id: params[:id])
-   
+
     AssetLabelLargeWorker.perform_async(tag.id)
     redirect_back fallback_location: '/', notice: "Asset tag sent to print server"
   end
-  
+
   def item_tag_maker
     quantity = params[:item_quantity]
     consumable_id = params[:id]
     ItemTagGenWorker.perform_async(consumable_id, quantity)
     redirect_back fallback_location: '/', notice: "creating #{quantity} tags and printing!"
   end
-  
+
   def remove_one
     consumable = Consumable.find(params[:id])
     quantity_update = consumable.quantity - 1
