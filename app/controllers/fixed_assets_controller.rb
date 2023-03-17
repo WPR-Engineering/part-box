@@ -46,7 +46,7 @@ class FixedAssetsController < ApplicationController
         sleep 5
         new_asset_id = AssetTag.last.id
         puts new_asset_id
-        format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
+        format.html { redirect_to @fixed_asset, notice: 'Asset was successfully created!' }
         format.json { render :show, status: :created, location: @fixed_asset }
       else
         format.html { render :new, alert: "there was an error" }

@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 7.0.4'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 #use pgsql as the database
 gem 'pg'
 # Use Puma as the app server
-#gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.11'
 # Use passenger as the app servers
 gem 'passenger'
 # Use SCSS for stylesheets
@@ -42,6 +42,7 @@ group :development do
   gem "capistrano-rvm"
   gem "capistrano-passenger"
   gem "capistrano-yarn"
+
 end
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -90,7 +91,7 @@ gem 'devise_ldap_authenticatable'
 gem 'cancancan'
 
 #history/change tracking
-gem 'audited', '~> 4.7'
+gem 'audited', '~> 5.3'
 #possibly migrating to papaer-trail
 gem 'paper_trail'
 gem 'paper_trail-association_tracking'
@@ -107,7 +108,7 @@ gem 'simple_form'
 gem 'bootstrap', '~> 4.3.1'
 
 #sidekiq for job processing
-gem 'sidekiq', '~> 5.2'
+gem 'sidekiq', "< 7.0.0"
 gem 'sinatra', require: false
 gem 'slim'
 gem 'sidekiq-status'
@@ -122,6 +123,7 @@ gem 'prawn-qrcode'
 
 #use searchkick for best search!
 gem 'searchkick'
+gem "elasticsearch", "< 8.0.0"
 
 #bunny
 gem "bunny", ">= 2.13.0"
@@ -136,4 +138,4 @@ gem 'rack-cors'
 gem 'grape-active_model_serializers'
 
 #super db admin page because im lazy like that
-gem 'rails_admin', '~> 2.0'
+gem 'rails_admin', '~> 3.1'

@@ -1,16 +1,14 @@
 class TagMakerWorker
   include Sidekiq::Worker
-  include Sidekiq::Status::Worker
 
   def perform(type, new_asset_id)
-    total = 100
-    at 80
+
     if type == "fixed"
 
       #set everything up
 
       logger.info "Fixed asset tag"
-      at 81
+
       logger.info "The ID of the newly created asset is #{new_asset_id}"
 
 
@@ -24,7 +22,7 @@ class TagMakerWorker
         asset_tag_new.location_id = "1"
         asset_tag_new.fixed_asset_id = new_asset_id
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
-        asset_tag_new.save
+        asset_tag_new.save(validate: false)
         AssetTag.reindex
 
       else
@@ -42,10 +40,10 @@ class TagMakerWorker
         asset_tag_new.location_id = "1"
         asset_tag_new.fixed_asset_id = new_asset_id
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
-        asset_tag_new.save
-        at 85
+        asset_tag_new.save(validate: false)
+
         AssetTag.reindex
-        at 100
+
       end
 
     else
@@ -61,10 +59,10 @@ class TagMakerWorker
         asset_tag_new.consumable_id = new_asset_id
         asset_tag_new.location_id = "1"
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
-        asset_tag_new.save
-        at 85
+        asset_tag_new.save(validate: false)
+
         AssetTag.reindex
-        at 100
+
 
       else
       #select the last tag that was created for a consumable
@@ -83,10 +81,10 @@ class TagMakerWorker
         asset_tag_new.consumable_id = new_asset_id
         asset_tag_new.location_id = "1"
         logger.info "the new values going into the database are #{asset_tag_new.inspect}"
-        asset_tag_new.save
-        at 85
+        asset_tag_new.save(validate: false)
+
         AssetTag.reindex
-        at 100
+
       end
 
     end
