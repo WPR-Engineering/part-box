@@ -111,7 +111,7 @@ class ConsumablesController < ApplicationController
 
 
   def obsolete
-    #TODO Add lookup for obsolete parts
+      @consumables = Consumable.where(obsolete: "TRUE")
   end
 
   private
