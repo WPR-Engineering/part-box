@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_161435) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_205454) do
   create_table "asset_tags", force: :cascade do |t|
     t.string "tag"
     t.integer "consumable_id"
@@ -59,6 +59,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_161435) do
     t.string "mfg_part_number"
     t.integer "part_id"
     t.string "category"
+    t.boolean "overstock"
+    t.integer "overstock_quantity"
+    t.string "overstock_location"
+    t.text "overstock_notes"
     t.index ["part_id"], name: "index_consumables_on_part_id"
   end
 

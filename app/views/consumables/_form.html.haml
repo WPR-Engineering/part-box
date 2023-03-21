@@ -10,6 +10,12 @@
     = f.input :shelf
     = f.input :bin
     = f.input :obsolete
+    %h3 Overstock
+    #tasks
+      = f.input :overstock
+      = f.input :overstock_quantity
+      = f.input :overstock_location
+      = f.input :overstock_notes
 
   .form-actions
     = f.button :button, "Save Asset".html_safe, data: {disable_with: "<i class='fa fa-bed fa-spin'></i> Creating Asset..."}, :class => "btn btn-primary"
