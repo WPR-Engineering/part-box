@@ -48,6 +48,15 @@
               %tr
                 %td Netbox Device Name
                 %td= @nb_device.name
+              %tr
+                %td site
+                %td= @nb_device.site.name
+              %tr
+                %td Rack Number / Rack U
+                %td #{@nb_device.rack.name} / #{@nb_device.position}
+              %tr
+                %td Primary IP 
+                %td= @nb_device.primary_ip
 
 
 

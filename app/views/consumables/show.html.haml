@@ -104,7 +104,10 @@
             %tr
               %td= audit.action
               %td= audit.created_at
-              %td= @user.find(audit.user_id).email
+              -if audit.user_id == nil
+                %td Automated Removal
+              - else
+                %td= @user.find(audit.user_id).email
               %td
                 - audit.audited_changes.each do |k, v|
                   %b= k.titleize
