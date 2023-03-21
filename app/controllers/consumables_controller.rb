@@ -18,6 +18,7 @@ class ConsumablesController < ApplicationController
     @line_item = LineItem.new
     @order_select = Order.where.not(finalized: true)
     logger.info @order_select
+    @user = User.all
   end
 
   # GET /consumables/new
@@ -53,6 +54,7 @@ class ConsumablesController < ApplicationController
   # PATCH/PUT /consumables/1
   # PATCH/PUT /consumables/1.json
   def update
+    current_user
     respond_to do |format|
       if @consumable.update(consumable_params)
         format.html { redirect_to @consumable, notice: 'Consumable was successfully updated.' }

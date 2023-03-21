@@ -5,8 +5,10 @@
 -if alert.present?
   %div.alert.alert-danger
     = alert
-    
-    
+
+
+
+
 %div{:class => "container-fluid"}
 %div{:class => "row"}
   %div{:class => "col-sm"}
@@ -14,7 +16,7 @@
       %div{:class => "card"}
         %div{:class => "card-header text-center"}
           %h5 #{@fixed_asset.part.internal_part}
-        %span  
+        %span
           %table.table.table-hover
             %tr
               %td Description
@@ -28,14 +30,14 @@
             %tr
               %td Installed Location
               %td= @fixed_asset.InstalledLocation
-          
+
           %div.card-body.d-flex.justify-content-between
             = link_to 'Edit', edit_fixed_asset_path(@fixed_asset), :class => "btn btn-light"
             = link_to 'Back', fixed_assets_path, :class => "btn btn-light"
             = link_to 'dispose', disposed_fixed_asset_path(@fixed_asset), :class => "btn btn-danger"
 
-          
-      %div.card      
+
+      %div.card
         %div.card-header.text-center
           %h5 Netbox
         - if @nb_device.nil?
@@ -46,6 +48,35 @@
               %tr
                 %td Netbox Device Name
                 %td= @nb_device.name
-            
-            
 
+
+
+    %div.row.top-buffer
+      %div.col
+        %div.card
+          %div.card-header.text-center
+            %h5 Change Log
+          %div.card-body
+          %table.table.table-hover
+            %thead
+              %tr
+              %th Type
+              %th When
+              %th Who
+              %th What Changed
+            - @fixed_asset.audits.order(created_at: :desc).each do |audit|
+              %tr
+                %td= audit.action
+                %td= audit.created_at
+                %td= audit.user_id
+                %td
+                  - audit.audited_changes.each do |k, v|
+                    %b= k.titleize
+                    - if v.class == Array # if updated
+                      from
+                      %b= "'#{v[0]}'"
+                      to
+                      %b= "'#{v[1]}'"
+                      %br
+                    - else # if created
+                      = v
