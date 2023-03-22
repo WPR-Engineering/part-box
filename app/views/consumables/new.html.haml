@@ -1,0 +1,8 @@
+%h1 New Consumable
+.row
+  .card.text-center.mx-auto{style: "width: 45em;"}
+    .card-header
+      New Consumable
+    .card.text-center.mx-auto.border-0{style: "width: 30em;"}
+      = render 'form', consumable: @consumable
+    = link_to 'Back', consumables_path

@@ -36,7 +36,7 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 - labels are a fixed size
   - Small: 1.25x1”
   - Large: 2.25x4”
-  - *coming soon!* Medium: 2.25x1.25”
+  - Medium: 2.25x1.25”
 - in /config/partbox-config.yml specify the CPUS print queue name for each label size. Even if you use the same queue for multiple label sizes you must specify it for each size
 
 # Supported Printers
@@ -91,7 +91,7 @@ Currently the software is confirmed to print with the Zebra GK420D and the Zebra
   - [x] new page to scan those tags and remove them from the stock
   - [x] simple button to reduce quantity by 1 on the consumable show page
   - [x] allow scanning of consumable bin tags in quick remove
-- [ ] add ability to handle overstock in a different location
+- [x] add ability to handle overstock in a different location
 - [ ] add the ability to specify a "unit quantity" for items that come in multiples
   - [ ] add a feature for quick remove to support removal of a full "unit quantity"
 - [ ] improve sorting based on part types

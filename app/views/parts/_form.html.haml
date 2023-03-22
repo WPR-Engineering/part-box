@@ -1,0 +1,11 @@
+= simple_form_for(@part) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  .form-inputs
+    = f.input :internal_part, label: 'Internal Part Number', hint: 'displays on line 2 of bin labels, no more than 16 characters', input_html: { maxlength: 16}
+    = f.input :mfg_part
+    = f.input :name
+    = f.input :description
+    = f.input :manufacturer
+  .form-actions
+    = f.button :submit
