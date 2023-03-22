@@ -10,8 +10,11 @@
     = f.input :shelf
     = f.input :bin
     = f.input :obsolete
-    %h3 Overstock
-    #tasks
+    %p
+      %a.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-toggle" => "collapse", href: "#collapseExample", role: "button"}
+        Overstock
+    #collapseExample.collapse
+      .card.card-body
       = f.input :overstock
       = f.input :overstock_quantity
       = f.input :overstock_location
