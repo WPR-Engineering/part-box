@@ -6,7 +6,7 @@
         - @order.errors.full_messages.each do |msg|
           %li= msg
   = f.error_notification
-  = f.input :status, collection: ['Open', 'Planned Project', 'Pending Finalization']
+  = f.input :status, collection: ['Open', 'Planned Project', 'Pending Finalization'], selected: 'Open'
   = f.input :finalized
   = f.hidden_field :order_id, :value => "#{@random_number}"
 
