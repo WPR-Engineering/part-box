@@ -2,14 +2,14 @@ class RemoveStockWorker
   include Sidekiq::Worker
 
   def perform(order_num)
-    logger.info "Things are happening."
+    logger.debug "Checking order status."
     #order = Order.find(order_num)
     order = Order.find(order_num)
     if order.finalized?
       LineItem.where(order_id: "#{order_num}").find_each do |lines|
         remove_amount = lines.quantity
         remove_from_id = lines.consumable_id
-        logger.info "Here we go, passing this into the update: removing #{remove_amount} from consumable with ID "
+        logger.debug "Order marked for finalization, passing this into the update: removing #{remove_amount} from consumable with ID "
         consume = Consumable.find("#{remove_from_id}")
         puts consume
         current_quantitiy = consume.quantity
@@ -25,12 +25,12 @@ class RemoveStockWorker
         consume.quantity = new_quantity
         consume.save
 
-        logger.info "Lets set the order status"
+        logger.debug "Setting the order status"
         order.status = "Finalized"
         order.save
       end
       else
-        logger.info "Nothing to do, order not done yet."
+        logger.debug "Nothing to do, order not done yet."
 
     end
   end

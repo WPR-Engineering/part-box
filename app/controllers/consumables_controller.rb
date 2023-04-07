@@ -8,7 +8,6 @@ class ConsumablesController < ApplicationController
   # GET /consumables.json
   def index
     @consumables = Consumable.where.not(obsolete: "TRUE")
-    Consumable.reindex
   end
 
   # GET /consumables/1
@@ -35,6 +34,7 @@ class ConsumablesController < ApplicationController
   # POST /consumables.json
   def create
     @consumable = Consumable.new(consumable_params)
+    @locations = Location.all
 
     respond_to do |format|
       if @consumable.save(validate: false)
@@ -49,6 +49,7 @@ class ConsumablesController < ApplicationController
         format.json { render json: @consumable.errors, status: :unprocessable_entity }
       end
     end
+    Consumable.reindex
   end
 
   # PATCH/PUT /consumables/1
@@ -66,6 +67,7 @@ class ConsumablesController < ApplicationController
         format.json { render json: @consumable.errors, status: :unprocessable_entity }
       end
     end
+    Consumable.reindex
   end
 
   # DELETE /consumables/1
