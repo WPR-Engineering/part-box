@@ -7,7 +7,12 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+set :stage, :staging
+set :rails_env, :production
+set :branch, "master"
 
+
+server "partbox-staging.msn.wpreng.net", user: "pb-deploy", password: ENV["DEPLOY_PASSWORD"], roles: %w{app db web}
 
 # role-based syntax
 # ==================

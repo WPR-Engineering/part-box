@@ -41,7 +41,7 @@ class ConsumablesController < ApplicationController
         TagMakerWorker.perform_async("consumable", @consumable.id)
         Consumable.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
-        sleep 3
+        sleep 2
         format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
         format.json { render :show, status: :created, location: @consumable }
       else
@@ -126,7 +126,7 @@ class ConsumablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumable_params
-      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id, :category, :overstock, :overstock_quantity, :overstock_location, :overstock_notes,
+      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id, :category, :overstock, :overstock_quantity, :overstock_location, :overstock_notes, :site,
         asset_tag_attributes: [:location_id, :tag],
         location_attributes: [:name], part_attributes: [:internal_part],
         line_item_attributes: [:order_id, :quantity, :consumable_id])

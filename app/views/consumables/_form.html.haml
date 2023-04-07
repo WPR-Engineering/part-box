@@ -2,11 +2,12 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
-    = f.input :name
-    = f.association :part, :label_method => :internal_part
+    = f.input :name, placeholder: 'Used for body of label' 
+    = f.association :part, :label_method => :internal_part, :input_html => { class: 'js-searchable'}
     = f.input :category
     = f.input :quantity
     = f.input :reorderAmount
+    = f.collection_select :site, Location.all, :name, :name
     = f.input :shelf
     = f.input :bin
     = f.input :obsolete
@@ -21,4 +22,4 @@
       = f.input :overstock_notes
 
   .form-actions
-    = f.button :button, "Save Asset".html_safe, data: {disable_with: "<i class='fa fa-bed fa-spin'></i> Creating Asset..."}, :class => "btn btn-primary"
+    = f.button :button, "Save Asset".html_safe, data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Creating Asset..."}, :class => "btn btn-primary"

@@ -461,6 +461,7 @@ GEM
     searchkick (5.2.1)
       activemodel (>= 5.2)
       hashie
+    select2-rails (4.0.13)
     selenium-webdriver (4.8.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -596,6 +597,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   searchkick
+  select2-rails
   selenium-webdriver
   sidekiq (< 7.0.0)
   sidekiq-status

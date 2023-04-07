@@ -21,3 +21,15 @@
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require cocoon
+//= require select2
+
+$(document).ready(function(){
+  // Turn on js-selectable class so that it becomes SELCT 2 tag
+  $('.js-searchable').select2({
+    allowClear: false,
+    width: 'resolve',
+    theme: "bootstrap",
+    placeholder: "Used for top line of label"
+    // If you are using Bootstrap, please add　`theme: "bootstrap"` too.
+  });
+});

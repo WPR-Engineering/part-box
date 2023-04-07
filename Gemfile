@@ -108,6 +108,7 @@ gem 'simple_form'
 
 #use bootstrap cuz im lazy on this project
 gem 'bootstrap', '~> 4.3.1'
+gem 'select2-rails'
 
 #sidekiq for job processing
 gem 'sidekiq', "< 7.0.0"

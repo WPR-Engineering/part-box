@@ -18,4 +18,5 @@ class Consumable < ApplicationRecord
   validates :name, presence: true
   validates :part, presence: true
   validates :quantity, presence: true
+  validates :reorderAmount, presence: true
 end
