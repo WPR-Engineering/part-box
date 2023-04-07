@@ -40,3 +40,5 @@ config/partbox-config\.yml
 /Application.log
 
 .nova/
+
+/old_cap
