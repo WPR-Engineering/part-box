@@ -142,3 +142,4 @@ gem 'grape-active_model_serializers'
 
 #super db admin page because im lazy like that
 gem 'rails_admin', '~> 3.1'
+gem 'rainbow'
