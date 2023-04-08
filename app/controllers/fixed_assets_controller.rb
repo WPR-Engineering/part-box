@@ -6,7 +6,7 @@ class FixedAssetsController < ApplicationController
   # GET /fixed_assets.json
   def index
     @fixed_assets = FixedAsset.all
-    FixedAsset.reindex
+
   end
 
   # GET /fixed_assets/1
@@ -61,6 +61,7 @@ class FixedAssetsController < ApplicationController
 
     respond_to do |format|
       if @fixed_asset.update(fixed_asset_params)
+        FixedAsset.reindex
         format.html { redirect_to @fixed_asset, notice: 'Fixed asset was successfully updated.' }
         format.json { render :show, status: :ok, location: @fixed_asset }
       else

@@ -43,7 +43,7 @@ group :development do
   gem "capistrano-passenger"
   gem "capistrano-yarn"
   gem 'development_ribbon'
-  
+
 
 end
 
@@ -143,3 +143,6 @@ gem 'grape-active_model_serializers'
 #super db admin page because im lazy like that
 gem 'rails_admin', '~> 3.1'
 gem 'rainbow'
+
+gem 'momentjs-rails'
+gem 'rails_bootstrap_sortable'

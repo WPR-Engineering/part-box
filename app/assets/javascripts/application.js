@@ -22,8 +22,10 @@
 //= require bootstrap
 //= require cocoon
 //= require select2
+//= require moment
+//= require bootstrap-sortable
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   // Turn on js-selectable class so that it becomes SELCT 2 tag
   $('.js-searchable').select2({
     allowClear: false,

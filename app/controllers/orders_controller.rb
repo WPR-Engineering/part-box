@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     Order.reindex
-    LineItem.reindex
+
     if current_user.admin?
       @orders = Order.all
     else
@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @consumable = Consumable.all
     @consume_select = Consumable.where(obsolete: false)
+    LineItem.reindex
   end
 
   # GET /orders/1/edit
