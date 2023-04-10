@@ -1,3 +1,5 @@
+= stylesheet_link_tag "development_ribbon" if Rails.env.development?
+
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
   %a.navbar-brand{:href => "#"} PartBox
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
@@ -38,8 +40,6 @@
           .dropdown-divider
           - if can? :access, :rails_admin
             = link_to 'Database Admin Panel', rails_admin_path, :class => 'dropdown-item'
-      %li.nav-item
-        %a.nav-link.disabled{:href => "#"} Disabled
     %form.form-inline.my-2.my-lg-0
     = form_tag(search_query_path, method: "post", class: "form-inline") do
       %span#search_field

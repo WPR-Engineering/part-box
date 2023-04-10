@@ -8,7 +8,6 @@ class ConsumablesController < ApplicationController
   # GET /consumables.json
   def index
     @consumables = Consumable.where.not(obsolete: "TRUE")
-    Consumable.reindex
   end
 
   # GET /consumables/1
@@ -18,6 +17,7 @@ class ConsumablesController < ApplicationController
     @line_item = LineItem.new
     @order_select = Order.where.not(finalized: true)
     logger.info @order_select
+    @user = User.all
   end
 
   # GET /consumables/new
@@ -34,13 +34,14 @@ class ConsumablesController < ApplicationController
   # POST /consumables.json
   def create
     @consumable = Consumable.new(consumable_params)
+    @locations = Location.all
 
     respond_to do |format|
       if @consumable.save(validate: false)
         TagMakerWorker.perform_async("consumable", @consumable.id)
         Consumable.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
-        sleep 3
+        sleep 2
         format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
         format.json { render :show, status: :created, location: @consumable }
       else
@@ -48,20 +49,25 @@ class ConsumablesController < ApplicationController
         format.json { render json: @consumable.errors, status: :unprocessable_entity }
       end
     end
+    Consumable.reindex
   end
 
   # PATCH/PUT /consumables/1
   # PATCH/PUT /consumables/1.json
   def update
+    current_user
     respond_to do |format|
       if @consumable.update(consumable_params)
         format.html { redirect_to @consumable, notice: 'Consumable was successfully updated.' }
         format.json { render :show, status: :ok, location: @consumable }
       else
         format.html { render :edit }
+        logger.error "There was an error updating the consumable"
+        logger.error json: @consumable.errors
         format.json { render json: @consumable.errors, status: :unprocessable_entity }
       end
     end
+    Consumable.reindex
   end
 
   # DELETE /consumables/1
@@ -109,7 +115,7 @@ class ConsumablesController < ApplicationController
 
 
   def obsolete
-    #TODO Add lookup for obsolete parts
+      @consumables = Consumable.where(obsolete: "TRUE")
   end
 
   private
@@ -120,7 +126,7 @@ class ConsumablesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumable_params
-      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id,
+      params.require(:consumable).permit(:tag, :name, :description, :quantity, :reorderAmount, :location, :shelf, :bin, :obsolete, :part_id, :category, :overstock, :overstock_quantity, :overstock_location, :overstock_notes, :site,
         asset_tag_attributes: [:location_id, :tag],
         location_attributes: [:name], part_attributes: [:internal_part],
         line_item_attributes: [:order_id, :quantity, :consumable_id])

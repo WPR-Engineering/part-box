@@ -36,12 +36,14 @@ gem 'jbuilder', '~> 2.5'
 
 group :development do
 # Use Capistrano for deployment
-  gem 'capistrano', '~> 3.11.0'
+  gem 'capistrano', '~> 3.17.0'
   gem 'capistrano-rails'
-  gem 'capistrano-sidekiq', '1.0.2'
+  gem 'capistrano-sidekiq'
   gem "capistrano-rvm"
   gem "capistrano-passenger"
   gem "capistrano-yarn"
+  gem 'development_ribbon'
+
 
 end
 
@@ -106,6 +108,7 @@ gem 'simple_form'
 
 #use bootstrap cuz im lazy on this project
 gem 'bootstrap', '~> 4.3.1'
+gem 'select2-rails'
 
 #sidekiq for job processing
 gem 'sidekiq', "< 7.0.0"
@@ -139,3 +142,7 @@ gem 'grape-active_model_serializers'
 
 #super db admin page because im lazy like that
 gem 'rails_admin', '~> 3.1'
+gem 'rainbow'
+
+gem 'momentjs-rails'
+gem 'rails_bootstrap_sortable'

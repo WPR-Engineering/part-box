@@ -7,6 +7,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+
 set :stage, :production
 set :rails_env, :production
 set :branch, "master"
@@ -47,7 +48,7 @@ server ENV["DEPLOY_SERVER"], user: ENV["DEPLOY_USER"], password: ENV["DEPLOY_PAS
 # Global options
 # --------------
 #  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
+#    keys: %w(/home/user_name/.ssh/id_rsa),
 #    forward_agent: false,
 #    auth_methods: %w(password)
 #  }

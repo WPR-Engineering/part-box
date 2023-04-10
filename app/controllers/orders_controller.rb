@@ -2,15 +2,15 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!
-  
+
   #cancancan
   load_and_authorize_resource
-  
+
   # GET /orders
   # GET /orders.json
   def index
     Order.reindex
-    LineItem.reindex
+
     if current_user.admin?
       @orders = Order.all
     else
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    
+
   end
 
   # GET /orders/new
@@ -29,7 +29,8 @@ class OrdersController < ApplicationController
     @random_number = "#{Date.today.yday()}#{SecureRandom.random_number(100000)}"
     @order = Order.new
     @consumable = Consumable.all
-
+    @consume_select = Consumable.where(obsolete: false)
+    LineItem.reindex
   end
 
   # GET /orders/1/edit

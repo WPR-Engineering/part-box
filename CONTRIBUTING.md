@@ -26,5 +26,5 @@ Changes that are cosmetic in nature and do not add anything substantial to the s
 
 PatBox Team
 
-This Contributing Gude is adapted from the Rails Contributing guide,
+This contributing guide is adapted from the Rails Contributing guide,
 available at https://github.com/rails/rails/blob/master/CONTRIBUTING.md

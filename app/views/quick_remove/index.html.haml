@@ -2,7 +2,14 @@
 	- if notice.present?
 		%div.alert.alert-success
 			= notice
-	
+
+
+%p#notice
+	- if alert.present?
+		%div.alert.alert-danger
+			= alert
+
+
 %div.container.h-100.align-middle
 	%div.row.h-100
 		%div.col-sm.align-self-center

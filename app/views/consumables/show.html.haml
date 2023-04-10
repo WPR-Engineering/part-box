@@ -5,7 +5,7 @@
   -if alert.present?
     %div.alert.alert-danger
       = alert
-    
+
 %div{:class => "container-fluid"}
   %div{:class => "row"}
     %div{:class => "col-sm"}
@@ -13,11 +13,14 @@
         %div{:class => "card"}
           %div{:class => "card-header text-center"}
             %h5 #{@consumable.name}
-          %span  
+          %span
             %table.table.table-hover
               %tr
                 %td Description
                 %td= @consumable.description
+              %tr
+                %td category
+                %td= @consumable.category
               %tr
                 %td Internal Part Number
                 %td= @consumable.part.internal_part
@@ -27,17 +30,17 @@
               %tr
                 %td Quantity On Hand
                 %td= @consumable.quantity
-              %tr 
+              %tr
                 %td Reorder At Quantity
                 %td= @consumable.reorderAmount
-            
+
             %div.card-body.d-flex.justify-content-between
               = link_to 'Edit', edit_consumable_path(@consumable), :class => "btn btn-light"
               = link_to "Remove One", remove_one_consumable_path(:remove_tag => @item_tag, :remove_quantity => "1"), method: :post, :class => "btn btn-danger"
               = link_to 'Back', consumables_path, :class => "btn btn-light"
 
-            
-        %div.card      
+
+        %div.card
           %div.card-header.text-center
             %h5 Location
           %span
@@ -64,7 +67,7 @@
         %div.card-header.text-center
           %h5 Add To Order / BOM
         %div.card-body
-        
+
           - current_cons = @consumable.id
           - if @consumable.obsolete? or @order_select.blank?
             - if @consumable.obsolete?
@@ -83,6 +86,36 @@
               = f.input :consumable_id, input_html: {value: current_cons}, as: :hidden
               .form-actions
                 = f.button :submit, :class => "btn btn-success"
-                
-                
 
+  %div.row.top-buffer
+    %div.col
+      %div.card
+        %div.card-header.text-center
+          %h5 Change Log (10 most recent changes)
+        %div.card-body
+        %table.table.table-hover
+          %thead
+            %tr
+            %th Type
+            %th When
+            %th Who
+            %th What Changed
+          - @consumable.audits.order(id: :desc).last(10).each do |audit|
+            %tr
+              %td= audit.action
+              %td= audit.created_at
+              -if audit.user_id == nil
+                %td Automated Removal
+              - else
+                %td= @user.find(audit.user_id).email
+              %td
+                - audit.audited_changes.each do |k, v|
+                  %b= k.titleize
+                  - if v.class == Array # if updated
+                    from
+                    %b= "'#{v[0]}'"
+                    to
+                    %b= "'#{v[1]}'"
+                    %br
+                  - else # if created
+                    = v

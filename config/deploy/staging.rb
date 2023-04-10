@@ -7,7 +7,12 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+set :stage, :staging
+set :rails_env, :production
+set :branch, "staging"
 
+
+server ENV["STAGE_SERVER"], user: ENV["STAGE_DEPLOY_USER"], password: ENV["DEPLOY_PASSWORD"], roles: %w{app db web}
 
 # role-based syntax
 # ==================
@@ -21,7 +26,12 @@
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
+set :stage, :staging
+set :rails_env, :production
+set :branch, "staging"
 
+
+server ENV["STAGE_SERVER"], user: ENV["STAGE_DEPLOY_USER"], password: ENV["DEPLOY_PASSWORD"], roles: %w{app db web}
 
 # Configuration
 # =============
