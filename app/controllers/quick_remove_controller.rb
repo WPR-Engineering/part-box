@@ -11,10 +11,11 @@ class QuickRemoveController < ApplicationController
 			#TODO Pull the URL of the site from the config file rather than hard coding it
 			asset_tag_number = tag_uri.gsub("#{CONFIG[:SYSTEM][:BASE_URL]}", '')
 			@asset_tag = AssetTag.find_by(tag: asset_tag_number)
-			logger.info @asset_tag.tag
+			logger.debug @asset_tag.tag
 			render :confirm
 		else
 		@item_tag = ItemTag.find_by(tag_number: params[:remove_tag])
+		logger.info "Test"
 		logger.info @item_tag
 		render :confirm
 	end
@@ -23,18 +24,21 @@ class QuickRemoveController < ApplicationController
 		logger.info "quick remove confirmed"
 		@item_tag = params[:remove_tag].to_i
 		@remove_quantity = params[:remove_quantity].to_i
-		logger.info "#{@item_tag}"
+		logger.info "Tag ID is #{@item_tag}"
 		if params[:remove_source] == "item"
 					logger.info "checking if this tag has been removed"
 					checker = ItemTag.find_by(id: @item_tag)
 					if checker.auto_removed == true
 						logger.error "Tag has already been removed"
 						redirect_back fallback_location: '/', alert: "This tag has already been removed from stock!"
+					else
+						logger.debug "Item has not yet been removed. Removing now."
+						logger.debug @item_tag
+						logger.debug @remove_quantity
+						QuickRemoveWorker.perform_async(@item_tag, @remove_quantity, params[:remove_source])
+						redirect_back fallback_location: '/', notice: "Done!"
 					end
-				else
-		QuickRemoveWorker.perform_async(@item_tag, @remove_quantity, params[:remove_source])
-		redirect_back fallback_location: '/', notice: "Done!"
-	end
-	end
-end
+				end
+			end
+		end
 end
