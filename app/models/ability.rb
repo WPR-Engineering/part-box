@@ -6,17 +6,23 @@ class Ability
     if user.present?
     if user.admin?
       can :manage, :all
-      can :access, :rails_admin 
+      can :access, :rails_admin
       can :read, :dashboard
     else if user.manager?
         can :manage, Consumable
+        cannot :destroy, Consumable
         can :manage, AssetTag
+        cannot :destroy, AssetTag
         can :manage, Order
+        cannot :destroy, Order
         can :manage, FixedAsset
+        cannot :destroy, FixedAsset
         can :manage, LineItem
         can :manage, ItemTag
         can :manage, Location
+        cannot :destroy, Location
         can :manage, Part
+        cannot :destroy, Part
        else
           can :read, Consumable
           can :read, AssetTag
