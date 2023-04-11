@@ -1,8 +1,9 @@
 class TagMakerWorker
   include Sidekiq::Worker
+  Sidekiq.default_worker_options['retry'] = 2
+  include Sidekiq::Status::Worker # enables job status tracking
 
   def perform(type, new_asset_id)
-
     if type == "fixed"
 
       #set everything up

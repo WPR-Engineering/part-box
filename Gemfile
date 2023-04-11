@@ -6,7 +6,7 @@ ruby '3.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 #use pgsql as the database
 gem 'pg'
 # Use Puma as the app server
@@ -35,14 +35,18 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 
 group :development do
-# Use Capistrano for deployment
+  # use sqlite in dev
+  gem 'sqlite3'
+  # Use Capistrano for deployment
   gem 'capistrano', '~> 3.17.0'
   gem 'capistrano-rails'
   gem 'capistrano-sidekiq'
   gem "capistrano-rvm"
   gem "capistrano-passenger"
   gem "capistrano-yarn"
-  gem 'development_ribbon'
+  gem 'rack-mini-profiler'
+  gem 'memory_profiler'
+  gem 'stackprof'
 
 
 end

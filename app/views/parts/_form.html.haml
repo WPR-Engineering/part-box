@@ -3,9 +3,10 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
     = f.input :internal_part, label: 'Internal Part Number', hint: 'displays on line 2 of bin labels, no more than 16 characters', input_html: { maxlength: 16}
-    = f.input :mfg_part
+    = f.input :mfg_part, label: 'manufacturer Part Number'
     = f.input :name
     = f.input :description
     = f.input :manufacturer
+    = f.input :part_type, as: :radio_buttons, collection: [['0', 'Fixed Asset'], ['1', 'Consumable'], ['2', 'Both']], label_method: :second, value_method: :first
   .form-actions
     = f.button :submit

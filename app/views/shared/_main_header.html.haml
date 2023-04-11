@@ -1,49 +1,106 @@
-= stylesheet_link_tag "development_ribbon" if Rails.env.development?
 
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  %a.navbar-brand{:href => "#"} PartBox
-  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarSupportedContent.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      %li.nav-item.active
-        %a
-          = link_to 'Home', root_path, :class => 'nav-link'
-          %span.sr-only (current)
-      %li.nav-item
-        %a
-          = link_to 'Consumables', consumables_path, :class => 'nav-link'
-          %span.sr-only (current)
-          %li.nav-item
+- if Rails.env.development?
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-danger
+    %a.navbar-brand{:href => "#"} PartBox Dev
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item.active
+          %a
+            = link_to 'Home', root_path, :class => 'nav-link'
+            %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Consumables', consumables_path, :class => 'nav-link'
+            %span.sr-only (current)
+            %li.nav-item
+              %a
+                = link_to 'Fixed Assets', fixed_assets_path, :class => 'nav-link'
+                %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Orders', orders_path, :class => 'nav-link'
+            %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Parts', parts_path, :class => 'nav-link'
+            %span.sr-only (current)
+        %li.nav-item.dropdown
+          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Utilities
+          .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
             %a
-              = link_to 'Fixed Assets', fixed_assets_path, :class => 'nav-link'
-              %span.sr-only (current)
-      %li.nav-item
-        %a
-          = link_to 'Orders', orders_path, :class => 'nav-link'
-          %span.sr-only (current)
-      %li.nav-item.dropdown
-        %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Utilities
-        .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-          %a
-          = link_to 'Parts', parts_path, :class => 'dropdown-item'
-          %a
-          = link_to 'Asset Tags', asset_tags_path, :class => 'dropdown-item'
-          %a
-          = link_to 'Locations', locations_path, :class => 'dropdown-item'
-          .dropdown-divider
-          = link_to 'Obsolete Consumables', obsolete_consumables_path, :class => 'dropdown-item'
-          = link_to 'Desposed Assets', disposed_assets_path, :class => 'dropdown-item'
-          .dropdown-divider
-          = link_to 'Quick Remove Kiosk', quick_remove_path, :class => 'dropdown-item'
-          .dropdown-divider
-          - if can? :access, :rails_admin
-            = link_to 'Database Admin Panel', rails_admin_path, :class => 'dropdown-item'
-    %form.form-inline.my-2.my-lg-0
-    = form_tag(search_query_path, method: "post", class: "form-inline") do
-      %span#search_field
-        = text_field_tag(:search, nil, placeholder: "Search", class: "form-control mr-sm-2")
-      %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+            = link_to 'Parts', parts_path, :class => 'dropdown-item'
+            %a
+            = link_to 'Asset Tags', asset_tags_path, :class => 'dropdown-item'
+            %a
+            = link_to 'Locations', locations_path, :class => 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Obsolete Consumables', obsolete_consumables_path, :class => 'dropdown-item'
+            = link_to 'Desposed Assets', disposed_assets_path, :class => 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Quick Remove Kiosk', quick_remove_path, :class => 'dropdown-item'
+            .dropdown-divider
+            - if can? :access, :rails_admin
+              = link_to 'Database Admin Panel', rails_admin_path, :class => 'dropdown-item'
+      %form.form-inline.my-2.my-lg-0
+      = form_tag(search_query_path, method: "post", class: "form-inline") do
+        %span#search_field
+          = text_field_tag(:search, nil, placeholder: "Search", class: "form-control mr-sm-2")
+        %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
 
-    = link_to 'Logout', destroy_user_session_path, method: :delete, :class => "btn btn-outline-success"
+      = link_to 'Logout', destroy_user_session_path, method: :delete, :class => "btn btn-outline-success"
+
+- else
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+    %a.navbar-brand{:href => "#"} PartBox
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item.active
+          %a
+            = link_to 'Home', root_path, :class => 'nav-link'
+            %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Consumables', consumables_path, :class => 'nav-link'
+            %span.sr-only (current)
+            %li.nav-item
+              %a
+                = link_to 'Fixed Assets', fixed_assets_path, :class => 'nav-link'
+                %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Orders', orders_path, :class => 'nav-link'
+            %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Parts', parts_path, :class => 'nav-link'
+            %span.sr-only (current)
+        %li.nav-item.dropdown
+          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Utilities
+          .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+            %a
+            = link_to 'Parts', parts_path, :class => 'dropdown-item'
+            %a
+            = link_to 'Asset Tags', asset_tags_path, :class => 'dropdown-item'
+            %a
+            = link_to 'Locations', locations_path, :class => 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Obsolete Consumables', obsolete_consumables_path, :class => 'dropdown-item'
+            = link_to 'Desposed Assets', disposed_assets_path, :class => 'dropdown-item'
+            .dropdown-divider
+            = link_to 'Quick Remove Kiosk', quick_remove_path, :class => 'dropdown-item'
+            .dropdown-divider
+            - if can? :access, :rails_admin
+              = link_to 'Database Admin Panel', rails_admin_path, :class => 'dropdown-item'
+      %form.form-inline.my-2.my-lg-0
+      = form_tag(search_query_path, method: "post", class: "form-inline") do
+        %span#search_field
+          = text_field_tag(:search, nil, placeholder: "Search", class: "form-control mr-sm-2")
+        %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+
+      = link_to 'Logout', destroy_user_session_path, method: :delete, :class => "btn btn-outline-success"

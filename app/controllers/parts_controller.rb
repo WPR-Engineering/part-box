@@ -1,11 +1,11 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
-  
-  
+
+
   #cancancan
   load_and_authorize_resource
-  
-  
+
+
   # GET /parts
   # GET /parts.json
   def index
@@ -74,6 +74,6 @@ class PartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def part_params
-      params.require(:part).permit(:internal_part, :mfg_part, :name, :description, :manufacturer)
+      params.require(:part).permit(:internal_part, :mfg_part, :name, :description, :manufacturer, :part_type)
     end
 end

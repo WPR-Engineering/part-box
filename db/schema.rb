@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_07_161532) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_11_021220) do
   create_table "asset_tags", force: :cascade do |t|
     t.string "tag"
     t.integer "consumable_id"
@@ -125,6 +125,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_07_161532) do
     t.string "manufacturer"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "part_type"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|

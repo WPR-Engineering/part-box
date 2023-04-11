@@ -24,7 +24,7 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rvm_ruby_version, '3.0.0'
-set :rvm_type, :system
+
 
 
 SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
@@ -32,7 +32,7 @@ SSHKit.config.command_map[:sidekiqctl] = "bundle exec sidekiqctl"
 set :init_system, :upstart
 set :upstart_service_name, 'sidekiq'
 set :pty,  false
-set :rvm_type, :user
+
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 

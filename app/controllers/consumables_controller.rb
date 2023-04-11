@@ -33,24 +33,36 @@ class ConsumablesController < ApplicationController
   # POST /consumables
   # POST /consumables.json
   def create
+    Consumable.transaction do
     @consumable = Consumable.new(consumable_params)
     @locations = Location.all
 
     respond_to do |format|
-      if @consumable.save(validate: false)
-        TagMakerWorker.perform_async("consumable", @consumable.id)
+      if @consumable.save!
+        job_id = TagMakerWorker.perform_async("consumable", @consumable.id)
         Consumable.reindex
-        #this is a sad excuse for a loading spinner. we need to do this differently in production
-        sleep 2
-        format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
-        format.json { render :show, status: :created, location: @consumable }
+
+        until Sidekiq::Status::complete? job_id
+          sleep(0.5)
+          if Sidekiq::Status::failed? job_id
+            logger.debug "JOB FAILED!!!!!!!"
+            redirect_back fallback_location: '/', alert: "We've run into a server boo. Please contact your admin if this problem continues."
+            logger.debug "Rolling back transaction"
+            raise ActiveRecord::Rollback
+            break
+          end
+        end
+          format.html { redirect_to @consumable, notice: 'Consumable was successfully created!' }
+          format.json { render :show, status: :created, location: @consumable }
+
       else
         format.html { render :new }
         format.json { render json: @consumable.errors, status: :unprocessable_entity }
       end
     end
     Consumable.reindex
-  end
+    end
+    end
 
   # PATCH/PUT /consumables/1
   # PATCH/PUT /consumables/1.json
