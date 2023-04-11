@@ -1,0 +1,33 @@
+%p#notice
+- if notice.present?
+  %div.alert.alert-success
+    = notice
+-if alert.present?
+  %div.alert.alert-danger
+    = alert
+%h1 Parts
+= link_to "  ", new_part_path, :class => 'btn btn-success fa fa-plus'
+%div.table-responsive
+  %table.table.table-hover.sortable
+    %thead
+      %tr
+        %th Internal part
+        %th Mfg part
+        %th Name
+        %th Description
+        %th Manufacturer
+        %th{colspan: "3"}
+    %tbody
+      - @parts.each do |part|
+        %tr
+          %td= part.internal_part
+          %td= part.mfg_part
+          %td= part.name
+          %td= part.description
+          %td= part.manufacturer
+          %td= link_to '', part, :class => "btn btn-success fa fa-eye"
+          %td= link_to '', edit_part_path(part), :class => "btn btn-warning fa fa-edit"
+          -if can? :destroy, Part
+            %td= link_to '', part, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
+%br/
+= link_to 'New Part', new_part_path
