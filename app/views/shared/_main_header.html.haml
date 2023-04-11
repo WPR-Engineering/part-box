@@ -22,6 +22,10 @@
           %a
             = link_to 'Orders', orders_path, :class => 'nav-link'
             %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Parts', parts_path, :class => 'nav-link'
+            %span.sr-only (current)
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             Utilities
@@ -70,6 +74,10 @@
         %li.nav-item
           %a
             = link_to 'Orders', orders_path, :class => 'nav-link'
+            %span.sr-only (current)
+        %li.nav-item
+          %a
+            = link_to 'Parts', parts_path, :class => 'nav-link'
             %span.sr-only (current)
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
