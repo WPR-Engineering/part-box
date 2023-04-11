@@ -11,6 +11,7 @@
 set :stage, :production
 set :rails_env, :production
 set :branch, "master"
+set :rvm_type, :system
 
 
 server ENV["DEPLOY_SERVER"], user: ENV["DEPLOY_USER"], password: ENV["DEPLOY_PASSWORD"], roles: %w{app db web}
