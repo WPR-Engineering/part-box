@@ -33,12 +33,11 @@ class ConsumablesController < ApplicationController
   # POST /consumables
   # POST /consumables.json
   def create
-    Consumable.transaction do
     @consumable = Consumable.new(consumable_params)
     @locations = Location.all
 
     respond_to do |format|
-      if @consumable.save!
+      if @consumable.save
         job_id = TagMakerWorker.perform_async("consumable", @consumable.id)
         Consumable.reindex
 
@@ -62,7 +61,7 @@ class ConsumablesController < ApplicationController
     end
     Consumable.reindex
     end
-    end
+
 
   # PATCH/PUT /consumables/1
   # PATCH/PUT /consumables/1.json
