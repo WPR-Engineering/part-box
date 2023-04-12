@@ -59,10 +59,14 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+
+  config.log_formatter = LogFormatter.new
+
+
   logger           = ActiveSupport::Logger.new(STDOUT)
   logger.formatter = config.log_formatter
   config.logger    = ActiveSupport::TaggedLogging.new(logger)
-
+  config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
