@@ -44,7 +44,7 @@ class ConsumablesController < ApplicationController
         until Sidekiq::Status::complete? job_id
           sleep(0.5)
           if Sidekiq::Status::failed? job_id
-            logger.debug "JOB FAILED!!!!!!!"
+            logger.error "JOB FAILED!!!!!!!"
             redirect_back fallback_location: '/', alert: "We've run into a server boo. Please contact your admin if this problem continues."
             logger.debug "Rolling back transaction"
             raise ActiveRecord::Rollback
