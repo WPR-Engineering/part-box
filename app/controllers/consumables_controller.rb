@@ -39,7 +39,6 @@ class ConsumablesController < ApplicationController
     respond_to do |format|
       if @consumable.save
         job_id = TagMakerWorker.perform_async("consumable", @consumable.id)
-        Consumable.reindex
 
         until Sidekiq::Status::complete? job_id
           sleep(0.5)
