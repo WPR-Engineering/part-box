@@ -16,6 +16,7 @@
         %th Name
         %th Description
         %th Manufacturer
+        %th Part Type
         %th{colspan: "3"}
     %tbody
       - @parts.each do |part|
@@ -25,6 +26,7 @@
           %td= part.name
           %td= part.description
           %td= part.manufacturer
+          %td= part.part_type
           %td= link_to '', part, :class => "btn btn-success fa fa-eye"
           %td= link_to '', edit_part_path(part), :class => "btn btn-warning fa fa-edit"
           -if can? :destroy, Part

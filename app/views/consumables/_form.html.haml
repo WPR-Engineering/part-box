@@ -2,8 +2,9 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   .form-inputs
-    = f.input :name, placeholder: 'Used for body of label' 
-    = f.association :part, :label_method => :internal_part, :input_html => { class: 'js-searchable'}
+    = f.input :name, placeholder: 'Used for body of label'
+    -# = f.association :part, :as => :collection_select, collection: Part.where('part_type >?', 0), :label_method => :internal_part, :input_html => { class: 'js-searchable'}
+    = f.association :part, :as => :collection_select, :label_method => :internal_part, :input_html => { class: 'js-searchable'}
     = f.input :category
     = f.input :quantity
     = f.input :reorderAmount
