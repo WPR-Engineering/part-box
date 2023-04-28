@@ -7,7 +7,8 @@ class ConsumablesController < ApplicationController
   # GET /consumables
   # GET /consumables.json
   def index
-    @consumables = Consumable.where.not(obsolete: "TRUE")
+    # @consumables = Consumable.where.not(obsolete: "TRUE")
+    @consumables = Consumable.where.not(obsolete: "TRUE").paginate(page: params[:page]).order("name ASC")
   end
 
   # GET /consumables/1

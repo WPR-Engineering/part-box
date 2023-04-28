@@ -57,5 +57,8 @@
               %td= link_to '', consumable, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
 
 
+= will_paginate @consumables
 %br/
 = link_to 'New Consumable', new_consumable_path
+
+

@@ -150,3 +150,4 @@ gem 'rainbow'
 
 gem 'momentjs-rails'
 gem 'rails_bootstrap_sortable'
+gem 'will_paginate', '~> 3.3'
