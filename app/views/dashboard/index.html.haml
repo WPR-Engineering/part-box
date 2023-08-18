@@ -26,7 +26,7 @@ consumables that need to be re-ordered
 			%th asset tag
 	%tbody
 	- @consumables.all.each do |consumable|
-		- if consumable.quantity <= consumable.reorderAmount
+		- if consumable.quantity <= consumable.reorderAmount && !consumable.obsolete
 			%tr.table-danger
 				%td= consumable.name
 				%td= link_to "#{consumable.asset_tag.tag}", asset_tag_path(consumable.asset_tag.id)

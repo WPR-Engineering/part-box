@@ -32,7 +32,7 @@
             %td= link_to '', fixed_asset, :class => "btn btn-success fa fa-eye"
             %td= link_to '', edit_fixed_asset_path(fixed_asset), :class => "btn btn-warning fa fa-edit"
             -if can? :destroy, Consumable
-              %td= link_to '', fixed_asset, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger fa fa-dumpster"
+              %td= link_to '', disposed_fixed_asset_path(fixed_asset.id), data: { confirm: 'Are you sure you would like to start the asset disposal workflow?'}, :class => "btn btn-danger fa fa-dumpster"
         - else
           %tr
             %td= fixed_asset.part.internal_part
@@ -45,6 +45,6 @@
             %td= link_to ' ', fixed_asset, :class => "btn btn-success fa fa-eye"
             %td= link_to ' ', edit_fixed_asset_path(fixed_asset), :class => "btn btn-warning fa fa-edit"
             -if can? :destroy, Consumable
-              %td= link_to ' ', fixed_asset, method: :delete, data: { confirm: 'Are you sure? This CANNOT BE UNDONE' }, :class => "btn btn-danger fa fa-dumpster"
+              %td= link_to '', disposed_fixed_asset_path(fixed_asset.id), data: { confirm: 'Are you sure you would like to start the asset disposal workflow?'}, :class => "btn btn-danger fa fa-dumpster"
 %br/
 = link_to 'New Fixed Asset', new_fixed_asset_path
