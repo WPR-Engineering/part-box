@@ -42,3 +42,4 @@ config/partbox-config\.yml
 .nova/
 
 /old_cap
+docker-compose.yml
