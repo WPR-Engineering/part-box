@@ -113,6 +113,6 @@ class AssetTagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def asset_tag_params
-      params.require(:asset_tag).permit(:tag, :consumable_id, :location_id, :fixed_asset_id, line_item_attributes: [:order_id])
+      params.require(:asset_tag).permit(:tag, :consumable_id, :location_id, :fixed_asset_id, :preprinted_tag, line_item_attributes: [:order_id])
     end
 end

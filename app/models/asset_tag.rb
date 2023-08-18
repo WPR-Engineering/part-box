@@ -3,7 +3,7 @@ class AssetTag < ApplicationRecord
   belongs_to :location
   belongs_to :fixed_asset, dependent: :destroy, optional: true
 
-  searchkick index_name: "taggles"
+  searchkick
 
   audited associated_with: :fixed_asset
   audited associated_with: :consumable

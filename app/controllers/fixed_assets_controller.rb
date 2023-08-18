@@ -4,6 +4,7 @@ class FixedAssetsController < ApplicationController
   load_and_authorize_resource
   # GET /fixed_assets
   # GET /fixed_assets.json
+
   def index
     @fixed_assets = FixedAsset.all
 
@@ -40,7 +41,7 @@ class FixedAssetsController < ApplicationController
 
     respond_to do |format|
       if @fixed_asset.save
-        TagMakerWorker.perform_async("fixed", @fixed_asset.id)
+        TagMakerWorker.perform_async("fixed", @fixed_asset.id, @fixed_asset.preprinted)
         FixedAsset.reindex
         #this is a sad excuse for a loading spinner. we need to do this differently in production
         sleep 5
@@ -89,6 +90,6 @@ class FixedAssetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fixed_asset_params
-      params.require(:fixed_asset).permit(:InstalledLocation, :RackUnit, :part_id, :description, :serial_number, :disposed, :disposal_note, :primary_mac, asset_tag_attributes: [:location_id, :tag])
+      params.require(:fixed_asset).permit(:InstalledLocation, :RackUnit, :part_id, :description, :serial_number, :disposed, :disposal_note, :primary_mac, :preprinted, asset_tag_attributes: [:location_id, :tag])
     end
 end

@@ -3,12 +3,14 @@ class TagMakerWorker
   Sidekiq.default_worker_options['retry'] = 2
   include Sidekiq::Status::Worker # enables job status tracking
 
-  def perform(type, new_asset_id)
+  def perform(type, new_asset_id, preprinted)
     if type == "fixed"
 
       #set everything up
 
       logger.info "Fixed asset tag"
+
+      logger.info preprinted
 
       logger.info "The ID of the newly created asset is #{new_asset_id}"
 
@@ -26,9 +28,21 @@ class TagMakerWorker
         asset_tag_new.save(validate: false)
         AssetTag.reindex
 
+        elsif preprinted.present?
+
+        asset_tag_new = AssetTag.new
+        asset_tag_new.tag = preprinted
+        asset_tag_new.location_id = "1"
+        asset_tag_new.fixed_asset_id = new_asset_id
+        asset_tag_new.preprinted_tag = "True"
+        logger.info "the new values going into the database are #{asset_tag_new.inspect}"
+        asset_tag_new.save(validate: false)
+
+        AssetTag.reindex
+
       else
-        #selecting the last tag that was created for a fixed asset
-        select_last_tag = AssetTag.where(consumable_id: [nil, ""]).order(created_at: :asc).last
+        #selecting the last tag that was created for a fixed asset, but not preprinted_tags
+        select_last_tag = AssetTag.where(consumable_id: [nil, ""], preprinted_tag: [nil, ""]).order(created_at: :asc).last
         logger.info "the prevous asset tag ID = #{select_last_tag.tag}"
 
         #set things to variables

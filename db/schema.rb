@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_17_154345) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_18_051849) do
   create_table "asset_tags", force: :cascade do |t|
     t.string "tag"
     t.integer "consumable_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_154345) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "fixed_asset_id"
+    t.boolean "preprinted_tag"
     t.index ["consumable_id"], name: "index_asset_tags_on_consumable_id"
     t.index ["fixed_asset_id"], name: "index_asset_tags_on_fixed_asset_id"
     t.index ["location_id"], name: "index_asset_tags_on_location_id"
