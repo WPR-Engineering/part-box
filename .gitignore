@@ -44,3 +44,4 @@ config/partbox-config\.yml
 /old_cap
 
 docker-compose.yml
+.idea/workspace.xml
