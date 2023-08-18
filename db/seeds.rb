@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 
-
+case Rails.env
+when "development"
 Part.create(internal_part: 'P-PC-001', mfg_part: 'AT-01-OR', name: 'Patch Cable', description: '1ft orage cable', manufacturer: 'AllenTel')
 Part.create(internal_part: 'P-PC-002', mfg_part: 'AT-03-OR', name: 'Patch Cable', description: '3ft orage cable', manufacturer: 'AllenTel')
 Part.create(internal_part: 'P-PC-003', mfg_part: 'AT-05-OR', name: 'Patch Cable', description: '5ft orage cable', manufacturer: 'AllenTel')
@@ -16,3 +17,8 @@ Location.create(name: 'Vilas')
 Location.create(name: 'DoIT')
 Location.create(name: 'EAU')
 Location.create(name: 'GBY')
+
+when "production"
+
+	User.create(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: 'True')
+end

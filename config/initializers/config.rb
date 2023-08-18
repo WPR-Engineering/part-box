@@ -1,4 +1,4 @@
 # Setup config for app from yaml file
-CONFIG = YAML.load(File.read(File.expand_path('./config/partbox-config.yml')))
+CONFIG = YAML.safe_load(ERB.new(File.read('./config/partbox-config.yml')).result)
 CONFIG.merge! CONFIG.fetch(Rails.env, {})
 CONFIG.deep_symbolize_keys!

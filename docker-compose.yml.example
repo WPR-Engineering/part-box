@@ -1,0 +1,76 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: partbox_prod
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports: 
+      - "3306:3306"
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  elasticsearch:
+    image: elasticsearch:8.8.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: "single-node"
+      xpack.security.enabled: "false"
+
+  sidekiq:
+    build: .
+    platform: linux/x86_64
+    command: bundle exec sidekiq
+
+
+  rabbitMQ:
+    image: rabbitmq:management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  web:
+    build: .
+    platform: linux/x86_64
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 80"
+    volumes:
+      - .:/Rails-Docker:rw
+    environment:
+      RAILS_ENV: production
+      RAILS_SERVE_STATIC_FILES: true
+      SECRET_KEY_BASE: f3bb12b2644387e5d74cff2991a99d008b04b4184ccbb448a7f5d1879513958497cc0df17da56a0f62db4d8197b5770f9e1b31c0f7219fa9385cd4c7e9cc42ef
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_NAME: partbox_prod
+      DB_HOST: db
+      DB_PORT: 3306
+      PRINTING_ENABLED: "false"
+      LARGE_PRINT_QUEUE: large
+      MED_PRINT_QUEUE: med
+      SMALL_PRINT_QUEUE: small
+      ITEM_TAG_PRINTER: small
+      BASE_URL: http://localhost
+      RABBIT_HOST: rabbitmq
+      RABBIT_PORT: 5672
+      RABBIT_USER: part
+      RABBIT_PASS: box
+      NETBOX_ENABLED: "false"
+      NETBOX_URL: ""
+      NETBOX_KEY: ""
+    ports:
+      - "80:80"
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+      - sidekiq
+      - elasticsearch
+volumes:
+  postgres:

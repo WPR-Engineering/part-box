@@ -1,0 +1,21 @@
+LABEL_PRINTING:
+  ENABLED: <%= ENV['PRINTING_ENABLED'] %>
+  DEFAULT_SMALL_ZPL: ./config/default-small.zpl
+  DEFAULT_LARGE_ZPL: ./config/default-large.zpl
+  DEFAULT_MED_ZPL: ./config/default-med.zpl
+  DEFAULT_REMOVE_ZPL: ./config/default-remove.zpl
+  LARGE_PRINTER: <%= ENV['LARGE_PRINT_QUEUE'] %>
+  MED_PRINTER: <%= ENV['MED_PRINT_QUEUE'] %>
+  SMALL_PRINTER: <%= ENV['SMALL_PRINT_QUEUE'] %>
+  ITEM_TAG_PRINTER: <%= ENV['ITEM_TAG_PRINTER'] %>
+  RABBIT_MQ:
+    HOST: <%= ENV['RABBIT_HOST'] %>
+    PORT: <%= ENV['RABBIT_PORT'] %>
+    USER: <%= ENV['RABBIT_USER'] %>
+    PASS: <%= ENV['RABBIT_PASS'] %>
+NETBOX:
+  ENABLED: <%= ENV['NETBOX_ENABLED'] %>
+  BASE_URL: <%= ENV['NETBOX_URL'] %>
+  API_KEY: <%= ENV['NETBOX_KEY'] %>
+SYSTEM:
+  BASE_URL: <%= ENV['BASE_URL'] %>

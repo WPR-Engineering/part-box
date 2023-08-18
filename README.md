@@ -43,6 +43,17 @@ We also can track non-consumable assets, things like servers and hard drives. Th
 
 Currently the software is confirmed to print with the Zebra GK420D and the Zebra ZD411, however any printer that supports direct ZPL printing should work.
 
+
+# Docker info
+
+remove the rabitMQ section from the docker-compose if you arent using printing
+
+be sure to change passwords!
+
+to run the migration / seed the DB run the following
+
+docker run <containiner name> rake db:migrate or rake db:seed
+
 # TODO For V 1.0.0-Beta and on
 
 - [x] Reduce quantity on order finalization
