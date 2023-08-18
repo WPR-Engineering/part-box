@@ -46,6 +46,8 @@ Currently the software is confirmed to print with the Zebra GK420D and the Zebra
 
 # Docker info
 
+*** THIS SHOULD NOT BE USED IN PRODUCTION ***
+
 remove the rabitMQ section from the docker-compose if you arent using printing
 
 be sure to change passwords!

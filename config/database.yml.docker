@@ -1,0 +1,8 @@
+production:
+  adapter: postgresql
+  database: <%= ENV['DB_NAME'] %>
+  pool: 25
+  timeout: 5000
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
