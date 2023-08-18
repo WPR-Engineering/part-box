@@ -8,7 +8,7 @@
     = f.input :category
     = f.input :quantity
     = f.input :reorderAmount
-    = f.collection_select :site, Location.all, :name, :name, :input_html => { class: 'js-searchable'}
+    = f.input :site, collection: @location
     = f.input :shelf
     = f.input :bin
     = f.input :obsolete
@@ -16,7 +16,7 @@
       %a.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-toggle" => "collapse", href: "#collapseExample", role: "button"}
         Overstock
     #collapseExample.collapse
-      .card.card-body
+
       = f.input :overstock
       = f.input :overstock_quantity
       = f.input :overstock_location

@@ -51,6 +51,12 @@
               %tr
                 %td Bin #
                 %td= @consumable.bin
+              %tr
+                %td Overstock Location
+                %td= @consumable.overstock_location
+              %tr
+                %td Overstock Notes
+                %td= @consumable.overstock_notes
             %div.card-body
               %p.text-center.form-group
                 = link_to 'Print Medium Bin Tag', consumable_print_med_path, :class => "btn btn-outline-dark"

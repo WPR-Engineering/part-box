@@ -9,6 +9,7 @@ class ConsumablesController < ApplicationController
   def index
     # @consumables = Consumable.where.not(obsolete: "TRUE")
     @consumables = Consumable.where.not(obsolete: "TRUE").paginate(page: params[:page]).order("name ASC")
+
   end
 
   # GET /consumables/1
@@ -25,6 +26,7 @@ class ConsumablesController < ApplicationController
   def new
     @consumable = Consumable.new
     @part = Part.all
+    @location = Location.all
   end
 
   # GET /consumables/1/edit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_11_021220) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_17_154345) do
   create_table "asset_tags", force: :cascade do |t|
     t.string "tag"
     t.integer "consumable_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_11_021220) do
     t.boolean "disposed"
     t.string "primary_mac"
     t.text "disposal_note"
+    t.integer "purchase_price"
     t.index ["part_id"], name: "index_fixed_assets_on_part_id"
   end
 
